@@ -1,0 +1,424 @@
+"""
+decision_engine.py (patched, embedding-enabled)
+- Uses sentence-transformers for semantic matching (embeddings)
+- Simple NER fallback (no spaCy) for entity-focused queries
+- Safer thresholds and caching
+- Backwards-compatible predict_and_retrieve wrapper used by GUI
+"""
+
+import os
+import re
+import time
+import logging
+from difflib import SequenceMatcher
+
+# Embedding imports (optional runtime)
+try:
+    from sentence_transformers import SentenceTransformer, util
+    _EMB_OK = True
+except Exception as e:
+    _EMB_OK = False
+    SentenceTransformer = None
+    util = None
+
+logging.basicConfig(level=logging.INFO)
+
+# ---------- Configuration (read from environment) ----------
+FACTCHECK_API_KEY = os.getenv("FACTCHECK_API_KEY")
+GNEWS_API_KEY = os.getenv("GNEWS_API_KEY")
+
+FACTCHECK_SEARCH_URL = "https://factchecktools.googleapis.com/v1alpha1/claims:search"
+GNEWS_SEARCH_URL = "https://gnews.io/api/v4/search"
+
+# ---------- Runtime globals & tunables ----------
+_DECISION_CACHE = {}
+_GNEWS_QUOTA_EXCEEDED = False
+MAX_QUERIES_PER_CALL = 6
+GNEWS_REQ_TIMEOUT = 4
+GNEWS_REQ_RETRIES = 0
+SLEEP_BETWEEN_GNEWS = 0.08
+# New tunables for embeddings
+EMB_FACTCHECK_THRESHOLD = 0.60
+EMB_ARTICLE_THRESHOLD = 0.48
+SIMILARITY_THRESHOLD = 0.28  # used as fallback if embeddings not available
+
+# Embedding model lazy loader
+_EMB_MODEL = None
+
+def get_emb_model():
+    global _EMB_MODEL
+    if not _EMB_OK:
+        return None
+    if _EMB_MODEL is None:
+        try:
+            _EMB_MODEL = SentenceTransformer("all-MiniLM-L6-v2")
+        except Exception:
+            _EMB_MODEL = None
+    return _EMB_MODEL
+
+# Simple entity extractor (fallback if no spaCy)
+def extract_entities_simple(text, max_ent=4):
+    if not text:
+        return []
+    matches = re.findall(r'\b([A-Z][a-z]{1,}(?:\s+[A-Z][a-z]{1,}){0,3})\b', text)
+    seen = []
+    for m in matches:
+        mm = m.strip()
+        if mm not in seen:
+            seen.append(mm)
+        if len(seen) >= max_ent:
+            break
+    return seen
+
+# Embedding helpers
+def embed_text(s):
+    model = get_emb_model()
+    if model is None or not s:
+        return None
+    return model.encode(s, convert_to_tensor=True)
+
+def semantic_cos_sim(a_emb, b_text):
+    model = get_emb_model()
+    if model is None or a_emb is None or not b_text:
+        return 0.0
+    b_emb = model.encode(b_text, convert_to_tensor=True)
+    return float(util.pytorch_cos_sim(a_emb, b_emb).item())
+
+# Generic GET retry helper (uses requests)
+import requests
+
+def retry_get(url, params=None, headers=None, max_retries=2, timeout=8):
+    last_exc = None
+    for attempt in range(max_retries + 1):
+        try:
+            r = requests.get(url, params=params, headers=headers, timeout=timeout)
+            r.raise_for_status()
+            try:
+                return r.json()
+            except ValueError:
+                return {"raw_text": r.text}
+        except requests.exceptions.HTTPError as he:
+            status = getattr(he.response, "status_code", None)
+            last_exc = he
+            time.sleep(0.5 * (2 ** attempt))
+        except Exception as e:
+            last_exc = e
+            time.sleep(0.5 * (2 ** attempt))
+    return None
+
+# similarity fallback
+def _sim(a, b):
+    return SequenceMatcher(None, (a or "").lower(), (b or "").lower()).ratio()
+
+# clean text for queries
+def _clean_text_for_query(s):
+    if not s:
+        return ""
+    s = s.strip()
+    s = re.sub(r"[^\w\s'\-]", " ", s, flags=re.UNICODE)
+    s = re.sub(r"\s+", " ", s).strip()
+    return s
+
+# build IG caption-like queries (reuse existing logic)
+def format_ig_caption_to_queries(caption):
+    text = (caption or "").strip()
+    if not text:
+        return []
+    clean = _clean_text_for_query(text)
+    words = clean.split()
+    queries = []
+    queries.append(clean)
+    queries += [f"{clean} news", f"{clean} reported", f"{clean} reported dead", f"{clean} died"]
+    filipino_phrases = ["namatay", "nawawala", "dinakip", "dinakpan", "naaresto", "nasunog", "nawala"]
+    for p in filipino_phrases:
+        queries.append(f"{clean} {p}")
+        queries.append(f"{p} {clean}")
+    caps = [w for w in caption.replace("\n", " ").split(" ") if w and w[0].isupper()]
+    if caps:
+        name = " ".join(caps[-3:])
+        queries += [f"{name} reported dead", f"{name} died", f"{name} news", name]
+    if len(words) >= 1:
+        queries.append(" ".join(words[:4]))
+    queries.append(" ".join(reversed(words[:4])))
+    seen = set()
+    out = []
+    for q in queries:
+        q2 = (q or "").strip()
+        if not q2:
+            continue
+        if q2 in seen:
+            continue
+        seen.add(q2)
+        out.append(q2)
+    return out[:12]
+
+# FactCheck mapping helper (keep previous logic but improved)
+def _best_factcheck_verdict(fc_resp, claim_text):
+    if not fc_resp:
+        return (None, None, None)
+    claims = fc_resp.get("claims", [])
+    if not claims:
+        return (None, None, None)
+    best = None
+    best_score = -1.0
+    for c in claims:
+        score = _sim(claim_text, c.get("text", ""))
+        if score > best_score:
+            best = c
+            best_score = score
+    if not best:
+        return (None, None, None)
+    rating = None
+    try:
+        cr = best.get("claimReview", [])
+        if cr and isinstance(cr, list):
+            r0 = cr[0]
+            rating = r0.get("textualRating") or r0.get("reviewRating", {}).get("alternateName")
+    except Exception:
+        rating = None
+    if rating:
+        r = rating.strip().lower()
+        false_subs = ["false","falso","неправд","ข่าวปลอม","faux","помил","лъж","falsch","偽","거짓"]
+        true_subs  = ["true","verdadero","vrai","จริง","правда","真","verdadeiro","실제","tatsächlich"]
+        mixed_subs = ["partly","mostly","mixture","misleading","miscaption","context","частично","บางส่วน","mixed"]
+        mapped = None
+        for s_ in false_subs:
+            if s_ in r:
+                mapped = "FALSE"; break
+        if not mapped:
+            for s_ in true_subs:
+                if s_ in r:
+                    mapped = "TRUE"; break
+        if not mapped:
+            for s_ in mixed_subs:
+                if s_ in r:
+                    mapped = "MIXED"; break
+        return (mapped, rating, best)
+    else:
+        return (None, None, best)
+
+# ---------- Core decision function ----------
+def decide_label(claim_text):
+    global _DECISION_CACHE, _GNEWS_QUOTA_EXCEEDED
+    logging.info(f"decide_label called claim_text={claim_text!r}")
+    if claim_text in _DECISION_CACHE:
+        logging.info("decide_label: cache hit")
+        return _DECISION_CACHE[claim_text]
+    # 1) FactCheck
+    try:
+        fc_params = {"query": claim_text, "key": FACTCHECK_API_KEY}
+        fc_resp = retry_get(FACTCHECK_SEARCH_URL, params=fc_params, max_retries=1, timeout=6)
+    except Exception as e:
+        logging.warning("FactCheck call failed: %s", e)
+        fc_resp = None
+    logging.info(f"factcheck response present={bool(fc_resp)}")
+    mapped, raw_rating, matched_claim = _best_factcheck_verdict(fc_resp, claim_text)
+    logging.info(f"FactCheck mapped={mapped} raw_rating={raw_rating}")
+    # If mapped is decisive, use it
+    if mapped == "TRUE":
+        out = {"label":"REAL", "reason":"FactCheck:TRUE", "meta":{"factcheck_rating":raw_rating, "claim": matched_claim}}
+        _DECISION_CACHE[claim_text] = out
+        return out
+    if mapped == "FALSE":
+        out = {"label":"FAKE", "reason":"FactCheck:FALSE", "meta":{"factcheck_rating":raw_rating, "claim": matched_claim}}
+        _DECISION_CACHE[claim_text] = out
+        return out
+    # If we have factcheck candidates but unsure, use embedding semantic match
+    factcheck_applicable = False
+    if matched_claim:
+        fc_text = (matched_claim.get("text") or "") + " " + ((matched_claim.get("claimReview") or [])[0].get("textualRating","") if matched_claim.get("claimReview") else "")
+        # use embeddings if available
+        if _EMB_OK:
+            try:
+                u_emb = embed_text(claim_text)
+                if u_emb is not None:
+                    sim = semantic_cos_sim(u_emb, fc_text)
+                    if sim >= EMB_FACTCHECK_THRESHOLD:
+                        factcheck_applicable = True
+            except Exception:
+                factcheck_applicable = False
+        else:
+            # fallback to token overlap
+            words_fc = set(re.findall(r"\w{4,}", fc_text.lower()))
+            words_us = set(re.findall(r"\w{4,}", claim_text.lower()))
+            if len(words_fc & words_us) >= 2:
+                factcheck_applicable = True
+    # 2) GNews search (queries)
+    queries = format_ig_caption_to_queries(claim_text)
+    qlist = []
+    for q in queries:
+        if not q or any((q in x and q != x) for x in qlist):
+            continue
+        qlist.append(q)
+    if not qlist:
+        qlist = [claim_text]
+    qlist = qlist[:MAX_QUERIES_PER_CALL]
+    if _GNEWS_QUOTA_EXCEEDED:
+        logging.warning("GNews quota flagged exceeded this session; skipping provider calls.")
+        out = {"label":"ERROR", "reason":"GNews:quota_exceeded", "meta":{"message":"GNews quota exceeded; try again later or use alternative provider"}}
+        _DECISION_CACHE[claim_text] = out
+        return out
+    headers = {"X-Api-Key": GNEWS_API_KEY}
+    all_articles = []
+    for q in qlist:
+        params = {"q": q, "max": 10}
+        try:
+            r = requests.get(GNEWS_SEARCH_URL, params=params, headers=headers, timeout=GNEWS_REQ_TIMEOUT)
+            if r.status_code == 403:
+                logging.error("GNews returned 403 (quota/exhausted). Response: %s", r.text)
+                _GNEWS_QUOTA_EXCEEDED = True
+                out = {"label":"ERROR", "reason":"GNews:quota_exceeded", "meta":{"message": r.text}}
+                _DECISION_CACHE[claim_text] = out
+                return out
+            r.raise_for_status()
+            gresp = r.json()
+        except Exception as e:
+            logging.warning("GNews GET failed q=%r err=%s", q, e)
+            time.sleep(SLEEP_BETWEEN_GNEWS)
+            continue
+        arts = gresp.get("articles") or gresp.get("results") or []
+        if not arts:
+            time.sleep(SLEEP_BETWEEN_GNEWS)
+            continue
+        # Filter using embeddings when available, otherwise use similarity fallback
+        input_emb = embed_text(claim_text) if _EMB_OK else None
+        for a in arts:
+            if not isinstance(a, dict):
+                a = {"title": str(a)}
+            title = (a.get("title") or a.get("headline") or a.get("description") or "").strip()
+            desc = a.get("description") or a.get("content") or ""
+            score = 0.0
+            if input_emb is not None:
+                try:
+                    s1 = semantic_cos_sim(input_emb, title)
+                    s2 = semantic_cos_sim(input_emb, desc)
+                    score = max(s1, s2)
+                except Exception:
+                    score = 0.0
+            else:
+                score = max(_sim(claim_text, title), _sim(claim_text, desc))
+            # keep reasonably related
+            if (_EMB_OK and score >= EMB_ARTICLE_THRESHOLD) or (not _EMB_OK and score >= SIMILARITY_THRESHOLD):
+                entry = {"title": title or a.get("url") or "article", "url": a.get("url") or a.get("link") or "", "score": score, "raw": a}
+                uid = (entry["url"] or entry["title"]).strip()
+                if not any(uid == (x.get("url") or x.get("title") or "").strip() for x in all_articles):
+                    all_articles.append(entry)
+        time.sleep(SLEEP_BETWEEN_GNEWS)
+    # fallback looser fetch
+    if not all_articles:
+        q = qlist[0] if qlist else claim_text
+        try:
+            r = requests.get(GNEWS_SEARCH_URL, params={"q": q, "max": 6}, headers=headers, timeout=GNEWS_REQ_TIMEOUT)
+            if r.status_code == 403:
+                logging.error("GNews returned 403 on fallback.")
+                _GNEWS_QUOTA_EXCEEDED = True
+                out = {"label":"ERROR", "reason":"GNews:quota_exceeded", "meta":{"message": r.text}}
+                _DECISION_CACHE[claim_text] = out
+                return out
+            r.raise_for_status()
+            gresp = r.json()
+            arts = gresp.get("articles") or gresp.get("results") or []
+            for a in arts:
+                if isinstance(a, dict):
+                    title = (a.get("title") or a.get("headline") or "").strip()
+                    url = a.get("url") or a.get("link") or ""
+                    entry = {"title": title or url or "article", "url": url or "", "score": 0.0, "raw": a}
+                    uid = (entry["url"] or entry["title"]).strip()
+                    if not any(uid == (x.get("url") or x.get("title") or "").strip() for x in all_articles):
+                        all_articles.append(entry)
+        except Exception as e:
+            logging.warning("GNews fallback failed: %s", e)
+    articles_found = len(all_articles)
+    logging.info(f"GNews: total articles found (after filtering) = {articles_found}")
+    # Decision rules (evidence-first, conservative)
+    final_label = "FAKE"
+    final_reason = "GNews:no_similar"
+    final_meta = {"queries": qlist, "articles_found": articles_found}
+    if articles_found == 0:
+        # no articles found: only mark fake if text looks sensational/timebound
+        def _looks_sensational_or_timebound(s):
+            if not s:
+                return False
+            s = s.lower()
+            triggers = ["will explode", "next week", "tomorrow", "breaking", "won't believe", "shocking", "cures diabetes", "died", "dies", "you won't believe"]
+            for t in triggers:
+                if t in s:
+                    return True
+            if re.search(r"\b\d{3,}\b", s):
+                return True
+            return False
+        if _looks_sensational_or_timebound(claim_text):
+            out = {"label":"FAKE", "reason":"GNews:no_similar_sensational", "meta": final_meta}
+            _DECISION_CACHE[claim_text] = out
+            return out
+        else:
+            out = {"label":"REAL", "reason":"GNews:no_similar_but_non_sensational", "meta": final_meta}
+            _DECISION_CACHE[claim_text] = out
+            return out
+    # If we have articles, check trusted domains or diversity
+    trusted_domains = {"rappler.com", "inquirer.net", "gmanetwork.com", "abs-cbn.com", "reuters.com", "philstar.com", "cnnphilippines.com", "aljazeera.com", "bbc.com"}
+    trusted_count = 0
+    domains_seen = set()
+    for r in all_articles:
+        url = (r.get("url") or "").lower()
+        dom = url.split("/")[0]
+        domains_seen.add(dom)
+        for t in trusted_domains:
+            if t in dom:
+                trusted_count += 1
+                break
+    if trusted_count >= 2:
+        out = {"label":"REAL", "reason":"GNews:trusted_multiple", "meta": {**final_meta, "trusted_count": trusted_count, "sample_articles": all_articles[:6]}}
+        _DECISION_CACHE[claim_text] = out
+        return out
+    if len(domains_seen) >= 2:
+        out = {"label":"REAL", "reason":"GNews:diverse_sources", "meta": {**final_meta, "trusted_count": trusted_count, "sample_articles": all_articles[:6]}}
+        _DECISION_CACHE[claim_text] = out
+        return out
+    # otherwise treat cautiously: if articles present but weak, default to REAL with caution
+    out = {"label":"REAL", "reason":"GNews:weak_coverage", "meta": {**final_meta, "trusted_count": trusted_count, "sample_articles": all_articles[:6]}}
+    _DECISION_CACHE[claim_text] = out
+    return out
+
+# ---------- Wrapper used by GUI ----------
+def predict_and_retrieve(text, suppress_ui=True):
+    res = decide_label(text)
+    out = {}
+    lab = (res.get("label") or "").upper()
+    out["meta"] = res.get("meta", {}) or {}
+    out["reason"] = res.get("reason", "")
+    if lab == "REAL":
+        out["label"] = "real"
+        out["fake_prob"] = 0.05
+        out["message"] = "Authoritative sources found."
+    elif lab == "FAKE":
+        out["label"] = "fake"
+        out["fake_prob"] = 0.95
+        out["message"] = "No authoritative sources found; flagged as fake by rules."
+    elif lab == "ERROR":
+        out["label"] = "error"
+        out["fake_prob"] = 0.5
+        out["message"] = out["meta"].get("message") or "Temporary error (quota or network)."
+    else:
+        out["label"] = "unverified"
+        out["fake_prob"] = 0.5
+        out["message"] = "Insufficient authoritative evidence."
+    related = []
+    sample = out["meta"].get("sample_articles") or out["meta"].get("related") or []
+    for a in sample:
+        if isinstance(a, dict):
+            title = a.get("title") or (a.get("raw") or {}).get("title") or "Related"
+            url = a.get("url") or (a.get("raw") or {}).get("url") or ""
+            score = a.get("score")
+            if score is not None:
+                title = f"{title} ({score:.2f})"
+            related.append({"title": title, "url": url})
+    out["related"] = related
+    out["raw_backend"] = res
+    return out
+
+# Quick test helper
+if __name__ == "__main__":
+    t = "Breaking News! Namatay si Jane Doe"
+    import json
+    print(json.dumps(predict_and_retrieve(t, suppress_ui=True), indent=2, ensure_ascii=False))

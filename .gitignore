@@ -1,0 +1,25 @@
+venv/
+__pycache__/
+*.pyc
+*.pkl
+*.log
+.env
+
+# 🔥 ADD NI (VERY IMPORTANT)
+bert_model/
+distil_model/
+
+# Large ML files
+*.pth
+*.pt
+*.safetensors
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# VS Code
+.vscode/
+
+# Debug / cache folders
+backend_debug/

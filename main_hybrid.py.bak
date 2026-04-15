@@ -1,0 +1,637 @@
+# main_hybrid.py
+"""
+Hybrid Fake-News detection (improved):
+- FactCheck API used only when claim semantically matches the user's input.
+- Evidence-first combination: ML is supporting signal (default weights: ml=0.2, evidence=0.8).
+- GNews smart querying + optional NewsData fallback (set NEWSDATA_API_KEY in .env).
+- Conservative semantic matching (alive/dead, arrested/released, etc).
+- Logging of debug info (parsed + raw responses).
+- NOTE: This variant returns ONLY "fake" or "real" labels (no 'unverified'/'check_needed').
+"""
+
+import os, json, re, time
+from urllib.parse import urlparse
+import joblib
+import requests
+from dotenv import load_dotenv
+
+load_dotenv()
+FACTCHECK_API_KEY = os.getenv("FACTCHECK_API_KEY")
+GNEWS_API_KEY = os.getenv("GNEWS_API_KEY")
+NEWSDATA_API_KEY = os.getenv("NEWSDATA_API_KEY")  # optional fallback provider
+
+FACTCHECK_BASE = "https://factchecktools.googleapis.com/v1alpha1/claims:search"
+GNEWS_BASE = "https://gnews.io/api/v4/search"
+NEWSDATA_BASE = "https://newsdata.io/api/1/news"  # NewsData (free tier) fallback
+
+# Optional translator (improves non-English queries)
+try:
+    from googletrans import Translator
+    _TRANSLATOR = Translator()
+except Exception:
+    _TRANSLATOR = None
+
+# Local ML artifacts (optional)
+MODEL_FILE = "model.pkl"
+VECT_FILE = "vectorizer.pkl"
+model = None
+vectorizer = None
+try:
+    if os.path.exists(MODEL_FILE):
+        model = joblib.load(MODEL_FILE)
+except Exception:
+    model = None
+try:
+    if os.path.exists(VECT_FILE):
+        vectorizer = joblib.load(VECT_FILE)
+except Exception:
+    vectorizer = None
+
+# ------------------ DEBUG PRINTS (added) ------------------
+# Prints once when module is imported so you can see load status immediately.
+try:
+    _dbg_model_loaded = model is not None
+    _dbg_vect_loaded = vectorizer is not None
+    _dbg_classes = None
+    if model is not None and hasattr(model, "classes_"):
+        try:
+            _dbg_classes = list(getattr(model, "classes_", []))
+        except Exception:
+            _dbg_classes = str(getattr(model, "classes_", None))
+    print(f"[DEBUG] model loaded: {_dbg_model_loaded}, vectorizer loaded: {_dbg_vect_loaded}, classes: {_dbg_classes}")
+except Exception:
+    pass
+# ----------------------------------------------------------
+
+# Trusted domains (customize as needed)
+TRUSTED_DOMAINS = {
+    "rappler.com", "inquirer.net", "gmanetwork.com", "abs-cbn.com",
+    "reuters.com", "philstar.com", "cnnphilippines.com", "aljazeera.com",
+    "bbc.com"
+}
+
+# Tunable constants
+ML_WEIGHT = 0.2         # ml contribution to final fake_prob
+EVIDENCE_WEIGHT = 0.8   # evidence contribution (inverted) to final fake_prob
+GNEWS_MAX_RESULTS = 8
+EVIDENCE_STRONG = 0.8
+EVIDENCE_MED = 0.35
+LOG_RAW = True
+
+# ------------------ Utilities ------------------
+
+def _safe_write(file, payload):
+    try:
+        with open(file, "a", encoding="utf-8") as fh:
+            fh.write(json.dumps(payload, ensure_ascii=False) + "\n")
+    except Exception:
+        pass
+
+def extract_domain(url):
+    try:
+        p = urlparse(url)
+        d = p.netloc.lower().replace("www.", "")
+        return d
+    except Exception:
+        return (url or "").lower()
+
+def normalize_article(a):
+    title = a.get("title") or a.get("headline") or ""
+    url = a.get("url") or a.get("link") or a.get("news_url") or ""
+    src = ""
+    if isinstance(a.get("source"), dict):
+        src = a.get("source", {}).get("name") or ""
+    else:
+        src = a.get("source") or ""
+    desc = a.get("description") or a.get("content") or ""
+    return {"title": title, "url": url, "source": src, "desc": desc}
+
+def simple_keyword_query(text, max_words=8):
+    words = re.findall(r"\w+", (text or "").lower())
+    stop = {"ang","sa","ng","na","at","the","a","an","ni","si","mga","now","today","ito","iyan"}
+    words = [w for w in words if len(w) > 3 and w not in stop]
+    words = sorted(set(words), key=lambda w: -len(w))[:max_words]
+    return " ".join(words)
+
+# ------------------ FactCheck + GNews + NewsData calls ------------------
+
+def call_factcheck_api(text, timeout=8):
+    if not FACTCHECK_API_KEY:
+        return None
+    try:
+        r = requests.get(FACTCHECK_BASE, params={"query": text, "key": FACTCHECK_API_KEY}, timeout=timeout)
+        r.raise_for_status()
+        resp = r.json()
+        if LOG_RAW:
+            _safe_write("debug_api_log_raw.json", {"time": time.time(), "api": "factcheck", "request": text, "response": resp})
+        return resp
+    except Exception as e:
+        _safe_write("debug_api_log_raw.json", {"time": time.time(), "api": "factcheck_error", "error": str(e)})
+        return None
+
+# ------------------ Improved FactCheck parsing / extractor ------------------
+
+def extract_factcheck_verdict(resp):
+    """
+    Robust extractor for Google Fact Check API responses.
+    Returns a dict with:
+      - claim_text
+      - textualRating
+      - url
+      - publisher
+      - title
+      - reviewBody
+      - raw (original response)
+    or None if no usable claim is found.
+    """
+    if not resp:
+        return None
+
+    # Light debug for structure
+    if LOG_RAW:
+        try:
+            _safe_write("debug_api_log_raw.json", {
+                "time": time.time(),
+                "api": "factcheck_raw_postparse",
+                "response_keys": list(resp.keys())
+            })
+        except Exception:
+            pass
+
+    candidates = resp.get("claims") or resp.get("items") or resp.get("claimsSearchResults") or []
+    if isinstance(candidates, dict):
+        candidates = [candidates]
+    if not candidates:
+        return None
+
+    best = None
+    for c in candidates:
+        reviews = c.get("claimReview") or c.get("claim_reviews") or c.get("claim_review") or c.get("reviews") or []
+        if isinstance(reviews, dict):
+            reviews = [reviews]
+
+        found_with_rating = False
+        for r in reviews:
+            txt = r.get("textualRating") or r.get("textual_rating") or r.get("rating")
+            if txt:
+                best = (c, r)
+                found_with_rating = True
+                break
+        if found_with_rating:
+            break
+
+        if best is None and reviews:
+            best = (c, reviews[0])
+        elif best is None:
+            best = (c, {})
+
+    if not best:
+        return None
+
+    top, rev = best
+    claim_text = top.get("text") or top.get("claim") or top.get("claimShare") or ""
+    textual = (rev.get("textualRating") or rev.get("textual_rating") or rev.get("rating") or None)
+    url = (rev.get("url") or rev.get("link") or top.get("url") or "")
+    publisher = ""
+    if rev.get("publisher"):
+        pub = rev.get("publisher")
+        if isinstance(pub, dict):
+            publisher = pub.get("name") or ""
+        else:
+            publisher = str(pub)
+    title = rev.get("title") or top.get("title") or ""
+    reviewBody = rev.get("reviewBody") or rev.get("description") or ""
+
+    return {
+        "claim_text": claim_text,
+        "textualRating": textual,
+        "url": url,
+        "publisher": publisher,
+        "title": title,
+        "reviewBody": reviewBody,
+        "raw": resp
+    }
+
+def call_gnews_api_once(q, max_results=6, lang=None, timeout=8):
+    if not GNEWS_API_KEY or not q:
+        return []
+    try:
+        params = {"q": q, "token": GNEWS_API_KEY, "max": max_results}
+        if lang:
+            params["lang"] = lang
+        r = requests.get(GNEWS_BASE, params=params, timeout=timeout)
+        r.raise_for_status()
+        j = r.json()
+        arts = j.get("articles") or j.get("results") or []
+        if LOG_RAW:
+            _safe_write("debug_api_log_raw.json", {"time": time.time(), "api":"gnews", "q": q, "response": j})
+        return [normalize_article(a) for a in arts[:max_results]]
+    except Exception as e:
+        _safe_write("debug_api_log_raw.json", {"time": time.time(), "api":"gnews_error", "q": q, "error": str(e)})
+        return []
+
+def call_newsdata_api_once(q, max_results=6, lang=None, timeout=8):
+    """Fallback to NewsData.io if configured (slower but useful)"""
+    if not NEWSDATA_API_KEY or not q:
+        return []
+    try:
+        params = {"apikey": NEWSDATA_API_KEY, "q": q, "page": 1}
+        if lang:
+            params["language"] = lang
+        r = requests.get(NEWSDATA_BASE, params=params, timeout=timeout)
+        r.raise_for_status()
+        j = r.json()
+        arts = j.get("results") or []
+        if LOG_RAW:
+            _safe_write("debug_api_log_raw.json", {"time": time.time(), "api":"newsdata", "q": q, "response": j})
+        normalized = []
+        for a in arts[:max_results]:
+            normalized.append({
+                "title": a.get("title") or "",
+                "url": a.get("link") or a.get("url") or "",
+                "source": (a.get("source_id") or ""),
+                "desc": a.get("description") or a.get("content") or ""
+            })
+        return normalized
+    except Exception as e:
+        _safe_write("debug_api_log_raw.json", {"time": time.time(), "api":"newsdata_error", "q": q, "error": str(e)})
+        return []
+
+def call_gnews_api_smart(text, max_results=6):
+    """Try several query strategies until we find articles. If none, attempt NewsData fallback."""
+    attempts = []
+    txt = (text or "").strip()
+    if txt:
+        attempts.append({"q": txt, "lang": None})
+    kws = simple_keyword_query(text, max_words=10)
+    if kws and kws != text:
+        attempts.append({"q": kws, "lang": None})
+    # translator fallback (try english)
+    if _TRANSLATOR:
+        try:
+            tr = _TRANSLATOR.translate(text, dest="en").text
+            if tr and tr.strip() and tr.lower() != text.lower():
+                attempts.append({"q": tr, "lang": "en"})
+                kw2 = simple_keyword_query(tr, max_words=10)
+                if kw2 and kw2 != tr:
+                    attempts.append({"q": kw2, "lang": "en"})
+        except Exception:
+            pass
+    # try attempts against GNews
+    for att in attempts:
+        arts = call_gnews_api_once(att["q"], max_results=max_results, lang=att.get("lang"))
+        if arts:
+            for a in arts:
+                a["_query_used"] = att["q"]
+            return arts
+    # GNews returned nothing — try NewsData fallback if available
+    for att in attempts:
+        arts = call_newsdata_api_once(att["q"], max_results=max_results, lang=att.get("lang"))
+        if arts:
+            for a in arts:
+                a["_query_used"] = att["q"]
+            return arts
+    return []
+
+# ------------------ ML helper ------------------
+
+def get_ml_fake_prob(text):
+    """
+    Return ml fake probability in [0,1].
+    This implementation is robust to different model.class_ encodings:
+      - looks for a class label containing 'fake' (case-insensitive)
+      - or uses numeric classes (assume label 1 means 'fake')
+      - if nothing found, uses the last column as 'fake' by convention
+    Returns neutral 0.5 when no model or error.
+    """
+    if model is None:
+        # no model: neutral
+        return 0.5
+
+    try:
+        # get raw probabilities
+        if vectorizer is not None and hasattr(vectorizer, "transform"):
+            X = vectorizer.transform([text])
+            proba = model.predict_proba(X)[0]
+        else:
+            proba = model.predict_proba([text])[0]
+
+        classes = list(model.classes_)
+        # try to find index for 'fake' (case-insensitive substring)
+        fake_idx = None
+        for i, c in enumerate(classes):
+            try:
+                cs = str(c).lower()
+                if "fake" in cs or "fraud" in cs or "false" in cs:
+                    fake_idx = i
+                    break
+            except Exception:
+                continue
+
+        # if not found, check for common numeric labels where 1 is fake
+        if fake_idx is None:
+            for i, c in enumerate(classes):
+                if isinstance(c, (int, float)) and int(c) == 1:
+                    fake_idx = i
+                    break
+
+        # fallback: if two classes, assume index 1 is fake (common)
+        if fake_idx is None:
+            if len(classes) == 2:
+                fake_idx = 1
+            else:
+                # fallback to the class with the highest label string length (heuristic)
+                fake_idx = max(range(len(classes)), key=lambda i: len(str(classes[i])))
+
+        # safety clamp
+        if fake_idx < 0 or fake_idx >= len(proba):
+            return 0.5
+
+        return float(proba[fake_idx])
+    except Exception as e:
+        # As fallback, attempt predict() mapping
+        try:
+            if vectorizer is not None and hasattr(vectorizer, "transform"):
+                pred = model.predict(vectorizer.transform([text]))[0]
+            else:
+                pred = model.predict([text])[0]
+            # map predicted label to probability
+            if isinstance(pred, str):
+                return 0.95 if "fake" in pred.lower() or "false" in pred.lower() else 0.05
+            if isinstance(pred, (int, float)):
+                return 0.95 if int(pred) == 1 else 0.05
+            return 0.5
+        except Exception:
+            return 0.5
+
+# ------------------ Semantic matching & opposite detection ------------------
+
+_predicate_map = {
+    "alive": ["alive","is alive","survived","still alive","buhi","buhay"],
+    "dead": ["dead","died","is dead","passed away","killed","deceased","patay","namatay"],
+    "arrested": ["arrested","in custody","detained","arestado","dinakpan"],
+    "released": ["released","freed","out of custody","pinakawalan","pinalaya"],
+    "found": ["found","discovered","nahanap"],
+    "missing": ["missing","disappeared","wala","nawala"],
+}
+
+_pred_token_to_group = {}
+for k,toks in _predicate_map.items():
+    for t in toks:
+        _pred_token_to_group[t] = k
+
+def find_predicate_groups(text):
+    s = (text or "").lower()
+    found = set()
+    for token, group in _pred_token_to_group.items():
+        if token in s:
+            found.add(group)
+    return found
+
+def predicates_conflict(groups_a, groups_b):
+    if not groups_a or not groups_b:
+        return False
+    conflicts = {
+        ("alive","dead"), ("arrested","released"), ("found","missing")
+    }
+    for a in groups_a:
+        for b in groups_b:
+            if a == b: continue
+            if (a,b) in conflicts or (b,a) in conflicts:
+                return True
+    return False
+
+def claim_matches_input_semantic(fc_claim_text, user_text):
+    """Conservative semantic match; True if likely the same claim (same predicate/entity)."""
+    if not fc_claim_text or not user_text:
+        return False
+    g_fc = find_predicate_groups(fc_claim_text)
+    g_us = find_predicate_groups(user_text)
+    if predicates_conflict(g_fc, g_us):
+        return False
+    if g_fc & g_us:
+        return True
+    # fallback: token overlap (require 2 long tokens in common)
+    words_fc = set(re.findall(r"\w{4,}", fc_claim_text.lower()))
+    words_us = set(re.findall(r"\w{4,}", user_text.lower()))
+    if not words_fc or not words_us:
+        return False
+    overlap = words_fc & words_us
+    if len(overlap) >= 2:
+        return True
+    # if a named token (long) overlaps -> ok
+    for w in overlap:
+        if len(w) > 4:
+            return True
+    return False
+
+# ------------------ Evidence scoring & combination ------------------
+
+def evidence_support_from_related(related, top_k=5):
+    if not related:
+        return 0.0
+    trusted_count = 0
+    domains_seen = set()
+    for r in related:
+        url = (r.get("url") or "").lower()
+        dom = extract_domain(url)
+        if dom:
+            domains_seen.add(dom)
+            for t in TRUSTED_DOMAINS:
+                if t in dom:
+                    trusted_count += 1
+                    break
+    trusted_score = min(1.0, trusted_count / 2.0)
+    diversity_score = min(1.0, len(domains_seen) / max(1, top_k))
+    evidence_support = 0.7 * trusted_score + 0.3 * diversity_score
+    return max(0.0, min(1.0, evidence_support))
+
+def combine_scores(ml_fake_prob, evidence_support, ml_weight=ML_WEIGHT, ev_weight=EVIDENCE_WEIGHT):
+    # ml_weight small (supporting), evidence inverted (higher evidence => lower fake prob)
+    w_ml, w_ev = float(ml_weight), float(ev_weight)
+    final = w_ml * ml_fake_prob + w_ev * (1.0 - evidence_support)
+    return max(0.0, min(1.0, final))
+
+# ------------------ textual rating mapping ------------------
+
+def textual_rating_to_fake_prob(textual):
+    if not textual:
+        return None
+    t = textual.lower()
+    if any(k in t for k in ["true","mostly true","true -"]):
+        return 0.02
+    if any(k in t for k in ["partly true","mixture","some truth","mixture of"]):
+        return 0.5
+    if any(k in t for k in ["false","mostly false","misleading","fabricated","pants on fire","not true"]):
+        return 0.98
+    return None
+
+# ------------------ Main predict_and_retrieve ------------------
+
+def predict_and_retrieve(input_text, top_k=GNEWS_MAX_RESULTS, suppress_ui=False):
+    """
+    API-first simplified predictor (no ML).
+    Returns only label "real" or "fake", plus fake_prob in [0,1].
+    """
+    text = (input_text or "").strip()
+    if not text:
+        return {"error": "Empty input_text", "related": [], "label": "real", "fake_prob": 0.5}
+
+    # 1) Try FactCheck API (robust parsing)
+    fc_json = call_factcheck_api(text)
+    fc_claim = extract_factcheck_verdict(fc_json)
+
+    # helper: small sensational/timebound heuristic (reuse similar logic)
+    def _looks_sensational_or_timebound(s):
+        if not s:
+            return False
+        s = s.lower()
+        triggers = [
+            "will explode", "explode next", "next week", "tomorrow", "next month",
+            "starts tomorrow", "starting tomorrow", "confirmed", "confirms", "just announced",
+            "breaking", "won't believe", "you won't believe", "shocking", "shocks world",
+            "endorses", "endorse", "endorsed", "secretly married", "cures diabetes", "kill", "died"
+        ]
+        for t in triggers:
+            if t in s:
+                return True
+        if re.search(r"\b\d{3,}\b", s):
+            return True
+        return False
+
+    # Prepare defaults
+    related = []
+    final_label = "real"
+    final_prob = 0.5
+    message = ""
+
+    # If fact-check claim exists and is semantically applicable -> trust it
+    factcheck_applicable = False
+    if fc_claim:
+        fc_text = ((fc_claim.get("claim_text") or "") + " " + (fc_claim.get("reviewBody") or "")).strip()
+        if claim_matches_input_semantic(fc_text, text):
+            factcheck_applicable = True
+        else:
+            # write debug note (kept for logs)
+            try:
+                _safe_write("debug_api_log.json", {"note": "factcheck_mismatch", "input": text, "fc_title": fc_claim.get("title")})
+            except Exception:
+                pass
+
+    if factcheck_applicable and fc_claim:
+        textual = (fc_claim.get("textualRating") or "") or ""
+        fc_url = fc_claim.get("url") or ""
+        # map textual rating to fake probability (conservative)
+        tr = (textual or "").lower()
+        if any(k in tr for k in ["false", "mostly false", "misleading", "fabricated", "pants on fire", "not true"]):
+            final_label = "fake"
+            final_prob = 0.98
+            message = f"Fact-check result: {textual or 'false'}"
+        elif any(k in tr for k in ["true", "mostly true", "true -", "true."]):
+            final_label = "real"
+            final_prob = 0.02
+            message = f"Fact-check result: {textual or 'true'}"
+        else:
+            # unclear textual rating -> use conservative mapping: treat as fake if text contains negative indicators
+            if "false" in tr or "mislead" in tr:
+                final_label = "fake"
+                final_prob = 0.90
+            else:
+                final_label = "real"
+                final_prob = 0.2
+            message = f"Fact-check result: {textual or 'rating'}"
+
+        # Still include related context for GUI
+        related = call_gnews_api_smart(text, max_results=top_k)
+        # ensure fact-check url appears first
+        if fc_url and not any((r.get("url") or "") == fc_url for r in related):
+            related.insert(0, {"title": fc_claim.get("title") or "Fact-check", "url": fc_url, "source": fc_claim.get("publisher") or "FactCheck", "desc": fc_claim.get("reviewBody") or ""})
+
+    else:
+        # No applicable fact-check -> use news evidence (GNews/NewsData)
+        related = call_gnews_api_smart(text, max_results=top_k)
+        # count trusted domains
+        trusted_count = 0
+        domains_seen = set()
+        for r in related:
+            url = (r.get("url") or "").lower()
+            dom = extract_domain(url)
+            if dom:
+                domains_seen.add(dom)
+                for t in TRUSTED_DOMAINS:
+                    if t in dom:
+                        trusted_count += 1
+                        break
+
+        # Decision rules (API-first)
+        if trusted_count >= 2:
+            final_label = "real"
+            final_prob = 0.05
+            message = "Multiple trusted news sources found; leaning REAL."
+        elif len(domains_seen) >= 2:
+            # diverse non-trusted sources also suggest coverage -> lean real
+            final_label = "real"
+            final_prob = 0.25
+            message = "Related news sources found; leaning REAL."
+        else:
+            # No or few related results
+            if not related:
+                # no articles found
+                if _looks_sensational_or_timebound(text):
+                    final_label = "fake"
+                    final_prob = 0.9
+                    message = "No related news found and claim looks sensational — marked FAKE."
+                else:
+                    # conservative fallback: default to REAL but low confidence
+                    final_label = "real"
+                    final_prob = 0.35
+                    message = "No authoritative sources found; defaulting to REAL (low confidence)."
+            else:
+                # small number of related results but not trusted -> lean real but with caution
+                if _looks_sensational_or_timebound(text):
+                    final_label = "fake"
+                    final_prob = 0.85
+                    message = "Related results are weak and claim looks sensational — leaning FAKE."
+                else:
+                    final_label = "real"
+                    final_prob = 0.4
+                    message = "Related sources found but not authoritative; leaning REAL."
+
+    # Normalize related for GUI
+    normalized = []
+    for r in (related or []):
+        normalized.append({
+            "title": (r.get("title") or "")[:300],
+            "url": r.get("url") or "",
+            "source": r.get("source") or "",
+            "excerpt": (r.get("desc") or "")[:400]
+        })
+
+    # Logging summary
+    try:
+        _safe_write("debug_api_log.json", {
+            "time": time.time(),
+            "input": text,
+            "factcheck_found": bool(fc_claim),
+            "factcheck_applicable": factcheck_applicable,
+            "related_count": len(normalized),
+            "trusted_count": trusted_count if not factcheck_applicable else None,
+            "final_label": final_label,
+            "final_prob": float(final_prob),
+            "message": message
+        })
+    except Exception:
+        pass
+
+    return {
+        "label": final_label,
+        "fake_prob": float(final_prob),
+        "message": message,
+        "related": normalized
+    }
+
+# CLI quick test
+if __name__ == "__main__":
+    s = input("Enter news text/headline: ").strip()
+    import pprint
+    pprint.pprint(predict_and_retrieve(s, top_k=6))

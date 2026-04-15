@@ -1,0 +1,817 @@
+timestamp,input_text,predicted_label,predicted_prob,user_label
+2025-11-28T14:49:18.261097,New study proves that drinking coffee cures diabetes.,uncertain,0.5000,fake
+2025-11-28T15:05:20.859687,duterte is dead in the icc,real,0.5000,fake
+2025-11-28T16:03:19.946294,mindanao has no internet,real,1.0000,fake
+2025-11-29T13:04:36.646485,"apan recently recounted its islands — and found 7,000 more than anyone realized 🌊.
+A new digital survey by the Geospatial Information Authority of Japan identified 14,125 islands, more than double the long-used count of 6,852 from a 1987 Coast Guard report.
+
+The difference isn’t new land. It’s better tech. High-resolution satellite imaging and advanced mapping software can now spot and measure small landmasses that older surveys either missed or lumped together 🛰️.
+
+What once relied on rough estimation is now mapped with precision, revealing thousands of islands that were hidden in plain sight.",real,0.8616,real,real
+2025-11-29T13:05:50.256513,mindanao has no internet,real,0.7353,real,fake
+2025-11-29T13:09:55.865081,mindanao has no internet,real,0.7353,real,
+2025-11-29T13:13:24.266636,"Japan recently recounted its islands — and found 7,000 more than anyone realized 🌊.
+A new digital survey by the Geospatial Information Authority of Japan identified 14,125 islands, more than double the long-used count of 6,852 from a 1987 Coast Guard report.
+
+The difference isn’t new land. It’s better tech. High-resolution satellite imaging and advanced mapping software can now spot and measure small landmasses that older surveys either missed or lumped together 🛰️.
+
+What once relied on rough estimation is now mapped with precision, revealing thousands of islands that were hidden in plain sight.",real,86.0872
+2025-11-29T13:14:16.756112,Mindanao has no internet,real,73.5320
+2025-11-29T13:46:14.840348,"Japan recently recounted its islands — and found 7,000 more than anyone realized 🌊.
+A new digital survey by the Geospatial Information Authority of Japan identified 14,125 islands, more than double the long-used count of 6,852 from a 1987 Coast Guard report.
+
+The difference isn’t new land. It’s better tech. High-resolution satellite imaging and advanced mapping software can now spot and measure small landmasses that older surveys either missed or lumped together 🛰️.
+
+What once relied on rough estimation is now mapped with precision, revealing thousands of islands that were hidden in plain sight.",real,86.0872
+2025-11-29T13:46:34.479735,Mindanao has no internet,real,73.5320
+2025-11-29T13:46:44.121653,Mindanao has no internet,real,73.5320
+2025-11-29T13:48:16.462161,Scientists confirm the Sun will explode next week.,real,90.9025
+2025-11-29T13:48:38.376935,"Chocolate proven to cure cancer, secret study reveals",fake,36.0750
+2025-11-29T16:35:12.800376,"Nagsimula na ang hearing para desisyunan ang hiling na interim release ng kampo ni dating Pangulong Rodrigo Duterte sa Appeals Chamber ng International Criminal Court ngayong Biyernes, November 28, 2025, sa The Hague, Netherlands.
+
+Matatandaang pumirma ng waiver ang dating pangulo kaya hindi siya makakaharap habang ito ang unang beses na paglabas ni Nicholas Kaufman bilang kaniyang counsel.",fake,0.1282
+2025-11-29T16:48:17.652243,"Nagsimula na ang hearing para desisyunan ang hiling na interim release ng kampo ni dating Pangulong Rodrigo Duterte sa Appeals Chamber ng International Criminal Court ngayong Biyernes, November 28, 2025, sa The Hague, Netherlands.
+
+Matatandaang pumirma ng waiver ang dating pangulo kaya hindi siya makakaharap habang ito ang unang beses na paglabas ni Nicholas Kaufman bilang kaniyang counsel.",fake,0.1282
+2025-11-30T02:18:02.671864,"READ: A group of retired and active top-ranking officers from the AFP, PNP, PCG, BJMP, and BFP issued a Manifesto of Unwavering Support and Solidarity to the president and commander-in-chief.
+
+In a statement released during its 60th founding anniversary at Camp Aguinaldo and shared by AFP's, the Association of General and Flag Officers (AGFO) strongly condemned ""political noise and agitations"" calling for the AFP to withdraw support from the President.
+
+AGFO invoked the principle of civilian supremacy over the military and Article XVI, Section 5 of the Constitution, which mandates that the military must remain insulated from partisan politics.
+
+The manifesto also expressed full confidence in the current AFP leadership.
+
+The document was signed by AGFO President and Chairman of the Board, Ret. MGen. Gerardo Layug, along with other officers, trustees, and 75 members. | via Jonathan Magistrado, ABS-CBN News",fake,0.0598
+2025-11-30T02:26:03.011818,"Kinondena ni Bagong Alyansang Makabayan Secretary-General Mong Palatino ang hindi pagpayag ng PNP na mag-ayos ang kanilang grupo ng stage sa Luneta para sa gaganaping protesta kontra katiwalian ngayong Linggo, November 30, 2025.
+
+Ayon kay Palatino, may approval na ng Manila City LGU at MMDA pero hindi sila pinayagan ng PNP dahil wala silang written permit na natanggap. | #SelfiePatrol ni Eon Sanchez, ABS-CBN News",fake,0.1627
+2025-11-30T02:27:29.070385,https://www.instagram.com/reel/DRqBGHgjGq1/?utm_source=ig_web_copy_link&igsh=NTc4MTIwNjQ2YQ==,fake,0.3015
+2025-11-30T02:38:50.569416,Enter the news here...,fake,0.1151
+2025-11-30T02:43:52.507473,"Kinondena ni Bagong Alyansang Makabayan Secretary-General Mong Palatino ang hindi pagpayag ng PNP na mag-ayos ang kanilang grupo ng stage sa Luneta para sa gaganaping protesta kontra katiwalian ngayong Linggo, November 30, 2025.
+
+Ayon kay Palatino, may approval na ng Manila City LGU at MMDA pero hindi sila pinayagan ng PNP dahil wala silang written permit na natanggap. | #SelfiePatrol ni Eon Sanchez, ABS-CBN News",fake,0.1627
+2025-11-30T02:43:52.587962,"Kinondena ni Bagong Alyansang Makabayan Secretary-General Mong Palatino ang hindi pagpayag ng PNP na mag-ayos ang kanilang grupo ng stage sa Luneta para sa gaganaping protesta kontra katiwalian ngayong Linggo, November 30, 2025.
+
+Ayon kay Palatino, may approval na ng Manila City LGU at MMDA pero hindi sila pinayagan ng PNP dahil wala silang written permit na natanggap. | #SelfiePatrol ni Eon Sanchez, ABS-CBN News",fake,0.1627
+2025-11-30T02:47:58.025279,"Isang misa ang isinasagawa ngayon sa People Power Monument sa Quezon City bilang bahagi ng programa para sa Trillion Peso March ngayong Linggo, Nov. 30, 2025.
+
+Pinangungunahan ito ni CBCP President Bishop Pablo Cardinal David.
+
+Panoorin ang livestream sa Facebook at YouTube pages ng ABS-CBN News.",fake,0.1511
+2025-11-30T02:47:58.097513,"Isang misa ang isinasagawa ngayon sa People Power Monument sa Quezon City bilang bahagi ng programa para sa Trillion Peso March ngayong Linggo, Nov. 30, 2025.
+
+Pinangungunahan ito ni CBCP President Bishop Pablo Cardinal David.
+
+Panoorin ang livestream sa Facebook at YouTube pages ng ABS-CBN News.",fake,0.1511
+2025-11-30T02:48:15.452093,"Isang misa ang isinasagawa ngayon sa People Power Monument sa Quezon City bilang bahagi ng programa para sa Trillion Peso March ngayong Linggo, Nov. 30, 2025.
+
+Pinangungunahan ito ni CBCP President Bishop Pablo Cardinal David.
+
+Panoorin ang livestream sa Facebook at YouTube pages ng ABS-CBN News.",fake,0.1511
+2025-11-30T02:48:15.479951,"Isang misa ang isinasagawa ngayon sa People Power Monument sa Quezon City bilang bahagi ng programa para sa Trillion Peso March ngayong Linggo, Nov. 30, 2025.
+
+Pinangungunahan ito ni CBCP President Bishop Pablo Cardinal David.
+
+Panoorin ang livestream sa Facebook at YouTube pages ng ABS-CBN News.",fake,0.1511
+2025-11-30T02:52:02.232395,"Rescue workers in #Indonesia are continuing to battle to reach victims in several devastated areas submerged by cyclone-driven torrential rain over the past week, as authorities said the death toll has now reached 303 and would likely continue to rise.⁠
+.⁠
+Indonesia’s National Disaster Management Agency (known as the BNPB) said on Saturday that the number of confirmed casualties following this week’s catastrophic flooding and landslides now stands at 303, with more than 100 people still missing, after rescuers in West Sumatra’s Agam district recovered more bodies.⁠",fake,0.0461
+2025-11-30T02:52:02.300088,"Rescue workers in #Indonesia are continuing to battle to reach victims in several devastated areas submerged by cyclone-driven torrential rain over the past week, as authorities said the death toll has now reached 303 and would likely continue to rise.⁠
+.⁠
+Indonesia’s National Disaster Management Agency (known as the BNPB) said on Saturday that the number of confirmed casualties following this week’s catastrophic flooding and landslides now stands at 303, with more than 100 people still missing, after rescuers in West Sumatra’s Agam district recovered more bodies.⁠",fake,0.0461
+2025-11-30T05:41:13.913594,typhoon uwan,fake,0.2984
+2025-11-30T05:41:14.227675,typhoon uwan,fake,0.2984
+2025-11-30T06:19:05.015509,"Dagsa na ang mga makikiisa sa Trillion Peso March sa People Power Monument sa Quezon City bandang 9:30 a.m. ngayong Linggo, November 30, 2025. Nagsimula na rin ang programa sa lugar.",fake,0.2279
+2025-11-30T06:19:08.292595,"Dagsa na ang mga makikiisa sa Trillion Peso March sa People Power Monument sa Quezon City bandang 9:30 a.m. ngayong Linggo, November 30, 2025. Nagsimula na rin ang programa sa lugar.",fake,0.2279
+2025-11-30T06:34:31.745476,"Massive cleanup efforts began in southern Thailand today, after the prime minister apologised for widespread devastation caused by the worst flooding in years.
+
+Heavy monsoon rain overwhelmed parts of Thailand, Malaysia and Indonesia this week, killing more than 300 people and leaving thousands stranded, many on rooftops awaiting rescue.",fake,0.0692
+2025-11-30T06:34:34.638334,"Massive cleanup efforts began in southern Thailand today, after the prime minister apologised for widespread devastation caused by the worst flooding in years.
+
+Heavy monsoon rain overwhelmed parts of Thailand, Malaysia and Indonesia this week, killing more than 300 people and leaving thousands stranded, many on rooftops awaiting rescue.",fake,0.0692
+2025-11-30T06:36:36.347998,"A Luxembourg elementary school teacher and Bosnian genocide survivor has been dismissed from her position after the Ministry of National Education ruled that her Instagram posts in support of Gaza constituted ""antisemitic expression"".",real,0.5000
+2025-11-30T06:36:54.328172,"A Luxembourg elementary school teacher and Bosnian genocide survivor has been dismissed from her position after the Ministry of National Education ruled that her Instagram posts in support of Gaza constituted ""antisemitic expression"".",real,0.5000
+2025-11-30T06:37:23.118872,"“LAHAT NG SANGKOT, DAPAT MANAGOT!”
+
+Dumating na sa Luneta ang iba-ibang grupo na nagmartsa mula sa bahagi ng Kalaw Avenue sa Maynila para makiisa sa Baha sa Luneta 2.0 rally ngayong Linggo, Nob. 30.",real,0.5000
+2025-11-30T06:37:41.405511,"“LAHAT NG SANGKOT, DAPAT MANAGOT!”
+
+Dumating na sa Luneta ang iba-ibang grupo na nagmartsa mula sa bahagi ng Kalaw Avenue sa Maynila para makiisa sa Baha sa Luneta 2.0 rally ngayong Linggo, Nob. 30.",real,0.5000
+2025-11-30T06:38:18.319453,Mindanao has no internet,real,0.5000
+2025-11-30T06:38:33.173592,Mindanao has no internet,real,0.5000
+2025-11-30T07:18:32.499374,"Sa loob lang ng sampung minuto, ang 100 ay naging 20,000",real,0.6788
+2025-11-30T07:18:54.884215,"Sa loob lang ng sampung minuto, ang 100 ay naging 20,000",real,0.6788
+2025-11-30T07:19:15.218364,"Nasa Recto Avenue, Maynila ang grupong BAYAN na nagmartsa mula sa Luneta.
+
+Hindi na sila nakalusot patungo sa Mendiola dahil sa hinarang na sila ng mga pulis. | via Dennis Datu, ABS-CBN News",real,0.6691
+2025-11-30T07:19:32.069816,"Nasa Recto Avenue, Maynila ang grupong BAYAN na nagmartsa mula sa Luneta.
+
+Hindi na sila nakalusot patungo sa Mendiola dahil sa hinarang na sila ng mga pulis. | via Dennis Datu, ABS-CBN News",real,0.6691
+2025-11-30T07:19:48.525906,jflrjfjjfwjopefhc,real,0.7398
+2025-11-30T07:19:59.551544,jflrjfjjfwjopefhc,real,0.7398
+2025-11-30T07:32:43.920150,fuck you,real,0.0200
+2025-11-30T07:36:28.621205,fuck you,real,0.0200
+2025-11-30T07:37:31.045798,Facebook is banned in the Philippines,fake,0.7803
+2025-11-30T07:37:37.729170,Facebook is banned in the Philippines,fake,0.7803
+2025-11-30T07:38:40.811741,former president duterte died in icc,fake,0.9800
+2025-11-30T07:38:49.320554,former president duterte died in icc,fake,0.9800
+2025-11-30T07:41:13.003350,Nasa 500 residente mula sa iba't ibang bayan ng Bulacan ang nag-martsa mula Kapitolyo hanggang Malolos Crossing para manawagan na panagutin ang mga sangkot sa maanomalyang flood control projects sa probinsya. | via Dabet Panelo,fake,0.6918
+2025-11-30T07:41:26.327606,Nasa 500 residente mula sa iba't ibang bayan ng Bulacan ang nag-martsa mula Kapitolyo hanggang Malolos Crossing para manawagan na panagutin ang mga sangkot sa maanomalyang flood control projects sa probinsya. | via Dabet Panelo,fake,0.6918
+2025-11-30T07:42:14.538508,"Phivolcs issued an apology for the incorrect earthquake information posted Friday evening, November 28, 2025, attributing the false alert to a ""system error.""
+
+Earlier, the agency posted a bulletin reporting a magnitude 7.5 earthquake near Caraga, Davao Oriental, but has since taken down the post.",fake,0.7334
+2025-11-30T07:42:22.176548,"Phivolcs issued an apology for the incorrect earthquake information posted Friday evening, November 28, 2025, attributing the false alert to a ""system error.""
+
+Earlier, the agency posted a bulletin reporting a magnitude 7.5 earthquake near Caraga, Davao Oriental, but has since taken down the post.",fake,0.7334
+2025-11-30T07:42:42.479734,"Phivolcs issued an apology for the incorrect earthquake information posted Friday evening, November 28, 2025, attributing the false alert to a ""system error.""",fake,0.7065
+2025-11-30T07:42:56.847431,"Phivolcs issued an apology for the incorrect earthquake information posted Friday evening, November 28, 2025, attributing the false alert to a ""system error.""",fake,0.7065
+2025-11-30T07:43:32.173234,"Phivolcs issued an apology for the incorrect earthquake information posted Friday evening,",fake,0.7621
+2025-11-30T07:43:36.055300,"Phivolcs issued an apology for the incorrect earthquake information posted Friday evening,",fake,0.7621
+2025-11-30T07:44:44.370080,"Inaalala natin ngayong araw ang kagitingan ng Supremo ng Katipunan, si Andres Bonifacio.",fake,0.7320
+2025-11-30T07:44:47.945643,"Inaalala natin ngayong araw ang kagitingan ng Supremo ng Katipunan, si Andres Bonifacio.",fake,0.7320
+2025-11-30T07:45:32.356291,Typhoon Uwan landed in the Philippines,fake,0.6433
+2025-11-30T07:45:35.905015,Typhoon Uwan landed in the Philippines,fake,0.6433
+2025-11-30T07:46:07.886383,Typhoon Uwan,fake,0.7194
+2025-11-30T07:46:11.576965,Typhoon Uwan,fake,0.7194
+2025-11-30T07:48:19.411555,"Protesters are back on the street this Sunday, two months since groups gathered at the People Power Monument and Luneta Park to condemn corruption.",fake,0.6284
+2025-11-30T07:48:28.520432,"Protesters are back on the street this Sunday, two months since groups gathered at the People Power Monument and Luneta Park to condemn corruption.",fake,0.6284
+2025-11-30T08:19:45.691184,"Sri Lanka has made an appeal for international assistance as the death toll from heavy rains and floods triggered by Cyclone Ditwah rose to 132, with another 176 reported missing.⁠
+.⁠",fake,0.4704
+2025-11-30T08:19:50.794465,"Sri Lanka has made an appeal for international assistance as the death toll from heavy rains and floods triggered by Cyclone Ditwah rose to 132, with another 176 reported missing.⁠
+.⁠",fake,0.4704
+2025-11-30T08:21:21.587110,Former president Duterte died in icc,fake,0.9800
+2025-11-30T08:21:29.787231,Former president Duterte died in icc,fake,0.9800
+2025-11-30T08:22:30.572887,Michael Jackson is alive,fake,0.9800
+2025-11-30T08:22:36.437686,Michael Jackson is alive,fake,0.9800
+2025-11-30T08:23:10.753124,Michael Jackson is dead,fake,0.9800
+2025-11-30T08:23:14.324450,Michael Jackson is dead,fake,0.9800
+2025-11-30T08:23:44.018743,Michael Jackson is dead,fake,0.9800
+2025-11-30T08:23:48.332880,Michael Jackson is dead,fake,0.9800
+2025-11-30T08:25:06.314620,"Dumating si DILG Sec. Jonvic Remulla sa Recto, Maynila para imonitor ang nagaganap na protesta. | via Dennis Datu, ABS-CBN News",fake,0.5326
+2025-11-30T08:25:16.099331,"Dumating si DILG Sec. Jonvic Remulla sa Recto, Maynila para imonitor ang nagaganap na protesta. | via Dennis Datu, ABS-CBN News",fake,0.5326
+2025-11-30T08:25:50.293967,"Dumating si DILG Sec. Jonvic Remulla sa Recto, Maynila para imonitor ang nagaganap na protesta.",fake,0.5389
+2025-11-30T08:26:00.140878,"Dumating si DILG Sec. Jonvic Remulla sa Recto, Maynila para imonitor ang nagaganap na protesta.",fake,0.5389
+2025-11-30T08:43:18.914983,"Seven Indonesian domestic helpers have died in the fire, according to the Consulate General of Indonesia in Hong Kong.",fake,0.8261
+2025-11-30T08:43:26.334418,"Seven Indonesian domestic helpers have died in the fire, according to the Consulate General of Indonesia in Hong Kong.",fake,0.8261
+2025-11-30T09:00:29.534788,BREAKING Christian News: Pope Leo’s Mosque Visit Explodes Into Global Controversy After He Refuses to Pray Inside,fake,0.8406
+2025-11-30T09:00:37.018168,BREAKING Christian News: Pope Leo’s Mosque Visit Explodes Into Global Controversy After He Refuses to Pray Inside,fake,0.8406
+2025-11-30T09:01:17.431464,The BFP has yet to issue a statement on what caused the fire on the third floor of the Senate building this Sunday.,fake,0.8218
+2025-11-30T09:01:23.934971,The BFP has yet to issue a statement on what caused the fire on the third floor of the Senate building this Sunday.,fake,0.8218
+2025-11-30T09:08:40.596533,Former president Duterte died in icc,fake,0.9800
+2025-11-30T09:08:47.096163,Former president Duterte died in icc,fake,0.9800
+2025-11-30T09:09:11.891847,Michael Jackson is dead,fake,0.9800
+2025-11-30T09:09:19.050573,Michael Jackson is dead,fake,0.9800
+2025-11-30T09:20:29.906290,Hong Kong ICAC arrests 8 over deadly tower fire! Corruption probe deepens…,fake,0.9500
+2025-11-30T09:20:37.201121,Hong Kong ICAC arrests 8 over deadly tower fire! Corruption probe deepens…,fake,0.9500
+2025-11-30T09:21:24.087682,"Isa sa mga pinakakilalang isinulat ni Andres Bonifacio ang ""Pag-ibig sa Tinubuang Lupa,"" na humihikayat sa mga Pilipinong makiisa sa pagkamit ng tunay na kalayaan.",fake,0.9500
+2025-11-30T09:21:34.302385,"Isa sa mga pinakakilalang isinulat ni Andres Bonifacio ang ""Pag-ibig sa Tinubuang Lupa,"" na humihikayat sa mga Pilipinong makiisa sa pagkamit ng tunay na kalayaan.",fake,0.9500
+2025-11-30T09:27:41.257723,Protesters were surprised that the PNP barred them from setting up their stage at Rizal Park despite their coordination with the Manila City Hall and the MMDA.,fake,0.9500
+2025-11-30T09:27:54.966474,Protesters were surprised that the PNP barred them from setting up their stage at Rizal Park despite their coordination with the Manila City Hall and the MMDA.,fake,0.9500
+2025-11-30T09:31:07.457248,Protesters were surprised that the PNP barred them from setting up their stage at Rizal Park despite their coordination with the Manila City Hall and the MMDA.,fake,0.9500
+2025-11-30T09:31:20.999013,Protesters were surprised that the PNP barred them from setting up their stage at Rizal Park despite their coordination with the Manila City Hall and the MMDA.,fake,0.9500
+2025-11-30T09:46:45.684023,"President Ferdinand Marcos Jr. said Andres Bonifacio, who came from a humble beginning, rose to become the Katipunan’s Supremo and showed ""the true heroism that comes from the heart, courage, genuine aspiration, and true love for the country.""",fake,0.8500
+2025-11-30T09:46:59.110175,"President Ferdinand Marcos Jr. said Andres Bonifacio, who came from a humble beginning, rose to become the Katipunan’s Supremo and showed ""the true heroism that comes from the heart, courage, genuine aspiration, and true love for the country.""",fake,0.8500
+2025-11-30T11:19:20.332491,"“PEACE TO ALL MANKIND..”
+
+Ito ang mensahe ni DILG Secretary Jonvic Remulla sa mga nakiisa sa isinagawang kilos protesta ng iba-ibang grupo sa Metro Manila ngayong Linggo, Nobyembre 30.
+
+Personal na nagpunta si Remulla sa bahagi ng C.M. Recto Avenue sa Maynila para samahan ang mga pulis na naka-deploy sa lugar.",fake,0.8224
+2025-11-30T11:19:43.292835,"“PEACE TO ALL MANKIND..”
+
+Ito ang mensahe ni DILG Secretary Jonvic Remulla sa mga nakiisa sa isinagawang kilos protesta ng iba-ibang grupo sa Metro Manila ngayong Linggo, Nobyembre 30.
+
+Personal na nagpunta si Remulla sa bahagi ng C.M. Recto Avenue sa Maynila para samahan ang mga pulis na naka-deploy sa lugar.",fake,0.8224
+2025-11-30T11:24:22.056514,Duterte is found dead in icc,fake,0.9800
+2025-11-30T11:24:36.378410,Duterte is found dead in icc,fake,0.9800
+2025-11-30T11:36:39.869094,"“PEACE TO ALL MANKIND..”
+
+Ito ang mensahe ni DILG Secretary Jonvic Remulla sa mga nakiisa sa isinagawang kilos protesta ng iba-ibang grupo sa Metro Manila ngayong Linggo, Nobyembre 30.
+
+Personal na nagpunta si Remulla sa bahagi ng C.M. Recto Avenue sa Maynila para samahan ang mga pulis na naka-deploy sa lugar.
+
+“Generally peaceful” ang mga isinagawang protesta sa Metro Manila, ayon sa kalihim. | via Jessie Cruzat, ABS-CBN News",fake,0.7537
+2025-11-30T11:37:02.823002,"“PEACE TO ALL MANKIND..”
+
+Ito ang mensahe ni DILG Secretary Jonvic Remulla sa mga nakiisa sa isinagawang kilos protesta ng iba-ibang grupo sa Metro Manila ngayong Linggo, Nobyembre 30.
+
+Personal na nagpunta si Remulla sa bahagi ng C.M. Recto Avenue sa Maynila para samahan ang mga pulis na naka-deploy sa lugar.
+
+“Generally peaceful” ang mga isinagawang protesta sa Metro Manila, ayon sa kalihim. | via Jessie Cruzat, ABS-CBN News",fake,0.7537
+2025-11-30T11:44:56.097544,Duterte is dead,fake,0.9800
+2025-11-30T11:45:10.527948,Duterte is dead,fake,0.9800
+2025-11-30T11:49:32.776399,Marcos is the President,fake,0.9800
+2025-11-30T11:49:46.184983,Marcos is the President,fake,0.9800
+2025-11-30T11:51:19.174449,President Marcos is a drug user,fake,0.9800
+2025-11-30T11:51:32.890591,President Marcos is a drug user,fake,0.9800
+2025-11-30T11:54:59.675866,Duterte is alive,fake,0.9800
+2025-11-30T11:55:12.783183,Duterte is alive,fake,0.9800
+2025-11-30T12:07:00.302521,Duterte is alive,fake,0.9800
+2025-11-30T12:07:14.369840,Duterte is alive,fake,0.9800
+2025-11-30T12:15:47.553354,Michael Jackseon is dead.,fake,0.9800
+2025-11-30T12:16:03.284781,Michael Jackseon is dead.,fake,0.9800
+2025-11-30T12:25:36.851141,Michael Jackson is dead.,fake,0.9800
+2025-11-30T12:25:46.054152,Michael Jackson is dead.,fake,0.9800
+2025-11-30T12:26:16.878546,Michael Jackson is alive.,fake,0.9800
+2025-11-30T12:26:24.051892,Michael Jackson is alive.,fake,0.9800
+2025-11-30T12:28:40.763694,Michael Jackson died in June 2009,fake,0.9800
+2025-11-30T12:28:47.701779,Michael Jackson died in June 2009,fake,0.9800
+2025-11-30T12:34:08.561453,Former President Rodrigo Duterte is alive,fake,0.8910
+2025-11-30T12:34:15.449653,Former President Rodrigo Duterte is alive,fake,0.8910
+2025-11-30T12:46:12.858921,Michael Jackson died in June 2009,fake,0.9800
+2025-11-30T12:46:22.355372,Michael Jackson died in June 2009,fake,0.9800
+2025-11-30T12:50:02.006749,"[As of 8 a.m., Nov. 30] Isa-isa nang umaalis ang mga fire truck na rumesponde sa sunog na sumiklab sa Senate Building sa Pasay City. Mag-aalas 8 ng umaga nakontrol ang sunog habang mag-aalas-8:30 ng umaga tuluyang naapula ang apoy.
+
+Ayon kay Fire Marshal Gladwin So, isang fire volunteer, nasa ikatlong palapag ng Senate Building ang sunog.
+
+Hindi pa nagbibigay ng pahayag ang BFP-Pasay ukol sa sanhi at kung ano-ano ang mga naapektuhan ng sunog sa gusali. | via Eon Sanchez, ABS-CBN News",fake,0.8421
+2025-11-30T12:50:20.167136,"[As of 8 a.m., Nov. 30] Isa-isa nang umaalis ang mga fire truck na rumesponde sa sunog na sumiklab sa Senate Building sa Pasay City. Mag-aalas 8 ng umaga nakontrol ang sunog habang mag-aalas-8:30 ng umaga tuluyang naapula ang apoy.
+
+Ayon kay Fire Marshal Gladwin So, isang fire volunteer, nasa ikatlong palapag ng Senate Building ang sunog.
+
+Hindi pa nagbibigay ng pahayag ang BFP-Pasay ukol sa sanhi at kung ano-ano ang mga naapektuhan ng sunog sa gusali. | via Eon Sanchez, ABS-CBN News",fake,0.8421
+2025-11-30T12:55:39.823791,Duterte is alive,fake,0.9550
+2025-11-30T12:55:52.014457,Duterte is alive,fake,0.9550
+2025-11-30T12:56:34.114490,"The United States will place all asylum decisions on hold, affecting 19 countries, following an incident in which an Afghan national allegedly shot two National Guard members, resulting in one fatality.",fake,0.8579
+2025-11-30T12:56:45.806972,"The United States will place all asylum decisions on hold, affecting 19 countries, following an incident in which an Afghan national allegedly shot two National Guard members, resulting in one fatality.",fake,0.8579
+2025-11-30T13:05:31.914862,Former presisdent duterte is dead,fake,0.9800
+2025-11-30T13:05:49.331336,Former presisdent duterte is dead,fake,0.9800
+2025-11-30T13:06:38.573832,Sara Duterte is a Vice Presindent,fake,0.9800
+2025-11-30T13:06:49.334380,Sara Duterte is a Vice Presindent,fake,0.9800
+2025-11-30T13:07:38.632092,Sara Duterte not replacing Marcos as president following flood control protests,fake,0.9800
+2025-11-30T13:07:47.911332,Sara Duterte not replacing Marcos as president following flood control protests,fake,0.9800
+2025-12-01T06:55:36.749986,Pope Francis endorses Donald Trump for president.,real,0.0200
+2025-12-01T06:56:40.999431,Pope Francis endorses Donald Trump for president.,real,0.0200
+2025-12-01T06:56:57.428540,The Eiffel Tower is located in Paris.,fake,0.4881
+2025-12-01T06:57:06.089913,The Eiffel Tower is located in Paris.,fake,0.4881
+2025-12-01T07:11:55.608752,Pope Francis endorses Donald Trump for president.,fake,0.0200
+2025-12-01T07:12:03.349585,Pope Francis endorses Donald Trump for president.,fake,0.0200
+2025-12-01T07:13:21.643636,The Eiffel Tower is located in Paris.,check_needed,0.4881
+2025-12-01T07:13:29.099181,The Eiffel Tower is located in Paris.,check_needed,0.4881
+2025-12-01T07:26:19.274917,Pope Francis endorses Donald Trump for president.,fake,0.0200
+2025-12-01T07:26:27.853539,Pope Francis endorses Donald Trump for president.,fake,0.0200
+2025-12-01T07:27:08.634361,The Eiffel Tower is located in Paris.,real,0.4881
+2025-12-01T07:30:08.344413,The Eiffel Tower is located in Paris.,real,0.4881
+2025-12-01T07:30:22.575321,NASA confirms the sun will explode next week.,real,0.0548
+2025-12-01T07:31:54.066095,NASA confirms the sun will explode next week.,real,0.0548
+2025-12-01T07:32:43.322616,The Philippines is located in Southeast Asia.,real,0.4281
+2025-12-01T07:41:01.568380,The Philippines is located in Southeast Asia.,real,0.4281
+2025-12-01T07:58:16.782772,Former president Rodrigo Duterte died in icc,fake,0.9800
+2025-12-01T07:58:24.675336,Former president Rodrigo Duterte died in icc,fake,0.9800
+2025-12-01T07:59:06.266328,mindanao has no internet,real,0.2647
+2025-12-01T07:59:24.458552,mindanao has no internet,real,0.2647
+2025-12-01T08:00:01.526323,mindanao philippines has no inteernet and waters,real,0.1653
+2025-12-01T08:00:15.964545,mindanao philippines has no inteernet and waters,real,0.1653
+2025-12-01T08:01:17.870208,"The death toll from the Hong Kong fire has risen to 146, after authorities said 18 more human remains were found following the huge blaze at the eight-apartment Wang Fuk Court estate.⁠",real,0.0883
+2025-12-01T08:01:47.453390,"The death toll from the Hong Kong fire has risen to 146, after authorities said 18 more human remains were found following the huge blaze at the eight-apartment Wang Fuk Court estate.⁠",real,0.0883
+2025-12-01T08:02:08.063838,"Kanselado na ang pasaporte ni dating Rep. Zaldy Co na pinaniniwalaang nasa Portugal, ayon sa DILG.",real,0.1822
+2025-12-01T08:02:29.388605,"Kanselado na ang pasaporte ni dating Rep. Zaldy Co na pinaniniwalaang nasa Portugal, ayon sa DILG.",real,0.1822
+2025-12-01T08:02:54.510402,"In a rare and astonishing medical event, a 19-year-old woman from Brazil gave birth to twin boys who each have a different biological father — a phenomenon known as heteropaternal superfecundation. Doctors confirmed through DNA testing that while both babies share the same mother, they were conceived by two different men after the woman reportedly had intercourse with both within the same 24-hour period. Medical experts describe this as an extremely rare occurrence, estimated to happen in only one in a million twin births, highlighting a fascinating and little-known aspect of human reproduction.",real,0.0778
+2025-12-01T08:03:15.275746,"In a rare and astonishing medical event, a 19-year-old woman from Brazil gave birth to twin boys who each have a different biological father — a phenomenon known as heteropaternal superfecundation. Doctors confirmed through DNA testing that while both babies share the same mother, they were conceived by two different men after the woman reportedly had intercourse with both within the same 24-hour period. Medical experts describe this as an extremely rare occurrence, estimated to happen in only one in a million twin births, highlighting a fascinating and little-known aspect of human reproduction.",real,0.0778
+2025-12-01T08:06:35.756569,facebook app in banned due to private content,real,0.1740
+2025-12-01T08:06:59.029691,facebook app in banned due to private content,real,0.1740
+2025-12-01T08:07:52.080910,"hgdgdkgc5edtgvuijyh bjyujuk,stseikstjvc gcctydrdesbgh is a word",real,0.6621
+2025-12-01T08:08:23.764132,"hgdgdkgc5edtgvuijyh bjyujuk,stseikstjvc gcctydrdesbgh is a word",real,0.6621
+2025-12-01T08:08:48.767540,City hall to relocate capital city next week; official notice published.,real,0.1515
+2025-12-01T08:11:37.645289,City hall to relocate capital city next week; official notice published.,real,0.1515
+2025-12-01T08:31:21.628761,mindanao philippines has no internet,real,0.1957
+2025-12-01T08:32:08.664476,mindanao philippines has no internet,real,0.1957
+2025-12-01T08:32:31.479915,duterte died in icc,fake,0.9800
+2025-12-01T08:32:39.436584,duterte died in icc,fake,0.9800
+2025-12-01T08:33:45.070386,fuck you,fake,0.7499
+2025-12-01T08:33:48.283849,fuck you,fake,0.7499
+2025-12-01T08:35:42.987589,bhdaydhasb dahdwuqwdhiqwdlJBDXAGDEHYBDAHbjsdufos is a name,real,0.6618
+2025-12-01T08:36:05.805689,bhdaydhasb dahdwuqwdhiqwdlJBDXAGDEHYBDAHbjsdufos is a name,real,0.6618
+2025-12-01T08:36:42.391470,"A Filipino domestic worker who fled Hong Kong’s deadly inferno with her employers’ three-year-old daughter in her arms has expressed regret that she was unable to persuade a neighbour who perished in the blaze to also try to escape.⁠
+⁠",real,0.0885
+2025-12-01T08:37:05.659721,"A Filipino domestic worker who fled Hong Kong’s deadly inferno with her employers’ three-year-old daughter in her arms has expressed regret that she was unable to persuade a neighbour who perished in the blaze to also try to escape.⁠
+⁠",real,0.0885
+2025-12-01T08:37:21.137083,"The Land Transportation Office has decided to hold off the impounding of e-bikes and e-trikes that will be caught operating on national highways on Monday, December 1.",real,0.0510
+2025-12-01T08:37:37.855253,"The Land Transportation Office has decided to hold off the impounding of e-bikes and e-trikes that will be caught operating on national highways on Monday, December 1.",real,0.0510
+2025-12-01T08:43:23.606226,"Philippine volcano will explode next week, NASA confirms",real,0.0790
+2025-12-01T08:53:43.957247,"Philippine volcano will explode next week, NASA confirms",real,0.0790
+2025-12-01T08:58:28.427190,jabskcdawufhryuagusldadcgfsduflsejodhcfidefufhashdlasodoefrheih is an indian name,real,0.3500
+2025-12-01T08:58:54.647629,jabskcdawufhryuagusldadcgfsduflsejodhcfidefufhashdlasodoefrheih is an indian name,real,0.3500
+2025-12-01T15:59:15.331397,mindanao has no internet,fake,0.8800
+2025-12-01T15:59:18.803393,mindanao has no internet,fake,0.8800
+2025-12-01T15:59:51.165478,duterte died in icc,fake,0.9500
+2025-12-01T15:59:52.691297,duterte died in icc,fake,0.9500
+2025-12-01T16:03:19.129983,"Libo-libo ang nagsagawa ng kilos-protesta sa Maynila at Quezon City ngayong Linggo, November 30, 2025, upang ipanawagang ikulong ang mga sangkot sa korapsyon sa maanomalyang flood control projects.",fake,0.8800
+2025-12-01T16:03:22.409676,"Libo-libo ang nagsagawa ng kilos-protesta sa Maynila at Quezon City ngayong Linggo, November 30, 2025, upang ipanawagang ikulong ang mga sangkot sa korapsyon sa maanomalyang flood control projects.",fake,0.8800
+2025-12-01T16:24:37.916473,"President Ferdinand Marcos, Jr. has instructed Defense Secretary Gilbert Teodoro to review a policy on discharging soldiers who became completely disabled during their line of duty, saying they could still serve the military despite their condition.",fake,0.8800
+2025-12-01T16:24:45.906060,"President Ferdinand Marcos, Jr. has instructed Defense Secretary Gilbert Teodoro to review a policy on discharging soldiers who became completely disabled during their line of duty, saying they could still serve the military despite their condition.",fake,0.8800
+2025-12-01T16:25:14.574381,"scar-winning actors Joaquin Phoenix and Rooney Mara have officially signed on as executive producers for the Palestinian short film ""I’m Glad You’re Dead Now"", according to reports by Variety.",fake,0.8800
+2025-12-01T16:25:21.943261,"scar-winning actors Joaquin Phoenix and Rooney Mara have officially signed on as executive producers for the Palestinian short film ""I’m Glad You’re Dead Now"", according to reports by Variety.",fake,0.8800
+2025-12-02T05:53:04.399351,"Ipinag-utos ni Pangulong Ferdinand Marcos Jr. na hanapan ng ""adaptive duties"" sa halip na tuluyang i-discharge si Capt. Jerome Jacuba bilang pagkilala sa pagtaya ng kaniyang buhay para sa bansa.",fake,0.8800
+2025-12-02T05:53:11.313381,"Ipinag-utos ni Pangulong Ferdinand Marcos Jr. na hanapan ng ""adaptive duties"" sa halip na tuluyang i-discharge si Capt. Jerome Jacuba bilang pagkilala sa pagtaya ng kaniyang buhay para sa bansa.",fake,0.8800
+2025-12-02T05:55:36.334778,really,real,0.2500
+2025-12-02T05:56:07.762000,really,real,0.2500
+2025-12-02T05:56:37.858739,former duterte is dead,fake,0.9800
+2025-12-02T05:56:46.276886,former duterte is dead,fake,0.9800
+2025-12-02T05:57:37.053572,"The Armed Forces of the Philippines has identified 252 “ghost” flood control projects out of 10,000 it has inspected across the country so far.",fake,0.9000
+2025-12-02T05:57:45.751314,"The Armed Forces of the Philippines has identified 252 “ghost” flood control projects out of 10,000 it has inspected across the country so far.",fake,0.9000
+2025-12-02T05:58:40.023919,"freemalaysiatoday
+#FMTWorld The death toll mounted to over 500 from floods and landslides caused by torrential rains across three countries in Southeast Asia, officials said on Sunday, as relief efforts for tens of thousands of displaced people continued over the weekend.
+
+Malaysia, Indonesia and Thailand faced large-scale devastation after a rare tropical storm formed in the Malacca Strait fuelling heavy rains and wind gusts for a week. There were 336 dead in Indonesia, 170 in Thailand, and two deaths reported in Malaysia.
+
+Rescue and relief officials in the Southeast Asian countries were still trying to get access to many flood-hit areas on Sunday even as flood waters receded and tens of thousands people were evacuated across the three countries.",fake,0.9000
+2025-12-02T05:58:48.526244,"freemalaysiatoday
+#FMTWorld The death toll mounted to over 500 from floods and landslides caused by torrential rains across three countries in Southeast Asia, officials said on Sunday, as relief efforts for tens of thousands of displaced people continued over the weekend.
+
+Malaysia, Indonesia and Thailand faced large-scale devastation after a rare tropical storm formed in the Malacca Strait fuelling heavy rains and wind gusts for a week. There were 336 dead in Indonesia, 170 in Thailand, and two deaths reported in Malaysia.
+
+Rescue and relief officials in the Southeast Asian countries were still trying to get access to many flood-hit areas on Sunday even as flood waters receded and tens of thousands people were evacuated across the three countries.",fake,0.9000
+2025-12-02T07:38:43.469463,"Patay sa tinamong sugat sa dibdib ang 36 anyos na lalaki matapos pagbabarilin sa eskinita sa Bgy. 38, Tondo, Maynila, pasado 1 a.m., Lunes, December 1.",fake,1.0000
+2025-12-02T07:38:43.542530,"Patay sa tinamong sugat sa dibdib ang 36 anyos na lalaki matapos pagbabarilin sa eskinita sa Bgy. 38, Tondo, Maynila, pasado 1 a.m., Lunes, December 1.",fake,1.0000
+2025-12-02T07:39:36.803692,"n an extraordinary and disturbing medical case, a physician revealed that surgeons had removed a 2.5-kilogram dumbbell from a patient’s body. What makes the situation even more remarkable is that the patient refused to explain or admit how it got there, leaving doctors and onlookers stunned. This case underscores both the unexpected challenges in medicine and the limits of patient disclosure.",fake,1.0000
+2025-12-02T07:39:37.291956,"n an extraordinary and disturbing medical case, a physician revealed that surgeons had removed a 2.5-kilogram dumbbell from a patient’s body. What makes the situation even more remarkable is that the patient refused to explain or admit how it got there, leaving doctors and onlookers stunned. This case underscores both the unexpected challenges in medicine and the limits of patient disclosure.",fake,1.0000
+2025-12-02T07:40:32.918116,"The Armed Forces of the Philippines has identified 252 “ghost” flood control projects out of 10,000 it has inspected across the country so far.",fake,1.0000
+2025-12-02T07:40:33.344736,"The Armed Forces of the Philippines has identified 252 “ghost” flood control projects out of 10,000 it has inspected across the country so far.",fake,1.0000
+2025-12-02T07:41:23.979789,Former president duterte is alive,fake,1.0000
+2025-12-02T07:41:24.216078,Former president duterte is alive,fake,1.0000
+2025-12-02T07:41:43.178481,Former president duterte is dead,fake,1.0000
+2025-12-02T07:41:43.456268,Former president duterte is dead,fake,1.0000
+2025-12-02T08:12:23.990470,"The Armed Forces of the Philippines has identified 252 “ghost” flood control projects out of 10,000 it has inspected across the country so far.",real,0.0000
+2025-12-02T08:12:26.143484,"The Armed Forces of the Philippines has identified 252 “ghost” flood control projects out of 10,000 it has inspected across the country so far.",real,0.0000
+2025-12-02T09:00:34.285389,"DPWH Region IV-B officials, who are co-accused of Ako Bicol Rep. Zaldy Co over their alleged involvement in the anomalous flood control project in Oriental Mindoro, arrive at the Sandiganbayan for their arraignment.",fake,0.5000
+2025-12-02T09:00:34.720070,"DPWH Region IV-B officials, who are co-accused of Ako Bicol Rep. Zaldy Co over their alleged involvement in the anomalous flood control project in Oriental Mindoro, arrive at the Sandiganbayan for their arraignment.",fake,0.5000
+2025-12-02T09:01:19.909305,K-pop girl group IVE returns to Manila in April 2026 for a concert.,fake,0.5000
+2025-12-02T09:01:20.522758,K-pop girl group IVE returns to Manila in April 2026 for a concert.,fake,0.5000
+2025-12-02T09:20:34.518444,"A huge fire that engulfed a Hong Kong residential estate has killed at least 44 people and left more than 200 unaccounted for in the city’s worst blaze in decades, the city’s fire department said.",fake,0.5000
+2025-12-02T09:20:34.650061,"A huge fire that engulfed a Hong Kong residential estate has killed at least 44 people and left more than 200 unaccounted for in the city’s worst blaze in decades, the city’s fire department said.",fake,0.5000
+2025-12-02T09:29:39.507565,"Police Regional Office 3 has arrested 1,077 drug personalities and confiscated ₱25.3 million worth of illegal drugs in 724 anti-drug operations conducted from Nov. 1 to 30, says Central Luzon top cop PBGen. Ponce Rogelio Peñones.",check_needed,0.5000
+2025-12-02T09:29:39.583109,"Police Regional Office 3 has arrested 1,077 drug personalities and confiscated ₱25.3 million worth of illegal drugs in 724 anti-drug operations conducted from Nov. 1 to 30, says Central Luzon top cop PBGen. Ponce Rogelio Peñones.",check_needed,0.5000
+2025-12-02T09:30:40.277453,The establishment of the new embassy was announced by President Tharman Shanmugaratnam on Dec. 1 during his first state visit to Mexico as president.,check_needed,0.5000
+2025-12-02T09:30:40.354157,The establishment of the new embassy was announced by President Tharman Shanmugaratnam on Dec. 1 during his first state visit to Mexico as president.,check_needed,0.5000
+2025-12-02T09:31:08.842081,former president duterte is dead,check_needed,0.5000
+2025-12-02T09:31:08.914160,former president duterte is dead,check_needed,0.5000
+2025-12-02T09:31:15.195155,former president duterte is dead,check_needed,0.5000
+2025-12-02T09:31:15.275516,former president duterte is dead,check_needed,0.5000
+2025-12-02T09:31:28.949436,The establishment of the new embassy was announced by President Tharman Shanmugaratnam on Dec. 1 during his first state visit to Mexico as president.,check_needed,0.5000
+2025-12-02T09:31:29.038905,The establishment of the new embassy was announced by President Tharman Shanmugaratnam on Dec. 1 during his first state visit to Mexico as president.,check_needed,0.5000
+2025-12-02T09:42:01.340843,"Leilani Lacuna, former Manila Mayor Honey Lacuna’s sister, filed at the Office of the Ombudsman complaints of graft, among others, against Manila Mayor Isko Moreno and 14 other individuals over the installation of a new Liga ng mga Barangay president. | via Agatha Gregorio, ABS-CBN News",real,0.5000
+2025-12-02T09:42:15.561013,"Leilani Lacuna, former Manila Mayor Honey Lacuna’s sister, filed at the Office of the Ombudsman complaints of graft, among others, against Manila Mayor Isko Moreno and 14 other individuals over the installation of a new Liga ng mga Barangay president. | via Agatha Gregorio, ABS-CBN News",real,0.5000
+2025-12-02T09:42:48.947475,Former president  duterte is dead,fake,0.5000
+2025-12-02T09:42:51.344912,Former president  duterte is dead,fake,0.5000
+2025-12-02T09:43:49.173057,"Leilani Lacuna, former Manila Mayor Honey Lacuna’s sister, filed at the Office of the Ombudsman complaints of graft, among others, against Manila Mayor Isko Moreno and 14 other individuals over the installation of a new Liga ng mga Barangay president. | via Agatha Gregorio, ABS-CBN News",real,0.5000
+2025-12-02T09:44:07.782296,"Leilani Lacuna, former Manila Mayor Honey Lacuna’s sister, filed at the Office of the Ombudsman complaints of graft, among others, against Manila Mayor Isko Moreno and 14 other individuals over the installation of a new Liga ng mga Barangay president. | via Agatha Gregorio, ABS-CBN News",real,0.5000
+2025-12-02T09:44:39.764384,"Sa 10,000 infrastructure sites sa bansa, 252 ang natuklasan umanong ghost flood control projects mula taong 2016.
+
+Patuloy ang inspeksyon ng AFP at PNP sa 20,000 iba pang proyekto.",real,0.5000
+2025-12-02T09:44:42.061582,"Sa 10,000 infrastructure sites sa bansa, 252 ang natuklasan umanong ghost flood control projects mula taong 2016.
+
+Patuloy ang inspeksyon ng AFP at PNP sa 20,000 iba pang proyekto.",real,0.5000
+2025-12-02T09:45:07.573603,xdfdbhfgnnhg gdhmghxfgbzdgngmkyhnf is an indian name,real,0.5000
+2025-12-02T09:45:10.712053,xdfdbhfgnnhg gdhmghxfgbzdgngmkyhnf is an indian name,real,0.5000
+2025-12-02T09:45:55.831871,ambot lang is an english term,real,0.5000
+2025-12-02T09:46:02.712390,ambot lang is an english term,real,0.5000
+2025-12-02T09:46:34.562102,Former President duterte is alive,fake,0.5000
+2025-12-02T09:46:36.268385,Former President duterte is alive,fake,0.5000
+2025-12-02T09:47:52.867483,"Mayor sa Lunas City nagpahibalo og libreng eroplano alang sa tanan nga residente""
+Snippet: ""Sa usa ka press release, gitug-an sa mayor nga matag pamilya sa Lunas City makadawat og libreng round-trip ticket kada tuig — walay klarong pondo o kontrata nga gi-presentar.""",real,0.5000
+2025-12-02T09:48:02.527869,"Mayor sa Lunas City nagpahibalo og libreng eroplano alang sa tanan nga residente""
+Snippet: ""Sa usa ka press release, gitug-an sa mayor nga matag pamilya sa Lunas City makadawat og libreng round-trip ticket kada tuig — walay klarong pondo o kontrata nga gi-presentar.""",real,0.5000
+2025-12-02T10:21:13.374737,"Vice President Sara Duterte says her office will continue fighting against corruption and greed, as she highlighted the Office of the Vice President’s (OVP) achievements and milestones for this year.",real,0.5000
+2025-12-02T10:21:18.254379,"Vice President Sara Duterte says her office will continue fighting against corruption and greed, as she highlighted the Office of the Vice President’s (OVP) achievements and milestones for this year.",real,0.5000
+2025-12-02T10:21:48.727511,DPWH Region IV-B Maintenance Division Chief Juliet Calvo pleaded not guilty for her graft charge in relation to anomalous flood control projects in Oriental Mindoro. She is also facing charges for malversation.,real,0.5000
+2025-12-02T10:21:52.838569,DPWH Region IV-B Maintenance Division Chief Juliet Calvo pleaded not guilty for her graft charge in relation to anomalous flood control projects in Oriental Mindoro. She is also facing charges for malversation.,real,0.5000
+2025-12-02T10:25:28.286473,"Authorities in Sri Lanka, Indonesia and Thailand are racing to clear debris and find hundreds of missing people after more than 900 died in devastating floods and landslides across the south of Asia.",real,0.5000
+2025-12-02T10:25:35.369687,"Authorities in Sri Lanka, Indonesia and Thailand are racing to clear debris and find hundreds of missing people after more than 900 died in devastating floods and landslides across the south of Asia.",real,0.5000
+2025-12-02T10:26:00.083285,aweewtrfystyity,real,0.5000
+2025-12-02T10:26:02.196341,aweewtrfystyity,real,0.5000
+2025-12-02T10:26:38.429032,ambot is an english word,real,0.5000
+2025-12-02T10:26:41.794091,ambot is an english word,real,0.5000
+2025-12-02T10:27:31.657243,Mindanao is the largest city in the Philippines.,real,0.5000
+2025-12-02T10:27:37.035238,Mindanao is the largest city in the Philippines.,real,0.5000
+2025-12-02T10:28:37.444908,there are 20 planets in the solar system,real,0.5000
+2025-12-02T10:28:44.124664,there are 20 planets in the solar system,real,0.5000
+2025-12-02T10:29:02.620046,Dutert is dead,fake,1.0000
+2025-12-02T10:29:04.240552,Dutert is dead,fake,1.0000
+2025-12-02T10:29:30.691145,Michael Jackson is dead,fake,1.0000
+2025-12-02T10:29:33.726354,Michael Jackson is dead,fake,1.0000
+2025-12-02T10:29:54.333490,Michael Jackson is alive,fake,0.5000
+2025-12-02T10:29:58.183410,Michael Jackson is alive,fake,0.5000
+2025-12-02T10:31:31.335182,BREAKING: Local hospital confirms banana cure for diabetes — patients healed in 48 hours,real,0.5000
+2025-12-02T10:31:34.199322,BREAKING: Local hospital confirms banana cure for diabetes — patients healed in 48 hours,real,0.5000
+2025-12-02T10:32:47.476838,Donald Trump is the new President in the Philippines,real,0.5000
+2025-12-02T10:32:50.239820,Donald Trump is the new President in the Philippines,real,0.5000
+2025-12-02T12:12:06.752042,"Mothballed: The Bataan Nuclear Power Plant, 40 Years After",real,0.5000
+2025-12-02T12:12:19.646877,"Mothballed: The Bataan Nuclear Power Plant, 40 Years After",real,0.5000
+2025-12-02T12:12:21.490390,"Mothballed: The Bataan Nuclear Power Plant, 40 Years After",real,0.5000
+2025-12-02T12:12:22.626757,"Mothballed: The Bataan Nuclear Power Plant, 40 Years After",real,0.5000
+2025-12-02T12:12:23.429066,"Mothballed: The Bataan Nuclear Power Plant, 40 Years After",real,0.5000
+2025-12-02T12:12:23.954322,"Mothballed: The Bataan Nuclear Power Plant, 40 Years After",real,0.5000
+2025-12-02T12:12:24.549122,"Mothballed: The Bataan Nuclear Power Plant, 40 Years After",real,0.5000
+2025-12-02T12:12:25.007209,"Mothballed: The Bataan Nuclear Power Plant, 40 Years After",real,0.5000
+2025-12-02T12:12:25.217819,"Mothballed: The Bataan Nuclear Power Plant, 40 Years After",real,0.5000
+2025-12-02T12:12:27.511799,"Mothballed: The Bataan Nuclear Power Plant, 40 Years After",real,0.5000
+2025-12-02T12:12:32.127606,"Mothballed: The Bataan Nuclear Power Plant, 40 Years After",real,0.5000
+2025-12-02T12:12:40.094444,"Mothballed: The Bataan Nuclear Power Plant, 40 Years After",real,0.5000
+2025-12-02T12:12:44.735455,"Mothballed: The Bataan Nuclear Power Plant, 40 Years After",real,0.5000
+2025-12-02T12:13:39.373594,"Mothballed: The Bataan Nuclear Power Plant, 40 Years After",real,0.5000
+2025-12-02T12:13:40.064072,"Mothballed: The Bataan Nuclear Power Plant, 40 Years After",real,0.5000
+2025-12-02T12:13:41.109554,"Mothballed: The Bataan Nuclear Power Plant, 40 Years After",real,0.5000
+2025-12-02T12:13:41.685240,"Mothballed: The Bataan Nuclear Power Plant, 40 Years After",real,0.5000
+2025-12-02T12:13:42.298977,"Mothballed: The Bataan Nuclear Power Plant, 40 Years After",real,0.5000
+2025-12-02T12:14:12.810276,ANOTHER MASS MOBILIZATION POSSIBLE IF PROBE DOES NOT GIVE RESULTS,real,0.5000
+2025-12-02T12:14:19.689058,ANOTHER MASS MOBILIZATION POSSIBLE IF PROBE DOES NOT GIVE RESULTS,real,0.5000
+2025-12-02T12:15:39.966041,there are 20 planet in the solar system,real,0.5000
+2025-12-02T12:27:09.419310,there are 20 planet in the solar system,real,0.5000
+2025-12-02T12:27:42.523122,former president duterte died in icc,real,0.5000
+2025-12-02T12:27:48.615364,former president duterte died in icc,real,0.5000
+2025-12-02T17:16:45.161367,"Cassandra Li Ong, who has a standing arrest warrant for qualified human trafficking charges, is still in the Philippines, according to Malacañang.",fake,0.7842,model probability >= 0.25
+2025-12-02T17:16:47.838195,"Cassandra Li Ong, who has a standing arrest warrant for qualified human trafficking charges, is still in the Philippines, according to Malacañang.",fake,0.7842,model probability >= 0.25
+2025-12-02T17:18:27.360595,former president duterte died in icc,fake,0.7576,authoritative fact-check found negative rating
+2025-12-02T17:18:29.637913,former president duterte died in icc,fake,0.7576,authoritative fact-check found negative rating
+2025-12-02T17:19:44.442677,there are 20 planets in the solar system,fake,0.5989,model probability >= 0.25
+2025-12-02T17:19:46.979879,there are 20 planets in the solar system,fake,0.5989,model probability >= 0.25
+2025-12-02T17:31:30.461390,"DSWD, DILG, and other government agencies to sign the Implementing Rules and Regulations of the Pag-abot Program, which aims to help elevate the lives of street dwellers.",unverified,0.7999,model suggests fake but no supporting sources found; manual review suggested
+2025-12-02T17:32:19.903201,"DSWD, DILG, and other government agencies to sign the Implementing Rules and Regulations of the Pag-abot Program, which aims to help elevate the lives of street dwellers.",unverified,0.7999,model suggests fake but no supporting sources found; manual review suggested
+2025-12-02T17:42:49.515082,"Alpha Drive One, made up of eight members from the hit reality show ""Boys II Planet,"" will make its debut on January 12, 2026.",unverified,0.7502,model suggests fake but no supporting sources found; manual review suggested
+2025-12-02T17:42:58.962424,"Alpha Drive One, made up of eight members from the hit reality show ""Boys II Planet,"" will make its debut on January 12, 2026.",unverified,0.7502,model suggests fake but no supporting sources found; manual review suggested
+2025-12-03T08:18:51.426804,"Still dodging AI implementation like it’s another budget meeting? Time to meet monday sidekick, the AI you’ll love to use.",real,0.5000,model suggests fake but no external sources found
+2025-12-03T08:19:00.620878,"Still dodging AI implementation like it’s another budget meeting? Time to meet monday sidekick, the AI you’ll love to use.",real,0.5000,model suggests fake but no external sources found
+2025-12-03T08:19:37.072334,there are 20 planets in the solar system,real,0.5000,model suggests fake but no external sources found
+2025-12-03T08:47:29.793178,Mindanao has no internet,real,0.5000,model suggests fake but no external sources found
+2025-12-03T08:47:39.797536,Mindanao has no internet,real,0.5000,model suggests fake but no external sources found
+2025-12-03T08:48:08.089505,Duterte is dead,fake,0.5000,authoritative fact-check indicates false
+2025-12-03T08:48:18.508423,Duterte is dead,fake,0.5000,authoritative fact-check indicates false
+2025-12-03T08:48:47.957405,Duterte is still alive,fake,0.5000,authoritative fact-check indicates false
+2025-12-03T08:48:58.082901,Duterte is still alive,fake,0.5000,authoritative fact-check indicates false
+2025-12-03T08:49:32.050438,Sara Duterte is dead,fake,0.5000,authoritative fact-check indicates false
+2025-12-03T08:49:41.523305,Sara Duterte is dead,fake,0.5000,authoritative fact-check indicates false
+2025-12-03T08:50:03.997245,Sara Duterte is not dead,fake,0.5000,authoritative fact-check indicates false
+2025-12-03T08:50:13.659011,Sara Duterte is not dead,fake,0.5000,authoritative fact-check indicates false
+2025-12-03T08:51:15.932620,Sara Duterte is still alive,fake,0.5000,authoritative fact-check indicates false
+2025-12-03T08:51:26.298364,Sara Duterte is still alive,fake,0.5000,authoritative fact-check indicates false
+2025-12-03T08:58:27.005024,Sara Duterte is the vice president of the philipplines,fake,0.5000,authoritative fact-check indicates false
+2025-12-03T08:58:36.426327,Sara Duterte is the vice president of the philipplines,fake,0.5000,authoritative fact-check indicates false
+2025-12-03T08:59:22.331511,Mracos the the new president in the philippines,fake,0.5000,authoritative fact-check indicates false
+2025-12-03T08:59:31.594266,Mracos the the new president in the philippines,fake,0.5000,authoritative fact-check indicates false
+2025-12-03T09:23:52.852292,"A total of 9,027 police personnel have been dismissed from the service as part of the PNP’s intensified internal cleansing efforts from July 2016 to November 26, 2025.",fake,0.5000,model predicts fake (p>=0.2113)
+2025-12-03T09:24:01.936540,"A total of 9,027 police personnel have been dismissed from the service as part of the PNP’s intensified internal cleansing efforts from July 2016 to November 26, 2025.",fake,0.5000,model predicts fake (p>=0.2113)
+2025-12-03T09:24:49.616736,Singer G-Dragon requested that parts of the donation be given to firefighters and emergency personnel who responded to the devastating fire in Hong Kong’s Tai Po district.,fake,0.5000,model predicts fake (p>=0.2113)
+2025-12-03T09:24:58.613166,Singer G-Dragon requested that parts of the donation be given to firefighters and emergency personnel who responded to the devastating fire in Hong Kong’s Tai Po district.,fake,0.5000,model predicts fake (p>=0.2113)
+2025-12-03T09:43:19.384081,"UPDATE: The Bureau of Jail Management and Penology has confirmed that the commitment order for dismissed Bamban Mayor Alice Guo has been received by the warden of the Pasig City Jail for her transfer to the Correctional Institution for Women in Mandaluyong.
+
+BJMP Spokesperson Jail Superintendent Jayrex Bustinera said the agency is now preparing Guo’s medical and laboratory examination inside the facility for security reasons—a standard requirement before any detainee is moved to a different detention facility.",fake,0.5000,model predicts fake (p>=0.2113)
+2025-12-03T09:43:29.144870,"UPDATE: The Bureau of Jail Management and Penology has confirmed that the commitment order for dismissed Bamban Mayor Alice Guo has been received by the warden of the Pasig City Jail for her transfer to the Correctional Institution for Women in Mandaluyong.
+
+BJMP Spokesperson Jail Superintendent Jayrex Bustinera said the agency is now preparing Guo’s medical and laboratory examination inside the facility for security reasons—a standard requirement before any detainee is moved to a different detention facility.",fake,0.5000,model predicts fake (p>=0.2113)
+2025-12-03T09:43:49.755528,duterte is dead,fake,0.5000,authoritative fact-check indicates false
+2025-12-03T09:43:58.823789,duterte is dead,fake,0.5000,authoritative fact-check indicates false
+2025-12-03T09:44:19.270566,duterte is not dead,fake,0.5000,authoritative fact-check indicates false
+2025-12-03T09:44:28.067666,duterte is not dead,fake,0.5000,authoritative fact-check indicates false
+2025-12-03T14:23:56.898389,Duterte is still alive,fake,0.5000,authoritative fact-check indicates false
+2025-12-03T14:24:06.704303,Duterte is still alive,fake,0.5000,authoritative fact-check indicates false
+2025-12-03T14:24:35.380859,typhoon uwan,fake,1.0000,authoritative fact-check indicates false
+2025-12-03T14:24:44.550147,typhoon uwan,fake,1.0000,authoritative fact-check indicates false
+2025-12-03T14:31:20.560540,"Real estate services firm Santos Knight Frank sees growth in the property sector in 2026 amid challenges this year.
+
+The firm says there are many projects in the provinces and growth in Metro Manila is in the luxury segment. | via Jekki Pascual, ABS-CBN News",fake,0.5000,model predicts fake (p>=0.2113)
+2025-12-03T14:31:30.046200,"Real estate services firm Santos Knight Frank sees growth in the property sector in 2026 amid challenges this year.
+
+The firm says there are many projects in the provinces and growth in Metro Manila is in the luxury segment. | via Jekki Pascual, ABS-CBN News",fake,0.5000,model predicts fake (p>=0.2113)
+2025-12-03T14:35:53.410907,duterte is alive,fake,0.5000,authoritative fact-check indicates false
+2025-12-03T14:36:03.025858,duterte is alive,fake,0.5000,authoritative fact-check indicates false
+2025-12-03T15:39:20.090593,Duterte is alive,fake,0.9921,authoritative fact-check indicates false
+2025-12-03T15:39:27.474185,Duterte is alive,fake,0.9921,authoritative fact-check indicates false
+2025-12-03T15:50:46.444295,duterte is alive,fake,0.9921,authoritative fact-check indicates false
+2025-12-03T15:50:49.790042,duterte is alive,fake,0.9921,authoritative fact-check indicates false
+2025-12-03T15:51:05.928892,duterte is dead,fake,0.9924,authoritative fact-check indicates false
+2025-12-03T15:51:08.948401,duterte is dead,fake,0.9924,authoritative fact-check indicates false
+2025-12-03T15:58:03.764413,Duterte is alive in ICC,fake,0.6521,authoritative fact-check indicates false
+2025-12-03T15:58:17.198507,Duterte is alive in ICC,fake,0.6521,authoritative fact-check indicates false
+2025-12-03T16:08:41.394892,Duterte is alive in icc,fake,0.6521,authoritative fact-check indicates false
+2025-12-03T16:21:30.185606,Duterte is alive,fake,0.7751,authoritative fact-check indicates false
+2025-12-03T16:21:41.617738,Duterte is alive,fake,0.7751,authoritative fact-check indicates false
+2025-12-03T16:28:51.770839,Duterte is alive,fake,0.7751,authoritative fact-check indicates false
+2025-12-03T16:29:03.515253,Duterte is alive,fake,0.7751,authoritative fact-check indicates false
+2025-12-03T16:29:56.567962,Rodrigo Duterte is not dead yet,fake,0.9800,model predicts fake (p>=0.2113)
+2025-12-03T16:30:06.730851,Rodrigo Duterte is not dead yet,fake,0.9800,model predicts fake (p>=0.2113)
+2025-12-03T16:38:15.007380,"Duterte is alive, in ICC custody",fake,0.8500,authoritative fact-check indicates false
+2025-12-03T16:38:21.548380,"Duterte is alive, in ICC custody",fake,0.8500,authoritative fact-check indicates false
+2025-12-03T16:41:55.773879,Duterte is alive,fake,0.8500,authoritative fact-check indicates false
+2025-12-03T16:42:01.952956,Duterte is alive,fake,0.8500,authoritative fact-check indicates false
+2025-12-03T16:42:20.972076,"Real estate services firm Santos Knight Frank sees growth in the property sector in 2026 amid challenges this year.
+
+The firm says there are many projects in the provinces and growth in Metro Manila is in the luxury segment. | via Jekki Pascual, ABS-CBN News",real,0.1000,model predicts real (p<=0.15)
+2025-12-03T16:43:03.939119,"Real estate services firm Santos Knight Frank sees growth in the property sector in 2026 amid challenges this year.
+
+The firm says there are many projects in the provinces and growth in Metro Manila is in the luxury segment. | via Jekki Pascual, ABS-CBN News",real,0.1000,model predicts real (p<=0.15)
+2025-12-03T16:44:50.757934,"Iminungkahi ng senador sa LTO na marehistro ang mga e-trike at magkaroon ng special driver’s license bago maibiyahe sa mga lansangan.
+
+Tingnan ang link sa aming bio para sa buong ulat.",fake,0.8500,model predicts fake (p>=0.2113)
+2025-12-03T16:44:58.530064,"Iminungkahi ng senador sa LTO na marehistro ang mga e-trike at magkaroon ng special driver’s license bago maibiyahe sa mga lansangan.
+
+Tingnan ang link sa aming bio para sa buong ulat.",fake,0.8500,model predicts fake (p>=0.2113)
+2025-12-03T16:45:30.637480,"Filipinos definitely didn't ""forget"" Skusta Clee this year as his hit ""Kalimutan Ka"" emerged as the most-viewed music video on YouTube Philippines for 2025.",real,0.1000,model predicts real (p<=0.15)
+2025-12-03T16:45:46.157197,"Filipinos definitely didn't ""forget"" Skusta Clee this year as his hit ""Kalimutan Ka"" emerged as the most-viewed music video on YouTube Philippines for 2025.",real,0.1000,model predicts real (p<=0.15)
+2025-12-03T16:46:38.329645,"alaysia's transport ministry said Wednesday that the deep-sea hunt for Malaysia Airlines Flight 370 will resume Dec. 30, renewing hopes of finally locating the jet that vanished without a trace more than a decade ago.
+
+The Boeing 777 plane disappeared from radar shortly after taking off on March 8, 2014, carrying 239 people, mostly Chinese nationals, on a flight from Malaysia’s capital, Kuala Lumpur, to Beijing.",real,0.1000,model predicts real (p<=0.15)
+2025-12-03T16:46:49.396159,"alaysia's transport ministry said Wednesday that the deep-sea hunt for Malaysia Airlines Flight 370 will resume Dec. 30, renewing hopes of finally locating the jet that vanished without a trace more than a decade ago.
+
+The Boeing 777 plane disappeared from radar shortly after taking off on March 8, 2014, carrying 239 people, mostly Chinese nationals, on a flight from Malaysia’s capital, Kuala Lumpur, to Beijing.",real,0.1000,model predicts real (p<=0.15)
+2025-12-03T16:47:58.831054,"Tila nagkatotoo umano ang paalala ng feng shui expert sa aktres na si Kim Chiu, na nito lamang Martes ay nagsampa ng reklamong qualified theft laban sa kanyang kapatid na si Lakam.",fake,0.8500,model predicts fake (p>=0.2113)
+2025-12-03T16:48:02.788086,"Tila nagkatotoo umano ang paalala ng feng shui expert sa aktres na si Kim Chiu, na nito lamang Martes ay nagsampa ng reklamong qualified theft laban sa kanyang kapatid na si Lakam.",fake,0.8500,model predicts fake (p>=0.2113)
+2025-12-03T16:48:21.373787,"President Donald Trump will hold a meeting at the White House on Monday evening about next steps on Venezuela, sources familiar with the matter told CNN, as the administration intensifies its pressure campaign on the country.",real,0.1000,model predicts real (p<=0.15)
+2025-12-03T16:48:33.395523,"President Donald Trump will hold a meeting at the White House on Monday evening about next steps on Venezuela, sources familiar with the matter told CNN, as the administration intensifies its pressure campaign on the country.",real,0.1000,model predicts real (p<=0.15)
+2025-12-03T16:48:55.115713,"President Donald Trump will hold a meeting at the White House on Monday evening about next steps on Venezuela, sources familiar with the matter told CNN, as the administration intensifies its pressure campaign on the country.",real,0.1000,model predicts real (p<=0.15)
+2025-12-03T16:48:57.232449,"President Donald Trump will hold a meeting at the White House on Monday evening about next steps on Venezuela, sources familiar with the matter told CNN, as the administration intensifies its pressure campaign on the country.",real,0.1000,model predicts real (p<=0.15)
+2025-12-03T16:52:42.662154,Former Bamban Mayor Alice Guo is expected to be transferred to the Mandaluyong Correctional Facility this week. This crucial step marks a significant progression in the legal proceedings surrounding her high-profile case.,fake,0.8500,model predicts fake (p>=0.2113)
+2025-12-03T16:52:48.594509,Former Bamban Mayor Alice Guo is expected to be transferred to the Mandaluyong Correctional Facility this week. This crucial step marks a significant progression in the legal proceedings surrounding her high-profile case.,fake,0.8500,model predicts fake (p>=0.2113)
+2025-12-03T16:53:12.779783,"The P3.9-million worth of “laptops” listed at the Office of the Vice President’s (OVP) annual audit report in 2024 were actually donated photocopiers and a desktop computer, which the OVP said happened following an “oversight in description.”",fake,0.8500,model predicts fake (p>=0.2113)
+2025-12-03T16:53:18.615899,"The P3.9-million worth of “laptops” listed at the Office of the Vice President’s (OVP) annual audit report in 2024 were actually donated photocopiers and a desktop computer, which the OVP said happened following an “oversight in description.”",fake,0.8500,model predicts fake (p>=0.2113)
+2025-12-03T16:53:43.964841,"May namuong tensiyon sa dalawang matataas na opisyal ng San Pablo City, Laguna matapos umanong hindi aprubahan ng Sangguniang Panlungsod na pinamumunuan ni Vice Mayor Justin Colago ang hiling ng alkaldeng si Najie Gapangada Jr. na P45 milyong budget para sa Noche Buena package.",fake,0.8500,model predicts fake (p>=0.2113)
+2025-12-03T16:53:50.924527,"May namuong tensiyon sa dalawang matataas na opisyal ng San Pablo City, Laguna matapos umanong hindi aprubahan ng Sangguniang Panlungsod na pinamumunuan ni Vice Mayor Justin Colago ang hiling ng alkaldeng si Najie Gapangada Jr. na P45 milyong budget para sa Noche Buena package.",fake,0.8500,model predicts fake (p>=0.2113)
+2025-12-03T16:54:07.439716,Duterte is alive,fake,0.8500,authoritative fact-check indicates false
+2025-12-03T16:54:13.826395,Duterte is alive,fake,0.8500,authoritative fact-check indicates false
+2025-12-03T16:54:36.923149,"Inanunsiyo ni Pangulong Ferdinand Marcos, Jr. ang taas-sahod para sa mga military at uniformed personnel na unang ilalabas sa Enero 2026.",real,0.1000,model predicts real (p<=0.15)
+2025-12-03T16:54:48.549691,"Inanunsiyo ni Pangulong Ferdinand Marcos, Jr. ang taas-sahod para sa mga military at uniformed personnel na unang ilalabas sa Enero 2026.",real,0.1000,model predicts real (p<=0.15)
+2025-12-03T16:59:23.839398,The NBI's search of former Rep. Zaldy Co's luxury condo units in BGC yields key documents related to the flood control project anomalies.,real,0.1000,model predicts real (p<=0.15)
+2025-12-03T16:59:37.690484,The NBI's search of former Rep. Zaldy Co's luxury condo units in BGC yields key documents related to the flood control project anomalies.,real,0.1000,model predicts real (p<=0.15)
+2025-12-03T17:01:52.761369,"Inanunsiyo ng ICI ang pagsasampa ng panibagong referral sa Ombudsman laban sa mga personalidad na posibleng sangkot sa katiwalian kabilang sina ex-DPWH Sec. Manuel Bonoan, Roberto Bernardo, ex-Rep. Zaldy Co, COA commissioner Mario Lipana, Brice Hernandez, at Jaypee Mendoza. | via Johnson Manabat, ABS-CBN News",real,0.1000,model predicts real (p<=0.15)
+2025-12-03T17:02:03.920178,"Inanunsiyo ng ICI ang pagsasampa ng panibagong referral sa Ombudsman laban sa mga personalidad na posibleng sangkot sa katiwalian kabilang sina ex-DPWH Sec. Manuel Bonoan, Roberto Bernardo, ex-Rep. Zaldy Co, COA commissioner Mario Lipana, Brice Hernandez, at Jaypee Mendoza. | via Johnson Manabat, ABS-CBN News",real,0.1000,model predicts real (p<=0.15)
+2025-12-03T17:04:15.297294,"Sen. Sherwin Gatchalian is forced take over the budget responsibilities of Sen. Ronald ""Bato"" Dela Rosa, who remains absent from the Senate.
+
+Dela Rosa has been missing in action for nearly a month now.",real,0.1000,model predicts real (p<=0.15)
+2025-12-03T17:04:57.692204,"Sen. Sherwin Gatchalian is forced take over the budget responsibilities of Sen. Ronald ""Bato"" Dela Rosa, who remains absent from the Senate.
+
+Dela Rosa has been missing in action for nearly a month now.",real,0.1000,model predicts real (p<=0.15)
+2025-12-03T17:05:57.201068,"Unfinished bridges and a crucial flood control project in Maasin, Asinan have sparked the anger of DPWH Sec. Vince Dizon. These vital projects that were delayed, have left the community vulnerable and infrastructure goals unmet.",real,0.1000,model predicts real (p<=0.15)
+2025-12-03T17:06:12.634549,"Unfinished bridges and a crucial flood control project in Maasin, Asinan have sparked the anger of DPWH Sec. Vince Dizon. These vital projects that were delayed, have left the community vulnerable and infrastructure goals unmet.",real,0.1000,model predicts real (p<=0.15)
+2025-12-03T17:08:13.558931,Duterte is dead,fake,0.8500,authoritative fact-check indicates false
+2025-12-03T17:08:19.185539,Duterte is dead,fake,0.8500,authoritative fact-check indicates false
+2025-12-03T17:08:32.813652,Duterte is alive,fake,0.8500,authoritative fact-check indicates false
+2025-12-03T17:08:38.203006,Duterte is alive,fake,0.8500,authoritative fact-check indicates false
+2025-12-03T17:10:48.711292,The Philippine government will remove the ‘13th month pay’ starting next year,real,0.1000,model predicts real (p<=0.15)
+2025-12-03T17:10:54.129055,The Philippine government will remove the ‘13th month pay’ starting next year,real,0.1000,model predicts real (p<=0.15)
+2025-12-03T17:12:00.269383,"President Marcos ordered yesterday a base pay low for military and uniformed personnel, to be implemented in three tranches beginning next year.",real,0.1000,model predicts real (p<=0.15)
+2025-12-03T17:12:06.224940,"President Marcos ordered yesterday a base pay low for military and uniformed personnel, to be implemented in three tranches beginning next year.",real,0.1000,model predicts real (p<=0.15)
+2025-12-03T17:12:47.006890,President Marcos delayed 13th month pay,fake,0.8500,model predicts fake (p>=0.2113)
+2025-12-03T17:12:53.995821,President Marcos delayed 13th month pay,fake,0.8500,model predicts fake (p>=0.2113)
+2025-12-03T17:23:53.114086,President Marcos announces holiday,real,0.1000,model predicts real (p<=0.15)
+2025-12-03T17:39:33.578168,"The Independent Commission for Infrastructure (ICI) has approved the request of Rep. Roman Romulo for an executive session.
+
+His legal counsel explained that livestreaming of the hearing could put the life and safety of her client in danger.",fake,0.8500,model predicts fake (p>=0.2113)
+2025-12-03T17:39:57.178026,"The University of the Philippines secured its fifth consecutive Finals appearance after narrowly escaping UST, 82-81, in a heart-stopping UAAP Final Four showdown.",real,0.1000,model predicts real (p<=0.15)
+2025-12-03T17:41:30.576763,"The University of the Philippines secured its fifth consecutive Finals appearance after narrowly escaping UST, 82-81, in a heart-stopping UAAP Final Four showdown.",real,0.1000,model predicts real (p<=0.15)
+2025-12-03T17:43:34.936173,Duterte is alive in ICC,fake,0.8500,authoritative fact-check indicates false
+2025-12-04T00:15:47.873442,Today is a holiday,fake,0.8500,model predicts fake (p>=0.2113)
+2025-12-04T00:16:27.080977,President Bongbong Marcos increases the sallary,fake,0.8500,model predicts fake (p>=0.2113)
+2025-12-04T00:17:11.453505,President Bongbong Marcos increases the sallary,fake,0.9800,model predicts fake (p>=0.2113)
+2025-12-04T00:17:44.042885,President Bongbong Marcos increases the sallary,fake,0.8500,model predicts fake (p>=0.2113)
+2025-12-04T00:19:20.478428,"Nagkaroon ng minor eruption ang Bulkang Taal ngayong Huwebes ng madaling araw, December 4, 2025, ayon sa Phivolcs.",fake,0.8500,model predicts fake (p>=0.2113)
+2025-12-04T00:20:01.904536,"Police Regional Office 3 has arrested 1,077 drug personalities and confiscated ₱25.3 million worth of illegal drugs in 724 anti-drug operations conducted from Nov. 1 to 30, says Central Luzon top cop PBGen. Ponce Rogelio Peñones.",fake,0.8500,model predicts fake (p>=0.2113)
+2025-12-04T00:20:27.464459,"Inaasahan ang katamtaman hanggang sa malakas na pag-ulan na may kasamang kidlat at malakas na hangin sa ilang lugar sa Bataan sa susunod na dalawang oras, ayon sa inilabas na thunderstorm advisory ng PAGASA kaninang 7:42 p.m., Miyerkules, Disyembre 3, 2025. #WeatherPatrol",fake,0.8500,model predicts fake (p>=0.2113)
+2025-12-04T00:20:55.974565,"ANIM NA KUMPANYANG PINOY PASOK SA FORTUNE’S LIST
+
+Pasok sa listahan ng Fortune's 100 Best Companies to Work for in Southeast Asia ang anim na kumpanyang nakabase sa Pilipinas.",fake,0.8500,model predicts fake (p>=0.2113)
+2025-12-04T00:22:04.271209,"ANIM NA KUMPANYANG PINOY PASOK SA FORTUNE’S LIST
+
+Pasok sa listahan ng Fortune's 100 Best Companies to Work for in Southeast Asia ang anim na kumpanyang nakabase sa Pilipinas.",fake,0.8500,model predicts fake (p>=0.2113)
+2025-12-04T00:22:26.980998,"LPA UPDATE 8AM, December 3, 2025
+
+The low pressure area east of the country remains outside the Philippine area of responsibility but is now close to its eastern border.
+
+It has high potential for storm formation within the next 24 hours, according to PAGASA.
+
+At 8 a.m. Wednesday, it was located 1,190 km east of Southeastern Luzon.",real,0.1000,model predicts real (p<=0.15)
+2025-12-04T00:24:18.881172,"UPDATE: The Land Transportation Franchising and Regulatory Board says it is studying the possibility of implementing performance-based pricing for public utility vehicles.
+
+""Kung i-akyat natin ang pamasahe, kailangan may makita ang ating mananakay dun naman sa serbisyo. We are not only looking for cost recovery,"" said LTFRB chief Vigor Mendoza. | via Izzy Lee, ABS-CBN News",fake,0.8500,model predicts fake (p>=0.2113)
+2025-12-04T00:24:53.336111,"Kabilang si dating senador Bong Revilla, Jr. sa mga pinakakasuhan ng ICI sa Ombudsman. Sabi ni Chairman Andres Reyes, kabilang sa rekomendasyon nito ang pahahain ng plunder case, direct or indirect bribery, at corruption of public officials.",real,0.1000,model predicts real (p<=0.15)
+2025-12-04T00:26:06.646574,"Kabilang si dating senador Bong Revilla, Jr. sa mga pinakakasuhan ng ICI sa Ombudsman. Sabi ni Chairman Andres Reyes, kabilang sa rekomendasyon nito ang pahahain ng plunder case, direct or indirect bribery, at corruption of public officials.",real,0.1000,model predicts real (p<=0.15)
+2025-12-04T00:27:27.475229,"Indonesia tops the list of the world’s friendliest countries in 2025, according to the Expat Insider Survey. Its warm hospitality, everyday kindness, and culturally rooted openness make visitors and expatriates feel immediately welcomed. Colombia and Mexico follow in second and third place, each known for their vibrant cultures and strong sense of community.",fake,0.8500,model predicts fake (p>=0.2113)
+2025-12-04T00:37:39.474455,"Saudi Arabia will introduce electronic e-bracelets for all Hajj pilgrims to improve safety and organisation after the tragic 2015 stampede that killed hundreds. The bracelets will store key personal, medical, and passport information, helping authorities identify and assist worshippers quickly.
+
+they will also provide prayer timings, multilingual guidance, and GPS tracking. Nearly 1,000 new surveillance cameras have been installed at the Grand Mosque, monitored by special forces to manage crowds.",fake,0.8500,model predicts fake (p>=0.2113)
+2025-12-04T00:38:16.782933,"TURNING OFF THE ENGINES 🚗
+
+After five unforgettable years and a historic run that crowned them as the first-ever professional champions of the PVL, the Chery Tiggo Crossovers are set to file a leave of absence from the league.",real,0.1000,model predicts real (p<=0.15)
+2025-12-04T00:38:50.433741,"After five unforgettable years and a historic run that crowned them as the first-ever professional champions of the PVL, the Chery Tiggo Crossovers are set to file a leave of absence from the league.",real,0.1000,model predicts real (p<=0.15)
+2025-12-04T00:39:36.622318,"Despite earlier statements that she will avail herself of private services for her security, Vice President Sara Duterte currently maintains a total of 335 security personnel from the government, some of whom also accompany her in trips abroad, according to a report by the Commission on Audit (COA) on the agency’s spending in 2024.",real,0.1000,model predicts real (p<=0.15)
+2025-12-04T00:40:39.399110,"Three high-value individuals (HVIs) were arrested in Daet, Camarines Norte on Wednesday, Dec. 3, after authorities seized around 3 kilos of suspected shabu worth P20.4 million in an operation led by the Camarines Norte Police Drug Enforcement Unit and PDEA-Bicol.",real,0.1000,model predicts real (p<=0.15)
+2025-12-04T00:42:24.394957,"MGA TUMUTOL SA PAGSUSPENDE KAY REP. BARZAGA
+
+Limang kongresista ang hindi sumang-ayon sa rekomendasyon ng House Committee on Ethics and Privileges na patawan ng 60-day suspension si Cavite 4th District Rep. Kiko Barzaga.",real,0.1000,model predicts real (p<=0.15)
+2025-12-04T00:43:59.794137,"Dead on the spot ang isang babae matapos barilin ng lalaking inalok umano niya ng shabu sa Barangay Cupang, Antipolo City, nitong Miyerkules ng madaling araw.
+
+Ayon sa pulisya, nagalit ang suspek matapos umano siyang pagmumurahin ng babae nang tumanggi itong bilhin ang ilegal na droga.
+
+Pero walang narekober na shabu sa crime scene.
+
+Naaresto na ang suspek na nahaharap sa reklamong murder.",fake,0.8500,model predicts fake (p>=0.2113)
+2025-12-04T00:44:28.667717,"The death toll in the floods which struck Indonesia last week has now climbed to 631 on Tuesday, with rescue workers still battling to reach affected areas. The floods, which were caused by a rare cyclone that had formed over the Malacca Strait, have hit three provinces and impacted some 1.5 million people, according to the government's disaster agency.v",real,0.1000,model predicts real (p<=0.15)
+2025-12-04T01:03:53.520082,"The death toll in the floods which struck Indonesia last week has now climbed to 631 on Tuesday, with rescue workers still battling to reach affected areas. The floods, which were caused by a rare cyclone that had formed over the Malacca Strait, have hit three provinces and impacted some 1.5 million people, according to the government's disaster agency.",fake,0.8500,model predicts fake (p>=0.2113)
+2025-12-04T01:04:17.703730,"abscbnnews
+“Makamit natin ang hustisya.”
+
+Ito ang Christmas wish ni acting PNP chief Lt. Gen. Jose Melencio Nartatez Jr. sa gitna ng imbestigasyon ng maanomalyang flood control projects sa bansa.
+
+Hiling niya na maaresto na ang lahat ng mga sangkot para mapanagot sa batas.",real,0.1000,model predicts real (p<=0.15)
+2025-12-04T01:05:52.308129,"Sa ikalawang araw ng NBI inspection sa condo ni dating Ako Bicol Rep. Zaldy Co, iilang NBI agents na lang ang pinayagang makapasok para mangalap ng ebidensya.
+
+Kasama ng NBI sa inspeksyon ang dalawang kawani ng Makati RTC at dalawang representante ng Philippine Competition Commission.",fake,0.8500,model predicts fake (p>=0.2113)
+2025-12-04T01:06:26.851358,"“Ang babaw nun, napaka babaw, hindi naman pumatay ‘yung anak ko para patayin mo siya.”
+
+Patay ang isang 22-anyos na babae matapos barilin mula sa likod ng isang lalaki habang naglalakad sa kalsada sa Barangay Cupang, Antipolo City, Miyerkules ng madaling draw, December 3, 2025.",fake,0.8500,model predicts fake (p>=0.2113)
+2025-12-04T01:07:17.966051,"“Ang babaw nun, napaka babaw, hindi naman pumatay ‘yung anak ko para patayin mo siya.”
+
+Patay ang isang 22-anyos na babae matapos barilin mula sa likod ng isang lalaki habang naglalakad sa kalsada sa Barangay Cupang, Antipolo City, Miyerkules ng madaling draw, December 3, 2025.",fake,0.8500,model predicts fake (p>=0.2113)
+2025-12-04T01:07:50.693769,"Thai pageant executive Nawat Itsaragrisil filed a criminal complaint against Miss Universe 2025 Fatima Bosch to counter her ""false"" claims that he called her a ""dumbhead"" during their heated confrontation at an orientation event.",fake,0.8500,model predicts fake (p>=0.2113)
+2025-12-04T01:08:26.105330,"Despite earlier statements that she will avail herself of private services for her security, Vice President Sara Duterte currently maintains a total of 335 security personnel from the government, some of whom also accompany her in trips abroad, according to a report by the Commission on Audit (COA) on the agency’s spending in 2024",real,0.1000,model predicts real (p<=0.15)
+2025-12-04T01:11:53.418895,"The UAE’s announcement of a two-day public holiday for Eid Al Etihad on December 1 and 2 has brought excitement to families across the country. With the long weekend approaching, many residents are considering turning it into an extended winter getaway. This has revived a common question among parents — whether students can end the school term a few days earlier.",fake,0.8500,model predicts fake (p>=0.2113)
+2025-12-04T01:22:08.760980,Balikan ang naging takbo ng kaso ng pagpatay kay Christine Lee Silawan sa Lapu-Lapu City.,fake,0.8500,model predicts fake (p>=0.2113)
+2025-12-04T01:22:54.258103,"Despite earlier statements that she will avail herself of private services for her security, Vice President Sara Duterte currently maintains a total of 335 security personnel from the government, some of whom also accompany her in trips abroad, according to a report by the Commission on Audit (COA) on the agency’s spending in 2024.",real,0.1000,model predicts real (p<=0.15)
+2025-12-04T01:23:10.110707,"Despite earlier statements that she will avail herself of private services for her security, Vice President Sara Duterte currently maintains a total of 335 security personnel from the government, some of whom also accompany her in trips abroad, according to a report by the Commission on Audit (COA) on the agency’s spending in 2024.",real,0.1000,model predicts real (p<=0.15)
+2025-12-04T03:04:40.731601,"noong 2009, isinailalim sa martial law ang Maguindanao kasunod ng brutal na pagpatay sa 58, kabilang na ang ilang mamamahayag.",fake,0.8500,model predicts fake (p>=0.2113)
+2025-12-04T03:05:19.141635,The Independent Commission for Infrastructure (ICI) recommended to the Office of the Ombudsman the filing of charges against former Sen. Ramon “Bong” Revilla Jr. and nine others over their alleged role in anomalous flood control projects.,real,0.1000,model predicts real (p<=0.15)
+2025-12-04T03:08:59.039779,Former President Rodrigo Dutere is dead,fake,0.9800,model predicts fake (p>=0.2113)
+2025-12-04T03:10:01.615935,"Over 9,000 PNP personnel have been dismissed as part of the agency's intensified internal cleansing efforts from July 2016 to Nov. 26, 2025, according to the latest report of the Directorate for Personnel and Records Management.",fake,0.8500,model predicts fake (p>=0.2113)
+2025-12-04T03:11:12.271138,"Dismissed Bamban, Tarlac mayor Alice Guo has completed her medical and laboratory examinations inside the Pasig City Jail, the Bureau of Jail Management and Penology confirmed Thursday.",fake,0.8500,model predicts fake (p>=0.2113)
+2025-12-05T05:29:19.250055,"On this day in 2005, the Philippines became the 23rd Southeast Asian Games overall champion with a 113-84-94 gold-silver-bronze medal haul.",fake,0.8500,model predicts fake (p>=0.2113)
+2025-12-05T05:29:47.882692,"There were no findings of loss or wastage of government funds or property.""
+
+Ito ang komento ng Office of the Vice President matapos ilabas ng COA ang 2024 audit nito sa budget nila",real,0.1000,model predicts real (p<=0.15)
+2025-12-05T05:30:44.431994,"UPDATE: Police Regional Office 3 (PRO3) relieves cops linked to ₱14-M robbery in Bgy. Sta. Cruz, Porac, Pampanga.
+
+A Special Investigation Task Group has also been activated to conduct an in-depth probe, secure evidence, validate timelines, and review all relevant information to build a solid case and ensure full accountability, it said in a statement.",real,0.1000,model predicts real (p<=0.15)
+2025-12-05T06:14:55.747988,"UPDATE: Police Regional Office 3 (PRO3) relieves cops linked to ₱14-M robbery in Bgy. Sta. Cruz, Porac, Pampanga.
+
+A Special Investigation Task Group has also been activated to conduct an in-depth probe, secure evidence, validate timelines, and review all relevant information to build a solid case and ensure full accountability, it said in a statement.
+
+PRO3 said police personnel initially linked to the incident have been relieved from their posts as part of standard procedure while the investigation is underway.",fake,0.8500,model predicts fake (p>=0.2113)
+2025-12-05T06:16:00.063390,"UPDATE: Police Regional Office 3 (PRO3) relieves cops linked to ₱14-M robbery in Bgy. Sta. Cruz, Porac, Pampanga.
+
+A Special Investigation Task Group has also been activated to conduct an in-depth probe, secure evidence, validate timelines, and review all relevant information to build a solid case and ensure full accountability, it said in a statement.",fake,0.8500,model predicts fake (p>=0.2113)
+2025-12-05T06:17:53.023647,"UPDATE: Police Regional Office 3 (PRO3) relieves cops linked to ₱14-M robbery in Bgy. Sta. Cruz, Porac, Pampanga.
+
+A Special Investigation Task Group has also been activated to conduct an in-depth probe, secure evidence, validate timelines, and review all relevant information to build a solid case and ensure full accountability, it said in a statement.",fake,0.8500,model predicts fake (p>=0.2113)
+2025-12-05T06:29:27.734238,"Nangunguna pa rin si Vice President Sara Duterte sa mga survey para sa 2028 presidential race, ayon sa political scientist na si Dr. Julio Teehankee",fake,0.8500,model predicts fake (p>=0.2113)
+2025-12-05T06:34:05.326464,"The nine remaining Filipino seafarers held captive by Houthi rebels in Yemen have safely returned to the country Thursday night, December 4.",fake,0.8500,model predicts fake (p>=0.2113)
+2025-12-05T06:34:23.902704,Transport group Manibela on Thursday announced that it will stage a three-day transport strike starting December 9 over what it claims is the systematic harassment of public utility vehicle (PUV) drivers by traffic enforcers.,real,0.1000,model predicts real (p<=0.15)
+2025-12-05T06:35:53.364591,"Nangunguna pa rin si Vice President Sara Duterte sa mga survey para sa 2028 presidential race, ayon sa political scientist na si Dr. Julio Teehankee.",fake,0.8500,model predicts fake (p>=0.2113)
+2025-12-05T06:36:30.704606,"There were no findings of loss or wastage of government funds or property.""
+
+Ito ang komento ng Office of the Vice President matapos ilabas ng COA ang 2024 audit nito sa budget nila.",fake,0.8500,model predicts fake (p>=0.2113)
+2025-12-05T06:37:11.146539,"The nine remaining Filipino seafarers held captive by Houthi rebels in Yemen have safely returned to the country Thursday night, December 4.",fake,0.8500,model predicts fake (p>=0.2113)
+2025-12-05T06:37:36.257264,"Malversation and falsification charges are set to be filed against Sarah Discaya and St. Timothy Construction officials in connection with the P100-M Davao Occidental ""ghost project,"" according to President Marcos Jr.",real,0.1000,model predicts real (p<=0.15)
+2025-12-05T06:54:05.852727,"Malversation and falsification charges are set to be filed against Sarah Discaya and St. Timothy Construction officials in connection with the P100-M Davao Occidental ""ghost project,"" according to President Marcos Jr.",real,0.1000,model predicts real (p<=0.15)
+2025-12-05T06:54:19.252687,"Malversation and falsification charges are set to be filed against Sarah Discaya and St. Timothy Construction officials in connection with the P100-M Davao Occidental ""ghost project,"" according to President Marcos Jr.",real,0.1000,model predicts real (p<=0.15)
+2025-12-05T06:58:26.736275,"Malversation and falsification charges are set to be filed against Sarah Discaya and St. Timothy Construction officials in connection with the P100-M Davao Occidental ""ghost project,"" according to President Marcos Jr.",real,0.1000,model predicts real (p<=0.15)
+2025-12-05T07:01:49.235074,"House of Representatives Majority Leader Sandro Marcos appeared before the Independent Commission for Infrastructure (ICI), but requested a closed-door meeting just like all of the previous resource persons who testified in the body previously.",fake,0.8500,model predicts fake (p>=0.2113)
+2025-12-05T07:02:30.140468,The Supreme Court (SC) has allowed the re-entry of the Office of the Solicitor General (OSG) as counsel for the executive branch in cases regarding the question of the legality of the arrest of former President Rodrigo Duterte and the jurisdiction of the International Criminal Court (ICC) despite withdrawal of membership.,real,0.1000,model predicts real (p<=0.15)
+2025-12-05T07:05:33.327016,"“Our focus remains on locating and arresting Zaldy Co using all legal means available”
+
+The PNP is ready to support a possible government-issued reward that would help fast-track the arrest of former Ako Bicol party-list representative Zaldy Co, who is still at large and currently facing corruption and malversation charges.",real,0.1000,model predicts real (p<=0.15)
+2025-12-05T07:20:03.903394,"Our focus remains on locating and arresting Zaldy Co using all legal means available”
+
+The PNP is ready to support a possible government-issued reward that would help fast-track the arrest of former Ako Bicol party-list representative Zaldy Co, who is still at large and currently facing corruption and malversation charges.",real,0.1000,model predicts real (p<=0.15)
+2025-12-05T07:49:42.366199,"“Our focus remains on locating and arresting Zaldy Co using all legal means available”
+
+The PNP is ready to support a possible government-issued reward that would help fast-track the arrest of former Ako Bicol party-list representative Zaldy Co, who is still at large and currently facing corruption and malversation charges.",real,0.1000,model predicts real (p<=0.15)
+2025-12-26T08:59:10.849534,"Filipino engineer and technology entrepreneur Dado Banatao, dubbed the father of the Philippine semiconductor industry, has died at the age of 79.",fake,0.8500,model predicts fake (p>=0.2113)
+2025-12-26T08:59:44.274238,"Vice President Sara Duterte refused to confirm or deny whether she visited former Negros Oriental Rep. Arnolfo “Arnie” Teves Jr. at the Bureau of Jail Management and Penology (BJMP) facility in Camp Bagong Diwa, Taguig City.",fake,0.8500,model predicts fake (p>=0.2113)
+2025-12-26T09:00:19.486879,"Nagkaproblema sa supply ng kuryente kaninang 6:45 a.m. sa Passenger Terminal Building ng Batangas Port.
+
+Maraming pasahero ang nagreklamo dahil sa mainit na sitwasyon matapos hindi gumana ang mga aircon. Nawalan din ng suplay ng tubig.
+
+Ayon kay Aurora Mendoza, port manager ng PPA Batangas, back to normal na kaninang 12:00 ng tanghali ang supply ng kuryente.",fake,0.8500,model predicts fake (p>=0.2113)
+2025-12-26T09:00:51.858596,"Private citizen Barry Tayam has asked the Supreme Court to review the decision of Comelec’s Political Finance and Affairs Department, which cleared Senator Francis Escudero of liability, stating that the P30 million donation from government contractor Lawrence Lubiano in the 2022 elections did not violate the Omnibus Election",fake,0.8500,model predicts fake (p>=0.2113)
+2025-12-26T09:01:14.157242,A security guard who shot dead two of his colleagues in Quezon City told the police on Thursday that he did it due to workplace “bullying” that had tormented him for quite some time.,real,0.1000,model predicts real (p<=0.15)
+2025-12-26T09:02:58.338786,"Pope Leo has decried conditions ‍for Palestinians in ‍Gaza in his first Christmas sermon as pontiff, in an unusually direct appeal during what is normally a solemn, spiritual service on the day Christians across the globe celebrate the birth of Jesus Christ.⁠",fake,0.8500,model predicts fake (p>=0.2113)
+2025-12-26T09:03:19.549475,"One person died due to stray bullets while 47 were injured by firecrackers days ahead of New Year’s Eve, the Philippine National Police (PNP) said in its first casualty bulletin published on Friday.",real,0.1000,model predicts real (p<=0.15)
+2025-12-26T10:29:06.092232,"Ilang buwan matapos pumutok ang balita sa maanomalyang flood control projects, bumaba ang trust rating ni Pangulong Ferdinand Marcos Jr. habang tumaas naman kay Vice President Sara Duterte sa pinakahuling SWS survey.",real,0.1000,model predicts real (p<=0.15)
+2025-12-26T10:30:30.487457,"The Philippines asserted its dominance in international beauty pageants this year with all of the country’s bets from major national organizations placing in their respective global tilts.
+
+Although considered by many as an “international pageant powerhouse,” the Philippines was not able to accomplish this in 2024. But 2025 proved to be a redemption year for the country.",real,0.1000,model predicts real (p<=0.15)
+2025-12-26T10:31:33.015685,The Philippines asserted its dominance in international beauty pageants this year with all of the country’s bets from major national organizations placing in their respective global tilts,real,0.1000,model predicts real (p<=0.15)
+2025-12-26T10:32:38.591264,"Fourteen countries, including Britain, Canada, Denmark and France, have condemned #Israel’s approval of 19 new ⁠settlements in the occupied West Bank, saying ​the move was illegal and jeopardised the #Gaza ceasefire and “long-term peace and security across the region”.⁠",fake,0.8500,model predicts fake (p>=0.2113)
+2025-12-26T10:33:06.430960,"UNDERPRIVILEGED SH STUDENTS DEPRIVED OF GOVERNMENT ASSISTANCE
+
+Senior high school students enrolled in expensive private schools with annual tuition reaching as high as P317,314 received government vouchers meant to help low-income learners, the Commission on Audit found in its latest report on the Department of Education.",real,0.1000,model predicts real (p<=0.15)
+2025-12-26T10:35:16.324595,Vice President Sara Duterte remains tight-lipped about reports regarding her alleged visit to former lawmaker Arnie Teves Jr.,fake,0.8500,model predicts fake (p>=0.2113)
+2025-12-26T10:35:57.009285,"Independent Commission for Infrastructure (ICI) Commissioner Rossana Fajardo confirmed that she had tendered her courtesy resignation from the body probing flood control anomalies, effective December 31, 2025.",real,0.1000,model predicts real (p<=0.15)
+2025-12-26T10:38:38.605494,"Leyte 1st District Rep. Ferdinand Martin Romualdez hopes the Christmas celebrations will renew people’s hearts and strengthen families, even during difficult times.",fake,0.8500,model predicts fake (p>=0.2113)
+2025-12-26T10:39:17.593040,Posible umanong nakatulog ang driver ng bus patungong Sorsogon at ang karelyebo nito kaya nahulog sa bangin ang pampasaherong sasakyan,fake,0.8500,model predicts fake (p>=0.2113)
+2025-12-26T10:39:48.030284,Inaprubahan ng pamahalaan ng Japan ang panukalang national budget na nagkakahalaga ng ¥122.3 trilyon para sa taong 2026.,real,0.1000,model predicts real (p<=0.15)
+2025-12-26T10:40:23.558099,"The increased funding for digital agriculture in the 2026 Department of Agriculture (DA) budget will help prevent corruption similar to recent infrastructure scandals, including the controversial flood control projects, according to Sen. Francis Pangilinan.",real,0.1000,model predicts real (p<=0.15)
+2025-12-26T10:42:25.352275,"LOOK: Full house cinema for the ""I'mPerfect"" screening with the cast members and creators personally thanking the moviegoers.",real,0.1000,model predicts real (p<=0.15)
+2025-12-26T10:44:41.214217,"LOOK: Full house cinema for the ""I'mPerfect"" screening with the cast members and creators personally thanking the moviegoers.",real,0.1000,model predicts real (p<=0.15)
+2025-12-26T10:45:34.342118,"California Gov. Gavin Newsom has issued a state of emergency in Los Angeles, Orange, Riverside, San Bernardino, San Diego and Shasta counties as storms slam parts of the state with heavy rain.
+
+More than 41 million people across California, southern Nevada and northwest Arizona were under flood advisories on Wednesday.",real,0.1000,model predicts real (p<=0.15)
+2025-12-26T10:49:21.067704,fuck you,fake,0.5000,model predicts fake (p>=0.2113)
+2025-12-26T10:51:44.596570,fuck you mother fucker,fake,0.5000,model predicts fake (p>=0.2113)
+2025-12-26T10:52:33.053964,Some idiot said the president is dead but it's bullshit!,fake,0.5000,model predicts fake (p>=0.2113)
+2025-12-26T11:10:42.752191,"Some idiot claimed the president is dead, but it's bullshit!",real,0.1000,model predicts real (p<=0.15)
+2025-12-26T11:13:41.001415,"Diosdado “Dado” Banatao, a decorated electrical engineer and Silicon Valley pioneer who became one of the most influential Filipinos in global technology, died on Christmas Day after complications from an undisclosed neurological disorder. He was 79.",real,0.1000,model predicts real (p<=0.15)
+2025-12-26T11:31:52.706908,fuck you,fake,0.8500,model predicts fake (p>=0.2113)
+2025-12-26T11:32:12.002722,fuck you mother fucker,fake,0.8500,model predicts fake (p>=0.2113)
+2025-12-26T11:36:45.671723,Some idiot said the president is dead but it's bullshit and that guy is a bastard!,real,0.1000,model predicts real (p<=0.15)
+2025-12-26T11:37:40.533733,"The Philippine National Police (PNP) reported that one individual was killed by a stray bullet in Tondo, Manila, during a drinking spree on Christmas Eve.",real,0.1000,model predicts real (p<=0.15)
+2025-12-26T11:44:42.958882,Some idiot said the president is dead but it's bullshit and that guy is a bastard!,real,0.1000,model predicts real (p<=0.15)
+2025-12-26T11:48:06.594911,Some idiot said the president is dead but it's bullshit and that guy is a bastard!,real,0.1000,model predicts real (p<=0.15)
+2025-12-26T11:52:25.116313,Some idiot said the president is dead but it's bullshit and that guy is a bastard!,real,0.1000,model predicts real (p<=0.15)
+2025-12-26T12:03:55.650902,"The Archdiocese of Palo, Leyte has reported that one of its priests, Rev. Fr. Edwin “Kutz” A. Caintoy, has been missing since Tuesday, December 23, prompting coordination with authorities and an appeal for public assistance.",real,0.1000,model predicts real (p<=0.15)
+2025-12-26T12:10:31.591523,"IT’S OFFICIAL… I AM A WIFE!' 💍 🥹
+
+LOOK: “Pinoy Big Brother” alum Joj Agpangan is officially a wife as she revealed she already tied the knot with her non-showbiz fiancé Danny at a ceremony held last September in Texas, United States.
+
+“One of the best Christmas gifts I could ever ask for,” she said. “From Ms. to Mrs. and officially entering my soft life era.” | 📸: Agpangan/Instagram",real,0.1000,model predicts real (p<=0.15)
+2025-12-26T12:17:20.566525,"Kris Aquino was all smiles in a new Christmas photo, delighting supporters who have been eagerly waiting for a much-anticipated update on the ""Queen of All Media.""",fake,0.8500,model predicts fake (p>=0.2113)
+2025-12-26T12:18:05.864154,"Vice President Sara Duterte on Monday denied having any ties with her alleged former aide Ramil Madriaga, calling his exposé an attempt to undermine her possible presidential bid in the 2028 elections.",fake,0.8500,model predicts fake (p>=0.2113)
+2025-12-26T12:19:29.242552,"Korean actors and celebrity couple Shin Min-ah and Kim Woo-bin officially married on Saturday, AM Entertainment announced on Instagram.",fake,0.8500,model predicts fake (p>=0.2113)
+2025-12-26T12:19:59.009130,"Can character assassination be considered a security threat that warrants the immediate take down of posts on social media?
+
+Sen. Robin Padilla raised this query on Monday as the Senate committee on public information and mass media tackled various measures aimed at combatting the spread of fake news in the country.",real,0.1000,model predicts real (p<=0.15)
+2025-12-26T12:21:26.973126,"While Sen. Ping Lacson proposed a late but corruption-proof 2026 national budget, Palace Press Officer Claire Castro said that President Ferdinand Marcos Jr. does not want a reenacted budget and that there is still enough time to deliberate on it.",real,0.1000,model predicts real (p<=0.15)
+2025-12-26T12:22:35.289835,"Bukod sa paggawa ng paputok, kilala rin ang Bocaue, Bulacan sa engrande nitong pagoda fluvial procession tuwing Hulyo.
+
+Sa kabila ng makulay nitong parada ay nakadikit ang trahedyang nangyari noong 1993.",fake,0.8500,model predicts fake (p>=0.2113)
+2025-12-26T12:23:16.021606,"After projecting an image of “unity” when they ran for the nation’s two highest offices, the partnership between President Ferdinand Marcos Jr. and Vice President Sara Duterte has deteriorated beyond repair by the end of 2025.",real,0.1000,model predicts real (p<=0.15)
+2025-12-27T02:53:50.952823,"The net trust rating of President Marcos dropped to -3 in November from +7 in September, while Vice President Sara Duterte’s net trust rating slightly increased to +31 from +25, according to a recent commissioned survey conducted by the Social Weather Stations.",real,0.1000,model predicts real (p<=0.15)
+2025-12-27T03:28:49.812141,"“May pag-asa pa ba ang Pilipinas? May maaasahan pa ba ang mga Pilipino? Malinaw na oo, may pag-asa. Sapagkat ang pag-asa ay hindi mahahanap sa pangako ng tao o ideolohiya. Ang pag-asa ay manggagaling lamang sa Diyos na hindi niya pababayaan ang kanyang bayan,"" mensahe ni Manila Archbishop Jose Cardinal Advincula.",fake,0.8500,model predicts fake (p>=0.2113)
+2025-12-27T03:32:32.395494,Muling iginiit ni Davao City Rep. Paolo Duterte na lahat ng proyekto ng DPWH sa Davao City mula 2020 hanggang 2022 ay malinis umano at nakumpleto ng ahensiya.,fake,0.8500,model predicts fake (p>=0.2113)
+2025-12-27T03:54:33.868286,"Just like Christmas Day, former President Rodrigo Duterte will likely have to spend New Year’s Day without family visits because of the holiday visitation rules of the International Criminal Court (ICC) in The Hague, Netherlands.",real,0.1000,model predicts real (p<=0.15)
+2025-12-27T04:08:09.640176,"Iginiit ni Vice President Sara Duterte na ayaw at hindi niya babatiin si Pangulong Ferdinand Marcos Jr. ngayong Pasko.
+
+Aniya, hindi naman daw magbabago ang ugali niya at ng kanyang dating running mate ""kung Christmas o hindi.""",real,0.1000,model predicts real (p<=0.15)
+2025-12-27T05:58:03.842644,President Ferdinand Marcos Jr. has declared special non-working holidays in five more localities in the country for January 2026.,real,0.1000,model predicts real (p<=0.15)
+2025-12-27T08:02:26.076083,"Pumanaw na ang ""technopreneur"" na si Dado Banatao sa edad na 79.",real,0.5000
+2025-12-27T08:02:33.175484,"Pumanaw na ang ""technopreneur"" na si Dado Banatao sa edad na 79.",real,0.5000
+2025-12-27T08:02:35.861438,"Pumanaw na ang ""technopreneur"" na si Dado Banatao sa edad na 79.",real,0.5000
+2025-12-27T08:02:40.546365,"Pumanaw na ang ""technopreneur"" na si Dado Banatao sa edad na 79.",real,0.5000
+2025-12-27T08:18:24.602782,fhishdoifhds,fake,0.8500,model predicts fake (p>=0.2113)
+2025-12-27T08:20:09.334881,rodrigo duterter is arrested,fake,0.8500,authoritative fact-check indicates false
+2025-12-27T08:21:05.283659,"Pumanaw na ang ""technopreneur"" na si Dado Banatao sa edad na 79.",real,0.1000,model predicts real (p<=0.15)
+2025-12-27T08:22:33.574691,Former Malaysia prime minister Najib Razak was on Friday (Dec 26) found guilty of abusing his power by the Kuala Lumpur High Court in his long-running 1Malaysia Development Berhad (1MDB) case.,real,0.1000,model predicts real (p<=0.15)
+2025-12-27T08:24:55.789376,"Paalala ng mga abogado na maging maingat at responsable sa paggamit ng paputok, lalo na't panahon ng pagdiriwang kung kailan mas tumataas ang insidente ng aksidente.",fake,0.8500,model predicts fake (p>=0.2113)
+2025-12-27T08:25:25.995973,The Philippine Coast Guard (PCG) appeared dismissive of the touted assistance of the Chinese Navy towards a “frightened” Filipino fisherfolk off Zambales coast facing West Philippine Sea tension hotspot Panatag (Scarborough) Shoal.,fake,0.8500,model predicts fake (p>=0.2113)
+2025-12-27T08:25:57.095453,"UPDATE: Malacañang on the resignation of Commissioner Rosanna Fajardo from the ICI: ""She has already accomplished her tasks based on her mandate.""",real,0.1000,model predicts real (p<=0.15)
+2025-12-27T08:27:25.217603,Former President rodrigo roa duterte found dead in ICC,real,0.1000,model predicts real (p<=0.15)
+2025-12-28T04:45:09.900064,duterte is dead,fake,0.8500,authoritative fact-check indicates false
+2025-12-28T05:03:37.504924,"Ex-president Duterte is alive, in ICC custody",fake,0.9800,model predicts fake (p>=0.2113)
+2025-12-28T05:15:24.891997,Duterte is not free to spend Christmas in PH,fake,0.9800,model predicts fake (p>=0.2113)
+2026-01-02T03:30:39.806131,today is holiday,fake,0.8500,model predicts fake (p>=0.2113)
+2026-01-02T03:32:15.166759,President Marcos declared War,fake,0.8500,model predicts fake (p>=0.2113)
+2026-01-02T03:57:19.328804,13th month pay,fake,0.9800,model predicts fake (p>=0.2113)
+2026-01-06T06:36:41.238704,"President Ferdinand Marcos Jr. on Monday signed the P6.793-trillion national budget for 2026 but vetoed seven of 10 unprogrammed appropriations (UAs), or P92.5 billion of UAs totaling P243.4 billion.",real,0.1000,model predicts real (p<=0.15)
+2026-01-06T06:37:58.420821,"The DFA highlighted that ""there is no evidence to suggest [the shooters] received training or underwent logistical preparation for their alleged attack"" during their visit to the Philippines, as pointed out by the Australian Federal Police Commissioner.",real,0.1000,model predicts real (p<=0.15)
+2026-01-06T06:38:55.275330,"Manila Mayor Isko Moreno announced the suspension of classes in all levels, both public and private, and work in government offices in the city on January 9, 2026, to celebrate the Feast of Jesus Nazareno. (Facebook/Manila PIO)",real,0.1000,model predicts real (p<=0.15)
+2026-01-06T06:39:23.751446,"Coco Martin and Julia Montes are returning to the big screen this 2026, more than a decade since their first film team-up in ""A Moment in Time.""",fake,0.8500,model predicts fake (p>=0.2113)
+2026-01-06T06:40:03.448803,"MARCOS SIGNS 2026 NATIONAL BUDGET
+
+President Ferdinand Marcos Jr. has signed the P6.793-trillion national budget for 2026 in a ceremony at Malacañang Palace on Monday, Jan. 5.",real,0.1000,model predicts real (p<=0.15)
+2026-01-06T06:41:30.470979,"South Korean President Lee Jae Myung began a state visit to China just hours after North Korea fired ballistic missiles. During the trip, Lee is expected to meet Chinese President Xi Jinping to discuss peace on the Korean Peninsula and stronger economic ties.",real,0.1000,model predicts real (p<=0.15)
+2026-01-06T06:42:10.154460,"On this day 16 years ago, Andal Ampatuan Jr. pleaded not guilty to the death of over 50 individuals, including journalists, in Maguindanao in what was considered the most gruesome political massacre in the country’s history.",fake,0.8500,model predicts fake (p>=0.2113)
+2026-01-06T06:43:09.242442,"Veteran South Korean actor Ahn Sung-ki has died after battling blood cancer, local media reported. He was 74.",fake,0.8500,model predicts fake (p>=0.2113)
+2026-01-06T10:16:47.295638,"Bumaba sa P11.6 bilyon ang kabuuang confidential funds sa P6.79-trillion 2026 national budget na nilagdaan ni Pangulong Ferdinand Marcos Jr., bagaman napanatili ang P4.5-bilyong alokasyon para sa Office of the President.",real,0.1000,model predicts real (p<=0.15)
+2026-01-06T10:20:43.666265,The International Criminal Court Pre-Trial Chamber I rejected former President Rodrigo Duterte’s appeal for disclosure of communications between the court’s registry and the independent panel of experts assessing whether he is able to stand trial.,fake,0.8500,model predicts fake (p>=0.2113)
+2026-01-08T04:08:11.777528,Pinabulaanan ng isang mambabatas ang alegasyong may pondo sa 2026 national budget na gagamitin para sa umano'y impeachment bid ni Vice President Sara Duterte,fake,0.8500,model predicts fake (p>=0.2113)
+2026-01-08T04:08:38.663316,Pinabulaanan ng isang mambabatas ang alegasyong may pondo sa 2026 national budget na gagamitin para sa umano'y impeachment bid ni Vice President Sara Duterte.,fake,0.8500,model predicts fake (p>=0.2113)
+2026-01-08T04:11:09.505131,"Nilagdaan ni PBBM ang General Appropriations Act (GAA) o Republic Act No. 12314, na naglalaan ng PhP6.793 trilyong national budget para sa Fiscal Year 2026 para sa pagpapalakas ng sektor ng edukasyon, serbisyong pangkalusugan, social security, at paglikha ng trabaho para sa mga Pilipino.",real,0.1000,model predicts real (p<=0.15)
+2026-01-08T04:12:02.102595,Sinabi ng NBI na patuloy ang kanilang paghahanap kay dating Ako Bicol representative Zaldy Co at imbestigasyon sa pagkamatay ni dating DPWH undersecretary Maria Catalina Cabral.,real,0.1000,model predicts real (p<=0.15)
+2026-01-08T04:13:15.585433,"Nilagdaan ni PBBM ang General Appropriations Act (GAA) o Republic Act No. 12314, na naglalaan ng PhP6.793 trilyong national budget para sa Fiscal Year 2026 para sa pagpapalakas ng sektor ng edukasyon, serbisyong pangkalusugan, social security, at paglikha ng trabaho para sa mga Pilipino.",real,0.1000,model predicts real (p<=0.15)
+2026-01-08T04:13:57.027671,"A total of 5,594 out of 11,420 examinees passed the #Bar2025, for a passing rate of 48.98%, as announced by Supreme Court (SC) Associate Justice Amy C. Lazaro-Javier, Chairperson of the 2025 Bar Examinations, during the release of the results at the SC Courtyard in Manila earlier.",real,0.1000,model predicts real (p<=0.15)
+2026-01-08T04:14:46.133962,"'THE LAW, AND THE COUNTRY, WILL STILL NEED YOU' ⚖️
+
+Sen. Kiko Pangilinan, chair of the Senate Committee on Justice and Human Rights, tells examinees of the 2025 Bar Examinations who didn’t make the cut that failing the Bar does not define their intelligence or potential, and encourages them to rest, regroup, and try again when they are ready",real,0.1000,model predicts real (p<=0.15)
+2026-01-08T04:16:53.308351,"P150.9 bilyon ang nakalaang pondo sa Unprogrammed Appropriations para sa National Budget ngayong taon, o ang 2026 General Appropriations Act (GAA). Pinakamaliit na 'ghost pork' allocation mula 2019 subalit dambuhala pa rin dahil ang UA ay daluyan ng korapsyon.",fake,0.8500,model predicts fake (p>=0.2113)
+2026-01-08T04:18:03.079403,US President Donald Trump and Secretary of State Marco Rubio say they want to free up the flow of Venezuelan oil to benefit Venezuelans after US forces abducted President Nicolas Maduro from Caracas.⁠,real,0.1000,model predicts real (p<=0.15)
+2026-01-08T04:19:17.590742,"Executive Secretary Ralph Recto encourages new bar passers to always do what is right even when it is difficult, and to let their integrity guide them in their profession, as the Supreme Court announces the 2025 bar examination results on Wednesday, January 7.",fake,0.8500,model predicts fake (p>=0.2113)
+2026-01-08T04:19:53.823583,"Executive Secretary Ralph Recto encourages new bar passers to always do what is right even when it is difficult, and to let their integrity guide them in their profession, as the Supreme Court announces the 2025 bar examination results on Wednesday, January 7.",fake,0.8500,model predicts fake (p>=0.2113)
+2026-01-08T04:21:12.038911,"President Ferdinand Marcos Jr. signs the Philippines’ P6.79-T national budget for 2026 on Monday, January 5, 2026.",fake,0.8500,model predicts fake (p>=0.2113)
+2026-01-08T04:21:33.452436,"The Office of the President will receive about P4.5 billion in confidential and intelligence funds for 2026, the fourth-consecutive year that it got the allocation under President Bongbong Marcos.",real,0.1000,model predicts real (p<=0.15)
+2026-01-08T04:27:43.188758,TINGNAN: Nakapwesto na sa Quirino Grandstand pero nakatakip pa ang Andas na gagamitin sa Traslacion 2026.,real,0.1000,model predicts real (p<=0.15)
+2026-01-08T04:28:09.558032,TINGNAN: Nakapwesto na sa Quirino Grandstand pero nakatakip pa ang Andas na gagamitin sa Traslacion 2026.,real,0.1000,model predicts real (p<=0.15)
+2026-01-08T04:29:12.503828,"The traditional “pahalik” or the kissing and touching of the image of Jesus Nazareno begins at the Quirino Grandstand on Wednesday, January 7.",real,0.1000,model predicts real (p<=0.15)
+2026-01-08T05:12:57.284849,"The traditional “pahalik” or the kissing and touching of the image of Jesus Nazareno begins at the Quirino Grandstand on Wednesday, January 7.",real,0.1000,model predicts real (p<=0.15)
+2026-01-08T05:14:19.160582,Former President Rodrigo Duterter found dead in ICC,fake,0.9800,model predicts fake (p>=0.2113)
+2026-02-22T08:33:12.470528,"Senator Risa Hontiveros on Saturday committed to help in providing livelihood assistance and sufficient medical equipment and infrastructure for the residents of the Pag-asa Island, a part of Kalayaan Island Group, emphasizing that the municipality being part of the Philippines must not be forgotten",fake,0.8500,model predicts fake (p>=0.2113)
+2026-02-22T08:33:47.017284,"Manon will take a break from KATSEYE's activities to focus on her health and well-being, her group said in a statement.",real,0.1000,model predicts real (p<=0.15)
+2026-02-22T08:38:50.240945,"President Ferdinand Marcos Jr. dismissed speculation that his visit to former Vice President Leni Robredo here was politically motivated, amid talks of possible alliances ahead of the 2028 elections.",real,0.1000,model predicts real (p<=0.15)
+2026-02-22T08:43:58.917435,Hamon ko sa kabataan at mga susunod na henerasyon: kailangan natin tumindig. Tayo ang People Power. Tayo ang may kapangyarihan na ayusin ang bayang ito”,real,0.1000,model predicts real (p<=0.15)
+2026-03-16T13:42:03.526362,fuel supply is until march 20,real,0.1000,model predicts real (p<=0.15)
+2026-03-16T13:44:24.585756,middle east tensions affecting oil markets,real,0.1000,model predicts real (p<=0.15)
+2026-03-16T13:47:32.238832,goverment announce that senior high school will bw remove starting next school year,real,0.1000,model predicts real (p<=0.15)
+2026-03-16T13:48:49.720006,goverment announce that senior high school will bw remove starting next school year,fake,0.9800,model predicts fake (p>=0.2113)
+2026-03-16T13:53:26.783954,si clarissa mae naa daw syay uyab,fake,0.8500,model predicts fake (p>=0.2113)
+2026-03-16T13:59:54.286524,there are people died because of immunization vaccine,fake,0.8500,model predicts fake (p>=0.2113)
+2026-03-16T14:00:50.523982,there is a kid died because of immunization vaccine,fake,0.8500,model predicts fake (p>=0.2113)
+2026-03-16T14:01:48.983203,there is a kid died because of immunization vaccine,fake,0.8500,model predicts fake (p>=0.2113)
+2026-03-16T14:03:43.941062,a patient died during the vaccination,fake,0.8500,model predicts fake (p>=0.2113)
+2026-03-16T14:05:48.384525,there no supply of oral polio vaccine in zamboanga peninsula,fake,0.8500,model predicts fake (p>=0.2113)
+2026-03-16T14:10:01.062917,duterte is in the philippines,fake,0.8500,model predicts fake (p>=0.2113)
+2026-03-16T14:11:46.676408,"DOH, health experts push for total vape ban to protect youth",fake,0.8500,model predicts fake (p>=0.2113)
+2026-03-16T14:16:30.590568,"DOH, health experts push for total vape ban to protect youth",fake,0.8500,model predicts fake (p>=0.2113)
+2026-03-16T14:16:50.771244,"DOH, health experts push for total vape ban to protect youth",fake,0.8500,model predicts fake (p>=0.2113)
+2026-03-17T14:48:16.611795,"Senator Risa Hontiveros highlighted that former president Rodrigo Duterte “chose an appropriate option,” especially as the International Criminal Court’s (ICC) role is to provide a venue for victims of the state. She also pressed that due process is being granted to Duterte, opposite of what the resolution claims.",real,0.1000,model predicts real (p<=0.15)
+2026-03-17T14:48:46.692792,"Senator Risa Hontiveros highlighted that former president Rodrigo Duterte “chose an appropriate option,” especially as the International Criminal Court’s (ICC) role is to provide a venue for victims of the state. She also pressed that due process is being granted to Duterte, opposite of what the resolution claims.",real,0.1000,model predicts real (p<=0.15)
+2026-03-17T14:50:07.086385,"Pitong taon na ang nakalipas mula nang pormal na umatras ang Pilipinas sa International Criminal Court (ICC).
+
+Alamin kung paano nagsimula ang ugnayan ng bansa sa hukuman at papel ng ilang Pinoy rito.",fake,0.8500,model predicts fake (p>=0.2113)
+2026-03-17T14:51:09.389822,𝘊𝘦𝘣𝘶’s newest world-class venue is ready to host 𝗔𝗦𝗘𝗔𝗡 𝟮𝟬𝟮𝟲 and put the 𝘗𝘩𝘪𝘭𝘪𝘱𝘱𝘪𝘯𝘦𝘴 on the global stage.,fake,0.8500,model predicts fake (p>=0.2113)
+2026-03-17T14:52:53.846551,"LANY is having three shows in the country, including stops in Cebu, Bulacan, and Davao for their ""soft"" world tour in November.",fake,0.8500,model predicts fake (p>=0.2113)
