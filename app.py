@@ -2,12 +2,17 @@ from flask import Flask, render_template, request, jsonify
 from main_hybrid import predict_and_retrieve
 import os
 
-app = Flask(__name__)
+# ✅ IMPORTANT: specify folders for Render
+app = Flask(__name__, template_folder="templates", static_folder="static")
+
 
 # ---------------- HOME ----------------
 @app.route("/")
 def home():
-    return render_template("index.html")
+    try:
+        return render_template("index.html")
+    except Exception as e:
+        return f"Error loading page: {str(e)}"
 
 
 # ---------------- PREDICT ----------------
@@ -38,7 +43,13 @@ def predict():
         })
 
 
+# ---------------- TEST ROUTE (DEBUG) ----------------
+@app.route("/test")
+def test():
+    return "Server is working!"
+
+
 # ---------------- RUN SERVER ----------------
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))  # IMPORTANT for Render
+    port = int(os.environ.get("PORT", 5000))  # for Render
     app.run(host="0.0.0.0", port=port)
