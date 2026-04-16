@@ -4,20 +4,27 @@ import os
 import requests
 import urllib.parse
 
+# ✅ Flask setup
 app = Flask(__name__, template_folder="templates", static_folder="static")
+
+# ✅ GET API KEY FROM RENDER
+GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 
 
 # ---------------- FACT CHECK FUNCTION ----------------
 def get_fact_check_links(query):
     url = "https://factchecktools.googleapis.com/v1alpha1/claims:search"
 
+    if not GOOGLE_API_KEY:
+        return []
+
     params = {
         "query": query,
-        "key": "YOUR_API_KEY"  # 🔥 BUTANGI IMONG GOOGLE API KEY
+        "key": GOOGLE_API_KEY   # ✅ FIXED (no more hardcoded)
     }
 
     try:
-        response = requests.get(url, params=params)
+        response = requests.get(url, params=params, timeout=8)
         links = []
 
         if response.status_code == 200:
@@ -32,7 +39,8 @@ def get_fact_check_links(query):
 
         return links
 
-    except:
+    except Exception as e:
+        print("FACTCHECK ERROR:", e)
         return []
 
 
@@ -61,18 +69,17 @@ def predict():
                 "links": []
             })
 
-        # 🔥 AI RESULT
+        # ✅ AI RESULT
         result = predict_and_retrieve(text)
 
-        # 🔥 FACT CHECK LINKS
+        # ✅ FACT CHECK LINKS
         links = get_fact_check_links(text)
 
-        # 🔥 FALLBACK (kung walay API result)
+        # ✅ FALLBACK GOOGLE SEARCH
         if not links:
             query = urllib.parse.quote(text)
             links = [f"https://www.google.com/search?q={query}"]
 
-        # 🔥 ADD LINKS TO RESULT
         result["links"] = links
 
         return jsonify(result)
