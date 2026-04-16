@@ -66,7 +66,7 @@ def rss_match(text):
     ensure_rss_cache()
     results = []
     for e in _RSS_CACHE["entries"]:
-        if text.lower() in e["title"].lower():
+        if any(word in e["title"].lower() for word in text.lower().split()):
             results.append(e)
     return results[:5]
 
@@ -142,19 +142,19 @@ def predict_and_retrieve(text):
                 "related":related
             }
 
-    # 2️⃣ RSS MATCH (STRONG REAL SIGNAL)
+    # 2️⃣ RSS MATCH (IMPROVED 🔥)
     rss = rss_match(text)
     if rss:
         score += 2
         related.extend(rss)
 
-    # 3️⃣ GNEWS MATCH (MEDIUM REAL SIGNAL)
+    # 3️⃣ GNEWS MATCH
     news = call_gnews(text)
     if news:
         score += 1
         related.extend(news)
 
-    # 🎯 FINAL DECISION (BALANCED LOGIC)
+    # 🎯 FINAL DECISION (INSIDE FUNCTION NA 🔥)
     if score >= 2:
         return {
             "label":"real",
@@ -166,15 +166,15 @@ def predict_and_retrieve(text):
     elif score == 1:
         return {
             "label":"real",
-            "fake_prob":0.4,
+            "fake_prob":0.35,
             "message":"Some sources found",
             "related":related[:5]
         }
 
     else:
         return {
-        "label":"real",
-        "fake_prob":0.5,
-        "message":"Uncertain (no strong evidence found)",
-        "related":[]
-    }
+            "label":"real",
+            "fake_prob":0.55,
+            "message":"No strong evidence found (defaulting to real)",
+            "related":[]
+        }
