@@ -1,26 +1,13 @@
-# main_hybrid.py
-
-import os, re, time, json, requests, feedparser
-from urllib.parse import urlparse
+import os, time, json, requests, feedparser
 from dotenv import load_dotenv
 
 load_dotenv()
 
-# ✅ FIXED ENV VARIABLE
 FACTCHECK_API_KEY = os.getenv("GOOGLE_API_KEY")
 GNEWS_API_KEY = os.getenv("GNEWS_API_KEY")
-NEWSDATA_API_KEY = os.getenv("NEWSDATA_API_KEY")
 
 FACTCHECK_BASE = "https://factchecktools.googleapis.com/v1alpha1/claims:search"
 GNEWS_BASE = "https://gnews.io/api/v4/search"
-
-# ---------------- safe logger ----------------
-def _safe_write(file, payload):
-    try:
-        with open(file, "a", encoding="utf-8") as fh:
-            fh.write(json.dumps(payload, ensure_ascii=False) + "\n")
-    except:
-        pass
 
 # ---------------- RSS ----------------
 RSS_FEEDS = [
@@ -29,14 +16,6 @@ RSS_FEEDS = [
     "https://www.gmanetwork.com/news/?format=xml",
     "https://www.philstar.com/rss/headlines",
     "https://news.abs-cbn.com/rss/feeds/news.xml",
-    "https://www.officialgazette.gov.ph/feeds/",
-
-    # international
-    "http://feeds.bbci.co.uk/news/world/rss.xml",
-    "http://feeds.reuters.com/Reuters/worldNews",
-    "https://rss.cnn.com/rss/edition_world.rss",
-    "https://www.aljazeera.com/xml/rss/all.xml",
-    "https://apnews.com/rss",   # ✅ FIXED COMMA
 ]
 
 _RSS_CACHE = {"timestamp": 0, "ttl": 600, "entries": []}
@@ -46,12 +25,10 @@ def fetch_rss_feeds():
     for u in RSS_FEEDS:
         try:
             d = feedparser.parse(u)
-            for e in d.entries[:100]:
+            for e in d.entries[:50]:
                 entries.append({
                     "title": e.get("title", ""),
-                    "url": e.get("link", ""),
-                    "summary": e.get("summary", ""),
-                    "source": d.feed.get("title", "RSS")
+                    "url": e.get("link", "")
                 })
         except:
             continue
@@ -104,8 +81,7 @@ def call_gnews(text):
             "token": GNEWS_API_KEY,
             "max": 5
         })
-        data = r.json()
-        return data.get("articles", [])
+        return r.json().get("articles", [])
     except:
         return []
 
@@ -118,43 +94,48 @@ def predict_and_retrieve(text):
     score = 0
     related = []
 
-    # 1️⃣ FACTCHECK (STRONG SIGNAL)
+    # 🔥 FACTCHECK
     fc = call_factcheck_api(text)
     fc_data = extract_factcheck(fc)
 
     if fc_data:
         rating = fc_data["rating"].lower()
+        title = fc_data["title"].lower()
         related.append(fc_data)
 
-        if "false" in rating or "misleading" in rating:
-            return {
-                "label":"fake",
-                "fake_prob":0.95,
-                "message":rating,
-                "related":related
-            }
+        words = text.lower().split()
+        is_related = any(word in title for word in words)
 
-        if "true" in rating:
-            return {
-                "label":"real",
-                "fake_prob":0.05,
-                "message":rating,
-                "related":related
-            }
+        if is_related:
+            if "false" in rating or "misleading" in rating:
+                return {
+                    "label":"fake",
+                    "fake_prob":0.95,
+                    "message":rating,
+                    "related":related
+                }
 
-    # 2️⃣ RSS MATCH (IMPROVED 🔥)
+            if "true" in rating:
+                return {
+                    "label":"real",
+                    "fake_prob":0.05,
+                    "message":rating,
+                    "related":related
+                }
+
+    # 🔥 RSS
     rss = rss_match(text)
     if rss:
         score += 2
         related.extend(rss)
 
-    # 3️⃣ GNEWS MATCH
+    # 🔥 GNEWS
     news = call_gnews(text)
     if news:
         score += 1
         related.extend(news)
 
-    # 🎯 FINAL DECISION (INSIDE FUNCTION NA 🔥)
+    # 🔥 FINAL DECISION
     if score >= 2:
         return {
             "label":"real",
@@ -175,6 +156,6 @@ def predict_and_retrieve(text):
         return {
             "label":"real",
             "fake_prob":0.55,
-            "message":"No strong evidence found (defaulting to real)",
+            "message":"No strong evidence found",
             "related":[]
         }
