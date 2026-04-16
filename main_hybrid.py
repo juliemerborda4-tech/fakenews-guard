@@ -115,19 +115,23 @@ def predict_and_retrieve(text):
     if not text.strip():
         return {"label":"error","fake_prob":0.5,"message":"No input","related":[]}
 
-    # 1️⃣ FACTCHECK
+    score = 0
+    related = []
+
+    # 1️⃣ FACTCHECK (STRONG SIGNAL)
     fc = call_factcheck_api(text)
     fc_data = extract_factcheck(fc)
 
     if fc_data:
         rating = fc_data["rating"].lower()
+        related.append(fc_data)
 
         if "false" in rating or "misleading" in rating:
             return {
                 "label":"fake",
                 "fake_prob":0.95,
                 "message":rating,
-                "related":[fc_data]
+                "related":related
             }
 
         if "true" in rating:
@@ -135,32 +139,42 @@ def predict_and_retrieve(text):
                 "label":"real",
                 "fake_prob":0.05,
                 "message":rating,
-                "related":[fc_data]
+                "related":related
             }
 
-    # 2️⃣ RSS
+    # 2️⃣ RSS MATCH (STRONG REAL SIGNAL)
     rss = rss_match(text)
     if rss:
+        score += 2
+        related.extend(rss)
+
+    # 3️⃣ GNEWS MATCH (MEDIUM REAL SIGNAL)
+    news = call_gnews(text)
+    if news:
+        score += 1
+        related.extend(news)
+
+    # 🎯 FINAL DECISION (BALANCED LOGIC)
+    if score >= 2:
         return {
             "label":"real",
-            "fake_prob":0.1,
-            "message":"Found in news sources",
-            "related":rss
+            "fake_prob":0.2,
+            "message":"Found in multiple sources",
+            "related":related[:5]
         }
 
-    # 3️⃣ GNEWS
-    news = call_gnews(text)
-    if not news:
+    elif score == 1:
+        return {
+            "label":"real",
+            "fake_prob":0.4,
+            "message":"Some sources found",
+            "related":related[:5]
+        }
+
+    else:
         return {
             "label":"fake",
-            "fake_prob":0.85,
-            "message":"No sources found",
+            "fake_prob":0.75,
+            "message":"No strong evidence found",
             "related":[]
         }
-
-    return {
-        "label":"real",
-        "fake_prob":0.2,
-        "message":"Found related articles",
-        "related":news
-    }
