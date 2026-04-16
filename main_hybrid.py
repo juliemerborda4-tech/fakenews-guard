@@ -173,8 +173,8 @@ def predict_and_retrieve(text):
 
     else:
         return {
-            "label":"fake",
-            "fake_prob":0.75,
-            "message":"No strong evidence found",
-            "related":[]
-        }
+        "label":"real",
+        "fake_prob":0.5,
+        "message":"Uncertain (no strong evidence found)",
+        "related":[]
+    }
