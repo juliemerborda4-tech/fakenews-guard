@@ -8,14 +8,14 @@
 
 <div class="container">
 
-    <h1>🛡 FakeNewsGuard</h1>
-     <p class="subtitle">🤖 AI-powered misinformation detection system</p>
+    <h1>FakeNewsGuard</h1>
+    <p class="subtitle">AI-powered misinformation detection system</p>
 
     <textarea id="news" placeholder="Paste news here..."></textarea>
 
     <button onclick="predict()">Analyze News</button>
 
-    <!--  LOADING -->
+    <!-- LOADING -->
     <p id="loading" class="hidden">Analyzing... Please wait ⏳</p>
 
     <div id="result-box" class="hidden">
@@ -36,13 +36,13 @@
 function predict() {
     let text = document.getElementById("news").value;
 
-    //  VALIDATION (IMPORTANT)
+    // VALIDATION
     if (text.trim() === "") {
         alert("Please enter news text first!");
         return;
     }
 
-    //  SHOW LOADING
+    // SHOW LOADING
     document.getElementById("loading").classList.remove("hidden");
     document.getElementById("result-box").classList.add("hidden");
 
@@ -54,7 +54,7 @@ function predict() {
     .then(res => res.json())
     .then(data => {
 
-        //  HIDE LOADING
+        // HIDE LOADING
         document.getElementById("loading").classList.add("hidden");
         document.getElementById("result-box").classList.remove("hidden");
 
@@ -63,15 +63,16 @@ function predict() {
         let percent = document.getElementById("percent");
         let related = document.getElementById("related");
 
+        // RESULT
         if (data.label === "fake") {
-            result.innerText = "⚠ FAKE NEWS";
+            result.innerText = "Fake News Detected";
             result.style.color = "#dc2626";
             let p = data.fake_prob * 100;
             progress.style.width = p + "%";
             percent.innerText = p.toFixed(2) + "% fake";
 
         } else {
-            result.innerText = "✔ REAL NEWS";
+            result.innerText = "Verified as Real News";
             result.style.color = "#16a34a";
             let p = (1 - data.fake_prob) * 100;
             progress.style.width = p + "%";
@@ -80,7 +81,7 @@ function predict() {
 
         related.innerHTML = "";
 
-        //  RELATED NEWS (clean display)
+        // RELATED NEWS
         if (data.label === "fake" && data.related.length > 0) {
             related.innerHTML += "<h3>Verify from trusted sources:</h3>";
 
@@ -88,28 +89,30 @@ function predict() {
                 related.innerHTML += `
                     <div class="card">
                         <strong>${item.title}</strong>
-                        <a href="${item.url}" target="_blank">🔗 View Source</a>
+                        <a href="${item.url}" target="_blank">View Source</a>
                     </div>
                 `;
             });
         }
 
-        //  FACT CHECK LINKS (clean version)
+        // SUPPORTING LINKS (LIST FORMAT)
         if (data.links && data.links.length > 0) {
-            related.innerHTML += "<h3>🔗 Supporting Evidence:</h3>";
+            related.innerHTML += "<h3>Supporting Evidence:</h3><ul class='link-list'>";
 
             data.links.forEach(link => {
                 related.innerHTML += `
-                    <div class="card">
-                        <a href="${link}" target="_blank">🔗 View Source</a>
-                    </div>
+                    <li>
+                        <a href="${link}" target="_blank">${link}</a>
+                    </li>
                 `;
             });
+
+            related.innerHTML += "</ul>";
         }
 
     })
     .catch(error => {
-        //  ERROR HANDLING (VERY IMPORTANT)
+        // ERROR HANDLING
         document.getElementById("loading").classList.add("hidden");
         alert("Something went wrong. Please try again.");
         console.error(error);
