@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>FakeNewsGuard System</title>
-    <link rel="stylesheet" href="/static/style.css?v=final">
+    <link rel="stylesheet" href="/static/style.css?v=5">
 </head>
 <body>
 
@@ -16,7 +16,7 @@
     <button onclick="predict()">Analyze News</button>
 
     <!-- LOADING -->
-    <p id="loading" class="hidden">Analyzing... Please wait ⏳</p>
+    <p id="loading" class="hidden">Analyzing... Please wait...</p>
 
     <div id="result-box" class="hidden">
         <h2 id="result"></h2>
@@ -36,13 +36,11 @@
 function predict() {
     let text = document.getElementById("news").value;
 
-    // VALIDATION
     if (text.trim() === "") {
         alert("Please enter news text first!");
         return;
     }
 
-    // SHOW LOADING
     document.getElementById("loading").classList.remove("hidden");
     document.getElementById("result-box").classList.add("hidden");
 
@@ -54,7 +52,6 @@ function predict() {
     .then(res => res.json())
     .then(data => {
 
-        // HIDE LOADING
         document.getElementById("loading").classList.add("hidden");
         document.getElementById("result-box").classList.remove("hidden");
 
@@ -70,7 +67,6 @@ function predict() {
             let p = data.fake_prob * 100;
             progress.style.width = p + "%";
             percent.innerText = p.toFixed(2) + "% fake";
-
         } else {
             result.innerText = "Verified as Real News";
             result.style.color = "#16a34a";
@@ -79,40 +75,46 @@ function predict() {
             percent.innerText = p.toFixed(2) + "% real";
         }
 
+        // CLEAR OLD CONTENT
         related.innerHTML = "";
 
-        // RELATED NEWS
-        if (data.label === "fake" && data.related.length > 0) {
-            related.innerHTML += "<h3>Verify from trusted sources:</h3>";
+        // RELATED NEWS (ONLY IF FAKE)
+        if (data.label === "fake" && data.related && data.related.length > 0) {
+            let html = "<h3>Verify from trusted sources:</h3>";
 
             data.related.forEach(item => {
-                related.innerHTML += `
+                html += `
                     <div class="card">
-                        <strong>${item.title}</strong>
-                        <a href="${item.url}" target="_blank">View Source</a>
+                        <strong>${item.title}</strong><br>
+                        <a href="${item.url}" target="_blank">Open Source</a>
                     </div>
                 `;
             });
+
+            related.innerHTML += html;
         }
 
-        // SUPPORTING LINKS (LIST FORMAT)
+        // SUPPORTING LINKS (LIST FORMAT CLEAN)
         if (data.links && data.links.length > 0) {
-            related.innerHTML += "<h3>Supporting Evidence:</h3><ul class='link-list'>";
+            let html = "<h3>Supporting Evidence:</h3><ul class='link-list'>";
 
             data.links.forEach(link => {
-                related.innerHTML += `
+                let shortLink = link.length > 60 ? link.substring(0, 60) + "..." : link;
+
+                html += `
                     <li>
-                        <a href="${link}" target="_blank">${link}</a>
+                        <a href="${link}" target="_blank">${shortLink}</a>
                     </li>
                 `;
             });
 
-            related.innerHTML += "</ul>";
+            html += "</ul>";
+
+            related.innerHTML += html;
         }
 
     })
     .catch(error => {
-        // ERROR HANDLING
         document.getElementById("loading").classList.add("hidden");
         alert("Something went wrong. Please try again.");
         console.error(error);
