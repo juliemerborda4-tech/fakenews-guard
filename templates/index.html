@@ -2,21 +2,178 @@
 <html>
 <head>
     <title>FakeNewsGuard System</title>
-    <link rel="stylesheet" href="/static/style.css?v=5">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #7c3aed, #c026d3, #ec4899);
+            background-size: 300% 300%;
+            animation: gradientMove 8s ease infinite;
+            color: white;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            background: rgba(0, 0, 0, 0.65);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 650px;
+            margin: 60px auto;
+            box-shadow: 0 0 50px rgba(0,0,0,0.6);
+            animation: floatBox 4s ease-in-out infinite;
+        }
+
+        @keyframes floatBox {
+            0%,100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            text-shadow: 
+                0 0 10px #fff,
+                0 0 20px #ec4899,
+                0 0 30px #7c3aed;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #fbcfe8;
+            margin-bottom: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 140px;        /* ✅ bigger */
+            max-height: 300px;
+            resize: none;             /* auto expand instead */
+
+            padding: 15px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.2);
+            outline: none;
+            background: rgba(0,0,0,0.4);
+            color: white;
+            font-size: 14px;
+            margin-bottom: 15px;
+
+            box-sizing: border-box;
+        }
+
+        button {
+            background: linear-gradient(90deg, #ec4899, #7c3aed, #ec4899);
+            background-size: 200% 200%;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 999px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            display: block;
+            margin: auto;
+            animation: gradientBtn 3s infinite;
+        }
+
+        @keyframes gradientBtn {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px #ec4899;
+        }
+
+        #loading {
+            text-align: center;
+            margin-top: 10px;
+            color: #fde68a;
+            font-weight: bold;
+            animation: typing 1.2s infinite;
+        }
+
+        @keyframes typing {
+            0% { opacity: 0.3; }
+            50% { opacity: 1; }
+            100% { opacity: 0.3; }
+        }
+
+        .progress-bar {
+            background: rgba(255,255,255,0.2);
+            height: 12px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        #progress {
+            height: 100%;
+            width: 0%;
+            border-radius: 10px;
+            transition: width 0.6s ease;
+        }
+
+        #result {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 20px;
+        }
+
+        #percent {
+            text-align: center;
+            margin-top: 8px;
+            font-weight: bold;
+        }
+
+        #related {
+            margin-top: 15px;
+        }
+
+        a {
+            color: #fde68a;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        footer {
+            margin-top: 30px;
+            padding: 15px;
+            text-align: center;
+            font-size: 14px;
+            color: #fbcfe8;
+        }
+
+        hr {
+            margin-bottom: 10px;
+            opacity: 0.2;
+        }
+    </style>
 </head>
+
 <body>
 
 <div class="container">
 
-    <h1>FakeNewsGuard</h1>
+    <h1>🤖 FakeNewsGuard</h1>
     <p class="subtitle">AI-powered misinformation detection system</p>
 
     <textarea id="news" placeholder="Paste news here..."></textarea>
 
-    <button onclick="predict()">Analyze News</button>
+    <button onclick="predict()">🚀 Analyze News</button>
 
-    <!-- LOADING -->
-    <p id="loading" class="hidden">Analyzing... Please wait...</p>
+    <p id="loading" class="hidden">🔍 Analyzing...</p>
 
     <div id="result-box" class="hidden">
         <h2 id="result"></h2>
@@ -32,9 +189,36 @@
 
 </div>
 
+<footer>
+    <hr>
+    <div>
+        <strong>Developed by:</strong><br>
+        AIMEE JANE S. ANSING<br>
+        JULIEMER T. BORDA<br>
+        NURMIRA A. DULLAH
+    </div>
+    <div style="margin-top: 8px;">
+        Bachelor of Science in Computer Science<br>
+        Jose Rizal Memorial State University - Siocon Campus
+    </div>
+    <div style="margin-top: 5px; font-size: 12px; color: #f9a8d4;">
+        © 2026 FakeNewsGuard System
+    </div>
+</footer>
+
 <script>
+
+//  AUTO EXPAND TEXTAREA
+const textarea = document.getElementById("news");
+
+textarea.addEventListener("input", function () {
+    this.style.height = "auto";
+    this.style.height = this.scrollHeight + "px";
+});
+
+// 🔍 PREDICT FUNCTION
 function predict() {
-    let text = document.getElementById("news").value;
+    let text = textarea.value;
 
     if (text.trim() === "") {
         alert("Please enter news text first!");
@@ -60,64 +244,48 @@ function predict() {
         let percent = document.getElementById("percent");
         let related = document.getElementById("related");
 
-        // RESULT
-        if (data.label === "fake") {
-            result.innerText = "Fake News Detected";
-            result.style.color = "#dc2626";
-            let p = data.fake_prob * 100;
-            progress.style.width = p + "%";
-            percent.innerText = p.toFixed(2) + "% fake";
-        } else {
-            result.innerText = "Verified as Real News";
-            result.style.color = "#16a34a";
-            let p = (1 - data.fake_prob) * 100;
-            progress.style.width = p + "%";
-            percent.innerText = p.toFixed(2) + "% real";
+        let label = (data.label || "").toLowerCase().trim();
+        let confidence = data.confidence || 0;
+        
+        if (label === "fake") {
+            result.innerText = "❌ Fake News Detected";
+            result.style.color = "#ff1e1e";
+            result.style.textShadow = "0 0 10px #ff1e1e";
+        } else if (label === "real") {
+            result.innerText = "✅ Verified as Real News";
+            result.style.color = "#00ff88";
+            result.style.textShadow = "0 0 10px #00ff88";
         }
 
-        // CLEAR OLD CONTENT
+        if (label === "real") {
+            percent.innerText = confidence.toFixed(2) + "% confidence";
+            percent.style.color = "#00ff88";
+            progress.style.background = "#00ff88";
+        } else {
+            percent.innerText = confidence.toFixed(2) + "% confidence";
+            percent.style.color = "#ff1e1e";
+            progress.style.background = "#ff1e1e";
+        }
+
+        progress.style.width = confidence + "%";
+
         related.innerHTML = "";
 
-        // RELATED NEWS (ONLY IF FAKE)
-        if (data.label === "fake" && data.related && data.related.length > 0) {
-            let html = "<h3>Verify from trusted sources:</h3>";
+        if (label === "real") {
+            if (data.links && data.links.length > 0) {
+                let html = "<h3>📎 Supporting Evidence:</h3><ul>";
 
-            data.related.forEach(item => {
-                html += `
-                    <div class="card">
-                        <strong>${item.title}</strong><br>
-                        <a href="${item.url}" target="_blank">Open Source</a>
-                    </div>
-                `;
-            });
+                data.links.forEach(link => {
+                    html += `<li><a href="${link}" target="_blank">${link}</a></li>`;
+                });
 
-            related.innerHTML += html;
+                html += "</ul>";
+                related.innerHTML = html;
+            } else {
+                related.innerHTML = "<p style='color:#fbcfe8;'>No supporting links found.</p>";
+            }
         }
 
-        // SUPPORTING LINKS (LIST FORMAT CLEAN)
-        if (data.links && data.links.length > 0) {
-            let html = "<h3>Supporting Evidence:</h3><ul class='link-list'>";
-
-            data.links.forEach(link => {
-                let shortLink = link.length > 60 ? link.substring(0, 60) + "..." : link;
-
-                html += `
-                    <li>
-                        <a href="${link}" target="_blank">${shortLink}</a>
-                    </li>
-                `;
-            });
-
-            html += "</ul>";
-
-            related.innerHTML += html;
-        }
-
-    })
-    .catch(error => {
-        document.getElementById("loading").classList.add("hidden");
-        alert("Something went wrong. Please try again.");
-        console.error(error);
     });
 }
 </script>
