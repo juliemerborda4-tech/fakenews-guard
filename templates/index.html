@@ -16,6 +16,7 @@
             background-size: 300% 300%;
             animation: gradientMove 8s ease infinite;
             color: white;
+
             display: flex;
             flex-direction: column;
         }
@@ -29,8 +30,8 @@
         .main-wrapper {
             flex: 1;
             display: flex;
+            flex-direction: column;
             justify-content: center;
-            align-items: center;
         }
 
         .container {
@@ -39,16 +40,25 @@
             border-radius: 20px;
             padding: 30px;
             max-width: 650px;
+            margin: 20px auto;
             width: 90%;
             box-shadow: 0 0 50px rgba(0,0,0,0.6);
+            animation: floatBox 4s ease-in-out infinite;
+        }
+
+        @keyframes floatBox {
+            0%,100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
         }
 
         h1 {
             text-align: center;
+            text-shadow: 0 0 10px #fff, 0 0 20px #ec4899, 0 0 30px #7c3aed;
         }
 
         .subtitle {
             text-align: center;
+            color: #fbcfe8;
             margin-bottom: 20px;
         }
 
@@ -57,27 +67,41 @@
             min-height: 140px;
             padding: 15px;
             border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.2);
             background: rgba(0,0,0,0.4);
             color: white;
             margin-bottom: 15px;
+            box-sizing: border-box;
         }
 
         button {
-            display: block;
-            margin: auto;
+            background: linear-gradient(90deg, #ec4899, #7c3aed, #ec4899);
+            border: none;
             padding: 12px 25px;
             border-radius: 999px;
-            border: none;
             color: white;
             font-weight: bold;
-            background: linear-gradient(90deg, #ec4899, #7c3aed);
             cursor: pointer;
+            display: block;
+            margin: auto;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px #ec4899;
+        }
+
+        #loading {
+            text-align: center;
+            margin-top: 10px;
+            color: #fde68a;
         }
 
         .progress-bar {
             background: rgba(255,255,255,0.2);
             height: 12px;
             border-radius: 10px;
+            overflow: hidden;
             margin-top: 10px;
         }
 
@@ -85,20 +109,27 @@
             height: 100%;
             width: 0%;
             border-radius: 10px;
+            transition: width 0.6s ease;
         }
 
         #result {
             text-align: center;
             margin-top: 15px;
+            font-size: 20px;
         }
 
         #percent {
             text-align: center;
-            margin-top: 5px;
+            margin-top: 8px;
+            font-weight: bold;
         }
 
         #related {
             margin-top: 15px;
+        }
+
+        a {
+            color: #fde68a;
         }
 
         .hidden {
@@ -106,13 +137,16 @@
         }
 
         footer {
-            text-align: center;
             margin-top: auto;
-            padding: 10px;
+            padding: 15px;
+            text-align: center;
+            font-size: 14px;
+            color: #fbcfe8;
         }
 
-        a {
-            color: yellow;
+        hr {
+            margin-bottom: 10px;
+            opacity: 0.2;
         }
     </style>
 </head>
@@ -120,6 +154,7 @@
 <body>
 
 <div class="main-wrapper">
+
 <div class="container">
 
     <h1>🤖 FakeNewsGuard</h1>
@@ -129,7 +164,7 @@
 
     <button onclick="predict()">🚀 Analyze News</button>
 
-    <p id="loading" class="hidden">Analyzing...</p>
+    <p id="loading" class="hidden">🔍 Analyzing...</p>
 
     <div id="result-box" class="hidden">
         <h2 id="result"></h2>
@@ -144,11 +179,24 @@
     </div>
 
 </div>
+
 </div>
 
 <footer>
-    Developed by:<br>
-    AIMEE • JULIEMER • NURMIRA
+    <hr>
+    <div>
+        <strong>Developed by:</strong><br>
+        AIMEE JANE S. ANSING<br>
+        JULIEMER T. BORDA<br>
+        NURMIRA A. DULLAH
+    </div>
+    <div style="margin-top: 8px;">
+        Bachelor of Science in Computer Science<br>
+        Jose Rizal Memorial State University - Siocon Campus
+    </div>
+    <div style="margin-top: 5px; font-size: 12px;">
+        © 2026 FakeNewsGuard System
+    </div>
 </footer>
 
 <script>
@@ -156,7 +204,7 @@ function predict() {
     const text = document.getElementById("news").value;
 
     if (!text.trim()) {
-        alert("Enter news first");
+        alert("Please enter news text");
         return;
     }
 
@@ -165,7 +213,9 @@ function predict() {
 
     fetch("/predict", {
         method: "POST",
-        headers: {"Content-Type": "application/json"},
+        headers: {
+            "Content-Type": "application/json"
+        },
         body: JSON.stringify({ text: text })
     })
     .then(res => res.json())
@@ -174,10 +224,15 @@ function predict() {
         document.getElementById("loading").classList.add("hidden");
         document.getElementById("result-box").classList.remove("hidden");
 
-        let confidence = 50;
+        // ✅ FIXED CONFIDENCE (NO MORE 9000%)
+        let confidence;
 
-        if (data.confidence !== undefined) {
+        if (data.fake_prob !== undefined && data.fake_prob !== null) {
+            confidence = Math.round(data.fake_prob * 100);
+        } else if (data.confidence !== undefined && data.confidence !== null) {
             confidence = Math.round(data.confidence);
+        } else {
+            confidence = 50;
         }
 
         let result = document.getElementById("result");
@@ -185,33 +240,27 @@ function predict() {
         let percent = document.getElementById("percent");
         let related = document.getElementById("related");
 
-        // RESULT
         if (data.label === "real") {
             result.innerHTML = "✅ Verified as Real News";
-            result.style.color = "lime";
-            progress.style.background = "lime";
+            result.style.color = "#4ade80";
+            progress.style.background = "#22c55e";
         } else {
             result.innerHTML = "❌ Fake News Detected";
-            result.style.color = "red";
-            progress.style.background = "red";
+            result.style.color = "#f87171";
+            progress.style.background = "#ef4444";
         }
 
         progress.style.width = confidence + "%";
         percent.innerText = confidence + "% confidence";
 
-        // LINKS FIXED
         related.innerHTML = "";
 
-        if (data.label === "real") {
-            related.innerHTML = "<b>Supporting Evidence:</b><ul>";
+        if (data.label === "real" && data.links && data.links.length > 0) {
+            related.innerHTML = "<strong>Supporting Evidence:</strong><ul>";
 
-            if (data.links && data.links.length > 0) {
-                data.links.forEach(link => {
-                    related.innerHTML += `<li><a href="${link}" target="_blank">${link}</a></li>`;
-                });
-            } else {
-                related.innerHTML += "<li>No sources found</li>";
-            }
+            data.links.forEach(link => {
+                related.innerHTML += `<li><a href="${link}" target="_blank">${link}</a></li>`;
+            });
 
             related.innerHTML += "</ul>";
         }
@@ -220,6 +269,7 @@ function predict() {
     .catch(err => {
         console.error(err);
         alert("Server error");
+        document.getElementById("loading").classList.add("hidden");
     });
 }
 </script>
