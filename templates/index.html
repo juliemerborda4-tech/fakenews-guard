@@ -4,13 +4,21 @@
     <title>FakeNewsGuard System</title>
 
     <style>
-        body {
+        html, body {
+            height: 100%;
             margin: 0;
+            padding: 0;
+        }
+
+        body {
             font-family: Arial, sans-serif;
             background: linear-gradient(135deg, #7c3aed, #c026d3, #ec4899);
             background-size: 300% 300%;
             animation: gradientMove 8s ease infinite;
             color: white;
+
+            display: flex;
+            flex-direction: column;
         }
 
         @keyframes gradientMove {
@@ -19,13 +27,21 @@
             100% { background-position: 0% 50%; }
         }
 
+        .main-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
         .container {
             background: rgba(0, 0, 0, 0.65);
             backdrop-filter: blur(15px);
             border-radius: 20px;
             padding: 30px;
             max-width: 650px;
-            margin: 60px auto;
+            margin: 20px auto;
+            width: 90%;
             box-shadow: 0 0 50px rgba(0,0,0,0.6);
             animation: floatBox 4s ease-in-out infinite;
         }
@@ -37,11 +53,7 @@
 
         h1 {
             text-align: center;
-            color: white;
-            text-shadow: 
-                0 0 10px #fff,
-                0 0 20px #ec4899,
-                0 0 30px #7c3aed;
+            text-shadow: 0 0 10px #fff, 0 0 20px #ec4899, 0 0 30px #7c3aed;
         }
 
         .subtitle {
@@ -52,41 +64,26 @@
 
         textarea {
             width: 100%;
-            min-height: 140px;        /* ✅ bigger */
-            max-height: 300px;
-            resize: none;             /* auto expand instead */
-
+            min-height: 140px;
             padding: 15px;
             border-radius: 12px;
             border: 1px solid rgba(255,255,255,0.2);
-            outline: none;
             background: rgba(0,0,0,0.4);
             color: white;
-            font-size: 14px;
             margin-bottom: 15px;
-
             box-sizing: border-box;
         }
 
         button {
             background: linear-gradient(90deg, #ec4899, #7c3aed, #ec4899);
-            background-size: 200% 200%;
             border: none;
             padding: 12px 25px;
             border-radius: 999px;
             color: white;
             font-weight: bold;
             cursor: pointer;
-            transition: 0.3s;
             display: block;
             margin: auto;
-            animation: gradientBtn 3s infinite;
-        }
-
-        @keyframes gradientBtn {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
         }
 
         button:hover {
@@ -98,14 +95,6 @@
             text-align: center;
             margin-top: 10px;
             color: #fde68a;
-            font-weight: bold;
-            animation: typing 1.2s infinite;
-        }
-
-        @keyframes typing {
-            0% { opacity: 0.3; }
-            50% { opacity: 1; }
-            100% { opacity: 0.3; }
         }
 
         .progress-bar {
@@ -148,7 +137,7 @@
         }
 
         footer {
-            margin-top: 30px;
+            margin-top: auto;
             padding: 15px;
             text-align: center;
             font-size: 14px;
@@ -163,6 +152,8 @@
 </head>
 
 <body>
+
+<div class="main-wrapper">
 
 <div class="container">
 
@@ -189,6 +180,8 @@
 
 </div>
 
+</div>
+
 <footer>
     <hr>
     <div>
@@ -201,27 +194,17 @@
         Bachelor of Science in Computer Science<br>
         Jose Rizal Memorial State University - Siocon Campus
     </div>
-    <div style="margin-top: 5px; font-size: 12px; color: #f9a8d4;">
+    <div style="margin-top: 5px; font-size: 12px;">
         © 2026 FakeNewsGuard System
     </div>
 </footer>
 
 <script>
-
-//  AUTO EXPAND TEXTAREA
-const textarea = document.getElementById("news");
-
-textarea.addEventListener("input", function () {
-    this.style.height = "auto";
-    this.style.height = this.scrollHeight + "px";
-});
-
-// 🔍 PREDICT FUNCTION
 function predict() {
-    let text = textarea.value;
+    const text = document.getElementById("news").value;
 
-    if (text.trim() === "") {
-        alert("Please enter news text first!");
+    if (!text.trim()) {
+        alert("Please enter news text");
         return;
     }
 
@@ -230,7 +213,9 @@ function predict() {
 
     fetch("/predict", {
         method: "POST",
-        headers: {"Content-Type": "application/json"},
+        headers: {
+            "Content-Type": "application/json"
+        },
         body: JSON.stringify({ text: text })
     })
     .then(res => res.json())
@@ -239,53 +224,52 @@ function predict() {
         document.getElementById("loading").classList.add("hidden");
         document.getElementById("result-box").classList.remove("hidden");
 
+        //  FIXED CONFIDENCE (NO MORE 9000%)
+        let confidence;
+
+        if (data.fake_prob !== undefined && data.fake_prob !== null) {
+            confidence = Math.round(data.fake_prob * 100);
+        } else if (data.confidence !== undefined && data.confidence !== null) {
+            confidence = Math.round(data.confidence);
+        } else {
+            confidence = 50;
+        }
+
         let result = document.getElementById("result");
         let progress = document.getElementById("progress");
         let percent = document.getElementById("percent");
         let related = document.getElementById("related");
 
-        let label = (data.label || "").toLowerCase().trim();
-        let confidence = data.confidence || 0;
-        
-        if (label === "fake") {
-            result.innerText = "❌ Fake News Detected";
-            result.style.color = "#ff1e1e";
-            result.style.textShadow = "0 0 10px #ff1e1e";
-        } else if (label === "real") {
-            result.innerText = "✅ Verified as Real News";
-            result.style.color = "#00ff88";
-            result.style.textShadow = "0 0 10px #00ff88";
-        }
-
-        if (label === "real") {
-            percent.innerText = confidence.toFixed(2) + "% confidence";
-            percent.style.color = "#00ff88";
-            progress.style.background = "#00ff88";
+        if (data.label === "real") {
+            result.innerHTML = "✅ Verified as Real News";
+            result.style.color = "#4ade80";
+            progress.style.background = "#22c55e";
         } else {
-            percent.innerText = confidence.toFixed(2) + "% confidence";
-            percent.style.color = "#ff1e1e";
-            progress.style.background = "#ff1e1e";
+            result.innerHTML = "❌ Fake News Detected";
+            result.style.color = "#f87171";
+            progress.style.background = "#ef4444";
         }
 
         progress.style.width = confidence + "%";
+        percent.innerText = confidence + "% confidence";
 
         related.innerHTML = "";
 
-        if (label === "real") {
-            if (data.links && data.links.length > 0) {
-                let html = "<h3>📎 Supporting Evidence:</h3><ul>";
+        if (data.label === "real" && data.links && data.links.length > 0) {
+            related.innerHTML = "<strong>Supporting Evidence:</strong><ul>";
 
-                data.links.forEach(link => {
-                    html += `<li><a href="${link}" target="_blank">${link}</a></li>`;
-                });
+            data.links.forEach(link => {
+                related.innerHTML += `<li><a href="${link}" target="_blank">${link}</a></li>`;
+            });
 
-                html += "</ul>";
-                related.innerHTML = html;
-            } else {
-                related.innerHTML = "<p style='color:#fbcfe8;'>No supporting links found.</p>";
-            }
+            related.innerHTML += "</ul>";
         }
 
+    })
+    .catch(err => {
+        console.error(err);
+        alert("Server error");
+        document.getElementById("loading").classList.add("hidden");
     });
 }
 </script>
