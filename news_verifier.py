@@ -1,8 +1,12 @@
+import os
 import requests
 
-NEWS_API_KEY = "338d534f6f3940eab09966ea05b03401"
+# Use environment variable instead of hardcoding secrets in source.
+NEWS_API_KEY = os.getenv("NEWS_API_KEY") or os.getenv("NEWSAPI_KEY")
 
 def check_google_news(query):
+    if not NEWS_API_KEY:
+        return 0, []
     url = f"https://newsapi.org/v2/everything?q={query}&apiKey={NEWS_API_KEY}&language=en"
     r = requests.get(url)
     data = r.json()

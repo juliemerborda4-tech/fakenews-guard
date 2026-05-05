@@ -86,7 +86,7 @@ def call_gnews(text):
         return []
 
 # ---------------- MAIN FUNCTION ----------------
-def predict_and_retrieve(text):
+def predict_and_retrieve(text, suppress_ui: bool = False):
 
     if not text.strip():
         return {"label":"error","fake_prob":0.5,"message":"No input","related":[]}
@@ -136,6 +136,11 @@ def predict_and_retrieve(text):
         related.extend(news)
 
     # 🔥 FINAL DECISION
+    # Policy:
+    # - FactCheck explicit verdict already returns above.
+    # - Multiple independent sources => real leaning.
+    # - Some sources => likely real.
+    # - No sources => unverified (not "real" by default).
     if score >= 2:
         return {
             "label":"real",
@@ -154,7 +159,7 @@ def predict_and_retrieve(text):
 
     else:
         return {
-            "label":"real",
+            "label":"unverified",
             "fake_prob":0.55,
             "message":"No strong evidence found",
             "related":[]

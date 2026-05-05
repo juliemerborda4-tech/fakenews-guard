@@ -224,7 +224,7 @@ function predict() {
         document.getElementById("loading").classList.add("hidden");
         document.getElementById("result-box").classList.remove("hidden");
 
-        // ✅ FIXED CONFIDENCE (NO MORE 9000%)
+        //  FIXED CONFIDENCE (NO MORE 9000%)
         let confidence;
 
         if (data.fake_prob !== undefined && data.fake_prob !== null) {
@@ -255,22 +255,30 @@ function predict() {
 
         related.innerHTML = "";
 
-        if (data.label === "real" && data.links && data.links.length > 0) {
-            related.innerHTML = "<strong>Supporting Evidence:</strong><ul>";
+if (data.label === "real" && data.links && data.links.length > 0) {
+    related.innerHTML = "<strong>Supporting Evidence:</strong><ul>";
 
-            data.links.forEach(link => {
-                related.innerHTML += `<li><a href="${link}" target="_blank">${link}</a></li>`;
-            });
-
-            related.innerHTML += "</ul>";
-        }
-
-    })
-    .catch(err => {
-        console.error(err);
-        alert("Server error");
-        document.getElementById("loading").classList.add("hidden");
+    data.links.forEach(link => {
+        related.innerHTML += `<li><a href="${link}" target="_blank">${link}</a></li>`;
     });
+
+    related.innerHTML += "</ul>";
+}
+
+// ADD THIS (NO LINKS MESSAGE)
+if (!data.links || data.links.length === 0) {
+    related.innerHTML = `
+        <p style="color:#fde68a; margin-top:10px;">
+            ⚠️ ${data.message || "No reliable sources found for this claim."}
+        </p>
+    `;
+}
+})
+.catch(err => {
+    console.error(err);
+    alert("Server error");
+    document.getElementById("loading").classList.add("hidden");
+});
 }
 </script>
 
